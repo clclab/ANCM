@@ -1,11 +1,8 @@
-# Welcome to your Jupyter Book
+# Welcome to ANCM'22
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+This website contains the lab assignments for the Advanced Neural and Cognitive Modelling course. You can access the assignments through the menu on the left.
 
-Check out the content pages bundled with this sample book to see more.
+To open a lab assignment in google colab, go to the assignment page and hover your mouse over the rocket symbol ( <img alt="rocket" src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/rocket.svg" width="20" height="20"> ) in the top right, then choose _Colab_. Once on colab, don't forget to make a copy of the notebook in your own Drive to save your changes. If you prefer working in your own local jupyter environment, you can also download ( <img alt="rocket" src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/download.svg" width="20" height="20"> ) the .ipynb file for any lab assignment.
 
-```{tableofcontents}
-```
+### Links
+- [Datanose](https://datanose.nl/#course[111409])

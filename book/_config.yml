@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: "ANCM'22"
-author: Marianne de Heer Kloots, Ashley Burgoyne, Jelle Zuidema
+author: "" # Marianne de Heer Kloots, Ashley Burgoyne, Jelle Zuidema
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -23,6 +23,7 @@ bibtex_bibfiles:
 # In _config.yml
 sphinx:
   config:
+    html_show_copyright: false
     bibtex_reference_style: author_year
 
 # Information about where the book exists on the web
@@ -40,3 +41,7 @@ launch_buttons:
 html:
   use_issues_button: true
   use_repository_button: true
+  extra_footer: |
+    <div>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    </div>
