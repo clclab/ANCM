@@ -1,3 +1,7 @@
+# Ignore builds
+book/_build/
+book/_build/html/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
