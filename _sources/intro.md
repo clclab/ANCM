@@ -6,3 +6,4 @@ To open a lab assignment in google colab, go to the assignment page and hover yo
 
 ### Links
 - [Datanose](https://datanose.nl/#course[111409])
+- [Canvas](https://canvas.uva.nl/courses/32370)

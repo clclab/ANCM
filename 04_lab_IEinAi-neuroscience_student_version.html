@@ -50,11 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Week 4 - Current language &amp; music research" href="04_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,7 +113,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="01_intro.html">
    Week 1 - Introduction &amp; Logistic regression
@@ -126,8 +125,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01_lab_placeholder.html">
-     Lab 1 placeholder
+    <a class="reference internal" href="01_lab_Logistic-regression-for-musical-tags.html">
+     Logistic regression for musical tags
     </a>
    </li>
   </ul>
@@ -144,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="02_lab_placeholder.html">
-     Lab 2 placeholder
+     Lab 2: EEG &amp; language processing
     </a>
    </li>
   </ul>
@@ -161,24 +160,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="03_lab_placeholder.html">
-     Lab 1 placeholder
+     Lab 3: Bayesian modelling with Stan, music
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="04_intro.html">
    Week 4 - Current language &amp; music research
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Tutorial: Information processing in recurrent neural networks and the role of category-orthogonal object features
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_lab_placeholder.html">
+     Lab 3: Bayesian modelling with Stan, music
     </a>
    </li>
   </ul>
@@ -1307,7 +1306,7 @@ True label: Trouser ; Predicted label: Trouser
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_steps</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dec_acc1</span><span class="p">[</span><span class="n">j</span><span class="p">,:,</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="mf">100.</span><span class="p">)</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">dec_acc1</span><span class="p">[</span><span class="n">j</span><span class="p">,:,</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">,:])</span><span class="o">*</span><span class="mf">100.</span>
         <span class="n">ci</span> <span class="o">=</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_steps</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="n">ci</span><span class="p">),</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">ci</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_steps</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="n">ci</span><span class="p">),</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">ci</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_steps</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dec_acc1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,:,</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="mi">2</span><span class="p">))</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_steps</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
@@ -1415,11 +1414,11 @@ Auxiliary variable avg. decoding through layer depth:  [0.70119167 0.7465125  0.
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">lay</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">th</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">perturbed_relative</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">perturbed_relative</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">]</span><span class="o">-</span><span class="n">pert_rel_se</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">]),</span> <span class="p">(</span><span class="n">perturbed_relative</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">]</span><span class="o">+</span><span class="n">pert_rel_se</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">]),</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">perturbed_relative</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">]</span><span class="o">-</span><span class="n">pert_rel_se</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">]),</span> <span class="p">(</span><span class="n">perturbed_relative</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">]</span><span class="o">+</span><span class="n">pert_rel_se</span><span class="p">[:,</span><span class="n">lay</span><span class="p">,</span><span class="n">th</span><span class="p">]),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="mi">0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="s1">&#39;k-&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">pert_names</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-.</span><span class="mi">05</span><span class="p">,</span><span class="mf">0.8</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">.05</span><span class="p">,</span><span class="mf">0.8</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Recurrent flow to &#39;</span><span class="o">+</span><span class="n">lay_names</span><span class="p">[</span><span class="n">lay</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">lay</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1509,13 +1508,6 @@ Auxiliary variable avg. decoding through layer depth:  [0.70119167 0.7465125  0.
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="04_intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Week 4 - Current language &amp; music research</p>
-        </div>
-    </a>
 </div>
             </footer>
         </div>
