@@ -4,16 +4,22 @@
 format: jb-book
 root: intro
 
-chapters:
-  - file: 01_intro
-    sections:
-      - file: 01_lab_Logistic-regression-for-musical-tags
-  - file: 02_intro
-    sections:
-      - file: 02_lab_placeholder
-  - file: 03_intro
-    sections:
-      - file: 03_lab_placeholder
-  - file: 04_intro
-    sections:
-      - file: 04_lab_placeholder
+parts:
+  - caption: Lab assignments
+    chapters:
+      - file: 01_intro
+        sections:
+          - file: 01_lab_Logistic-regression-for-musical-tags
+      - file: 02_intro
+        sections:
+          - file: 02_lab_placeholder
+      - file: 03_intro
+        sections:
+          - file: 03_lab_placeholder
+      - file: 04_intro
+        sections:
+          - file: 04_lab_placeholder
+
+  - caption: Mini-projects
+    chapters:
+      - file: 10_mini-projects_resources
