@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to ANCM’22 &#8212; ANCM&#39;22</title>
+    <title>Resources for mini-projects &#8212; ANCM&#39;22</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Week 1 - Introduction &amp; Logistic regression" href="01_intro.html" />
+    <link rel="prev" title="Lab 3: Bayesian modelling with Stan, music" href="04_lab_placeholder.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,8 +106,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Welcome to ANCM’22
                 </a>
             </li>
@@ -192,9 +192,9 @@ const thebe_selector_output = ".output, .cell_output"
   Mini-projects
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="10_mini-projects_resources.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Resources for mini-projects
   </a>
  </li>
@@ -288,7 +288,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F10_mini-projects_resources.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -316,7 +316,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/10_mini-projects_resources.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -376,8 +376,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#links">
-   Links
+  <a class="reference internal nav-link" href="#general">
+   General:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#language-brain-datasets">
+   Language / brain datasets:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#music-brain-datasets">
+   Music / brain datasets:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#music-information-retrieval-datasets">
+   Music information retrieval datasets:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory-vision-more">
+   Memory, vision &amp; more
   </a>
  </li>
 </ul>
@@ -389,7 +409,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome to ANCM’22</h1>
+                <h1>Resources for mini-projects</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -400,8 +420,28 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#links">
-   Links
+  <a class="reference internal nav-link" href="#general">
+   General:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#language-brain-datasets">
+   Language / brain datasets:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#music-brain-datasets">
+   Music / brain datasets:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#music-information-retrieval-datasets">
+   Music information retrieval datasets:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory-vision-more">
+   Memory, vision &amp; more
   </a>
  </li>
 </ul>
@@ -414,21 +454,48 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-ancm-22">
-<h1>Welcome to ANCM’22<a class="headerlink" href="#welcome-to-ancm-22" title="Permalink to this headline">#</a></h1>
-<p>This website contains the lab assignments for the Advanced Neural and Cognitive Modelling course. You can access the assignments through the menu on the left.</p>
-<p>To open a lab assignment in google colab, go to the assignment page and hover your mouse over the rocket symbol ( <img alt="rocket" src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/rocket.svg" width="20" height="20"> ) in the top right, then choose <em>Colab</em>. Once on colab, don’t forget to make a copy of the notebook in your own Drive to save your changes. If you prefer working in your own local jupyter environment, you can also download ( <img alt="rocket" src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/download.svg" width="20" height="20"> ) the .ipynb file for any lab assignment.</p>
-<section id="links">
-<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="resources-for-mini-projects">
+<h1>Resources for mini-projects<a class="headerlink" href="#resources-for-mini-projects" title="Permalink to this headline">#</a></h1>
+<section id="general">
+<h2>General:<a class="headerlink" href="#general" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://datanose.nl/#course%5B111409%5D">Datanose</a></p></li>
-<li><p><a class="reference external" href="https://canvas.uva.nl/courses/32370">Canvas</a></p></li>
+<li><p>Finding a question: <a class="reference external" href="https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_1through4.html">Neuromatch modeling project exercises steps 1-4</a></p></li>
 </ul>
 </section>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+<section id="language-brain-datasets">
+<h2>Language / brain datasets:<a class="headerlink" href="#language-brain-datasets" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Li et al. (2022) - Le Petit Prince multilingual naturalistic fMRI corpus (French, Chinese, English) <a class="reference external" href="https://doi.org/10.1038/s41597-022-01625-7">paper</a>, <a class="reference external" href="https://doi.org/10.18112/openneuro.ds003643.v1.0.3">data</a></p></li>
+<li><p>Nastase et al. (2021) - The “Narratives” fMRI dataset for evaluating models of naturalistic language comprehension <a class="reference external" href="https://doi.org/10.1038/s41597-021-01033-3">paper</a>, <a class="reference external" href="https://datasets.datalad.org/?dir=/labs/hasson/narratives">data</a></p></li>
+<li><p>Gwilliams et al. (2022) - MEG-MASC: a high-quality magneto-encephalography dataset for evaluating natural speech processing <a class="reference external" href="https://doi.org/10.48550/arXiv.2208.11488">paper</a>, <a class="reference external" href="https://osf.io/ag3kj/">data</a></p></li>
+<li><p>Wehbe et al. (2014) - Simultaneously Uncovering the Patterns of Brain Regions Involved in Different Story Reading Subprocesses <a class="reference external" href="https://doi.org/10.1371/journal.pone.0112575">paper</a>, <a class="reference external" href="http://www.cs.cmu.edu/~fmri/plosone/">data</a></p></li>
+<li><p>Pereira et al. (2018) - Toward a universal decoder of linguistic meaning from brain activation (fMRI, words/sentences &amp; pictures) <a class="reference external" href="https://doi.org/10.1038/s41467-018-03068-4">paper</a>, <a class="reference external" href="https://osf.io/crwz7">data</a></p></li>
+<li><p>Broderick et al. (2018) - Electrophysiological Correlates of Semantic Dissimilarity Reflect the Comprehension of Natural, Narrative Speech <a class="reference external" href="https://doi.org/10.1016/j.cub.2018.01.080">paper</a>, <a class="reference external" href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.070jc">data</a> (we will work with this data in lab 2)</p></li>
+<li><p>More datasets on Nora Hollenstein’s <a class="reference external" href="https://github.com/norahollenstein/cognitiveNLP-dataCollection/wiki/">Cognitive NLP wiki</a></p></li>
+</ul>
+</section>
+<section id="music-brain-datasets">
+<h2>Music / brain datasets:<a class="headerlink" href="#music-brain-datasets" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Stober et al., 2015 - Towards Music Imagery Information Retrieval: Introducing the OpenMIIR Dataset of EEG Recordings from Music Perception and Imagination <a class="reference external" href="https://archives.ismir.net/ismir2015/paper/000224.pdf">paper</a>, <a class="reference external" href="https://github.com/sstober/openmiir">data</a></p></li>
+<li><p>Di Liberto et al. (2020) - Cortical encoding of melodic expectations in human temporal cortex <a class="reference external" href="https://doi.org/10.7554/eLife.51784">paper</a>, <a class="reference external" href="https://sourceforge.net/projects/aespa/">data</a></p></li>
+</ul>
+</section>
+<section id="music-information-retrieval-datasets">
+<h2>Music information retrieval datasets:<a class="headerlink" href="#music-information-retrieval-datasets" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mirg.city.ac.uk/codeapps/the-magnatagatune-dataset">The MagnaTagATune Dataset</a> (we work with this data in lab 1)</p></li>
+<li><p><a class="reference external" href="https://mirdata.readthedocs.io/en/stable/">mirdata</a></p></li>
+<li><p><a class="reference external" href="http://millionsongdataset.com/">Million Song Dataset</a></p></li>
+<li><p><a class="reference external" href="https://ismir.net/resources/datasets/">ISMIR datasets</a></p></li>
+</ul>
+</section>
+<section id="memory-vision-more">
+<h2>Memory, vision &amp; more<a class="headerlink" href="#memory-vision-more" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Have a look at the dataset guides and project templates of NMA CompNeuro &amp; Deep Learning, for example <a class="reference external" href="https://compneuro.neuromatch.io/projects/fMRI/README.html">fMRI</a>, <a class="reference external" href="https://compneuro.neuromatch.io/projects/ECoG/README.html">EEG/ECoG</a>, <a class="reference external" href="https://compneuro.neuromatch.io/projects/behavior/README.html">Behaviour</a>, <a class="reference external" href="https://compneuro.neuromatch.io/projects/neurons/README.html">Neurons</a>, <a class="reference external" href="https://deeplearning.neuromatch.io/projects/docs/datasets_and_models.html">Models &amp; datasets</a>, <a class="reference external" href="https://deeplearning.neuromatch.io/projects/ReinforcementLearning/ideas_and_datasets.html">Reinforcement learning</a>, <a class="reference external" href="https://deeplearning.neuromatch.io/projects/Neuroscience/ideas_and_datasets.html">Neuroscience</a></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -458,12 +525,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="01_intro.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 1 - Introduction &amp; Logistic regression</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+    <a class='left-prev' id="prev-link" href="04_lab_placeholder.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lab 3: Bayesian modelling with Stan, music</p>
+        </div>
     </a>
 </div>
             </footer>
