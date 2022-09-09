@@ -1,5 +1,7 @@
 # Resources for mini-projects
 
+We'll update this page with more resources as we go!
+
 ### General:
 - Finding a question: [Neuromatch modeling project exercises steps 1-4](https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_1through4.html)
 
