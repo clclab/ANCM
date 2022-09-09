@@ -15,7 +15,7 @@ We'll update this page with more resources as we go!
 - More datasets on Nora Hollenstein's [Cognitive NLP wiki](https://github.com/norahollenstein/cognitiveNLP-dataCollection/wiki/)
 
 ### Music / brain datasets:
-- Stober et al., 2015 - Towards Music Imagery Information Retrieval: Introducing the OpenMIIR Dataset of EEG Recordings from Music Perception and Imagination [paper](https://archives.ismir.net/ismir2015/paper/000224.pdf), [data](https://github.com/sstober/openmiir)
+- Stober et al. (2015) - Towards Music Imagery Information Retrieval: Introducing the OpenMIIR Dataset of EEG Recordings from Music Perception and Imagination [paper](https://archives.ismir.net/ismir2015/paper/000224.pdf), [data](https://github.com/sstober/openmiir)
 - Di Liberto et al. (2020) - Cortical encoding of melodic expectations in human temporal cortex [paper](https://doi.org/10.7554/eLife.51784), [data](https://sourceforge.net/projects/aespa/)
 
 ### Music information retrieval datasets:
@@ -25,4 +25,4 @@ We'll update this page with more resources as we go!
 - [ISMIR datasets](https://ismir.net/resources/datasets/)
 
 ### Memory, vision & more
-- Have a look at the dataset guides and project templates of NMA CompNeuro & Deep Learning, for example [fMRI](https://compneuro.neuromatch.io/projects/fMRI/README.html), [EEG/ECoG](https://compneuro.neuromatch.io/projects/ECoG/README.html), [Behaviour](https://compneuro.neuromatch.io/projects/behavior/README.html), [Neurons](https://compneuro.neuromatch.io/projects/neurons/README.html), [Models & datasets](https://deeplearning.neuromatch.io/projects/docs/datasets_and_models.html), [Reinforcement learning](https://deeplearning.neuromatch.io/projects/ReinforcementLearning/ideas_and_datasets.html), [Neuroscience](https://deeplearning.neuromatch.io/projects/Neuroscience/ideas_and_datasets.html)
+- Have a look at the dataset guides of NMA CompNeuro & Deep Learning, for example [fMRI](https://compneuro.neuromatch.io/projects/fMRI/README.html), [EEG/ECoG](https://compneuro.neuromatch.io/projects/ECoG/README.html), [Behaviour](https://compneuro.neuromatch.io/projects/behavior/README.html), [Neurons](https://compneuro.neuromatch.io/projects/neurons/README.html), [Models & datasets](https://deeplearning.neuromatch.io/projects/docs/datasets_and_models.html), [Reinforcement learning](https://deeplearning.neuromatch.io/projects/ReinforcementLearning/ideas_and_datasets.html), [Neuroscience](https://deeplearning.neuromatch.io/projects/Neuroscience/ideas_and_datasets.html)
