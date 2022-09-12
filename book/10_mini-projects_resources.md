@@ -12,6 +12,7 @@ We'll update this page with more resources as we go!
 - Wehbe et al. (2014) - Simultaneously Uncovering the Patterns of Brain Regions Involved in Different Story Reading Subprocesses [paper](https://doi.org/10.1371/journal.pone.0112575), [data](http://www.cs.cmu.edu/~fmri/plosone/)
 - Pereira et al. (2018) - Toward a universal decoder of linguistic meaning from brain activation (fMRI, words/sentences & pictures) [paper](https://doi.org/10.1038/s41467-018-03068-4), [data](https://osf.io/crwz7)
 - Broderick et al. (2018) - Electrophysiological Correlates of Semantic Dissimilarity Reflect the Comprehension of Natural, Narrative Speech [paper](https://doi.org/10.1016/j.cub.2018.01.080), [data](https://datadryad.org/stash/dataset/doi:10.5061/dryad.070jc) (we will work with this data in lab 2)
+- Huth et al. (2016). Natural speech reveals the semantic maps that tile human cerebral cortex [paper](https://doi.org/10.1038/nature17637), [data](https://github.com/HuthLab/speechmodeltutorial)
 - More datasets on Nora Hollenstein's [Cognitive NLP wiki](https://github.com/norahollenstein/cognitiveNLP-dataCollection/wiki/)
 
 ### Music / brain datasets:
