@@ -495,6 +495,6 @@ def get_tr_texts(subj_dict: dict):
     tr_texts : list
         List of strings of text presented at each text TR.
     """
-    nTRs = subj_dict["meta"]["TRs"]
+    nTRs = subj_dict["meta"]["nTRs"]
     tr_texts = [" ".join(text_at_tr(tr, subj_dict)) for tr in range(nTRs)[:-1]]
     return tr_texts
