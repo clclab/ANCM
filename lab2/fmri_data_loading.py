@@ -480,3 +480,21 @@ def rsa_matrix(RDMs_1, RDMs_2, score="pearsonr"):
         for j in range(len(RDMs_2)):
             rsa_mat[i, j] = compute_rsa_score(RDMs_1[i], RDMs_2[j], score=score)
     return rsa_mat
+
+def get_tr_texts(subj_dict: dict):
+    """
+    Retrieves the text presented to the subject at the given TR.
+
+    Parameters
+    ----------
+    subj_dict : dict
+        Data dictionary for a single subject (as described in the load_subj_dict docstring).
+
+    Returns
+    -------
+    tr_texts : list
+        List of strings of text presented at each text TR.
+    """
+    nTRs = subj_dict["meta"]["TRs"]
+    tr_texts = [" ".join(text_at_tr(tr, subj_dict)) for tr in range(nTRs)[:-1]]
+    return tr_texts
