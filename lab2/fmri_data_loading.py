@@ -480,3 +480,30 @@ def rsa_matrix(RDMs_1, RDMs_2, score="pearsonr"):
         for j in range(len(RDMs_2)):
             rsa_mat[i, j] = compute_rsa_score(RDMs_1[i], RDMs_2[j], score=score)
     return rsa_mat
+
+def data_for_ROI(ROI: list, subj_dict: dict) -> np.ndarray:
+    """
+    Returns the voxel signals for only the subregions listed as ROI.
+
+    Parameters
+    ----------
+    subj_dict : dict
+        Data dictionary for a single subject (as described in the load_subj_dict docstring).
+    ROI : Optional[list]
+        List of ROInames for which to include voxel signals.
+
+    Returns
+    -------
+    ROI_signal : np.ndarray
+        Matrix of shape (nTRs, ROIsize) with the voxel signals in the listed ROI.
+    """
+    # ROI names for each column
+    col2ROIname = subj_dict["meta"]["ROInumToName"][subj_dict["meta"]["colToROInum"]]
+
+    # indices for columns that are in the ROI
+    ROI_cols = np.where(np.isin(col2ROIname, ROI))
+
+    # select signal from ROI: shape (nTRs, ROI_cols.size)
+    ROI_signal = subj_dict["data"][:, ROI_cols].squeeze()
+
+    return ROI_signal
