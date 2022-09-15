@@ -19,6 +19,9 @@ parts:
       - file: 04_intro
         sections:
           - file: 04_lab_placeholder
+      - file: 05_extra
+        sections:
+          - file: 05_extra_lab_ICCN-EyeTracking.ipynb
 
   - caption: Mini-projects
     chapters:

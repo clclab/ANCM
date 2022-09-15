@@ -1,0 +1,3 @@
+# Extra
+
+This section contains an extra notebook with a lab assignment we made for another course ([Introduction to Cognitive Computational Neuroscience](https://studiegids.uva.nl/xmlpages/page/2022-2023/zoek-vak/vak/99309)). This lab assignment has some exercises on using pre-trained large language models for predicting eye-tracking data (based on a [2021 ESSLI course](https://github.com/clclab/ESSLLI2021) tutorial by Nora Hollenstein). They might be interesting to you if you'd like to work with eye-tracking data yourself (for example in your mini-project).
