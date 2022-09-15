@@ -1,0 +1,1946 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features &#8212; ANCM&#39;22</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Resources for mini-projects" href="10_mini-projects_resources.html" />
+    <link rel="prev" title="Extra" href="05_extra.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ANCM'22</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to ANCM’22
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lab assignments
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01_intro.html">
+   Week 1 - Introduction &amp; Logistic regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_lab_Logistic-regression-for-musical-tags.html">
+     Logistic regression for musical tags
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02_intro.html">
+   Week 2 - Deep learning architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_lab_placeholder.html">
+     Lab 2: EEG &amp; language processing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03_intro.html">
+   Week 3 - Bayesian perspectives
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_lab_placeholder.html">
+     Lab 3: Bayesian modelling with Stan, music
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04_intro.html">
+   Week 4 - Current language &amp; music research
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_lab_placeholder.html">
+     Lab 4: Deep learning &amp; vision
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="05_extra.html">
+   Extra
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Mini-projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_mini-projects_resources.html">
+   Resources for mini-projects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/clclab/ANCM/blob/main/book/05_extra_lab_ICCN-EyeTracking.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clclab/ANCM"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F05_extra_lab_ICCN-EyeTracking.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/05_extra_lab_ICCN-EyeTracking.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contents">
+     Contents
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font">
+   Exercises (
+   <font color="darkorange">
+    <b>
+     ToDos
+    </b>
+   </font>
+   /
+   <font color="cornflowerblue">
+    <b>
+     ToThinks
+    </b>
+   </font>
+   )
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparation-i-packages-data-and-helper-functions">
+     Preparation I: Packages, data and helper functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-b">
+     <b>
+     </b>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparation-ii-downloading-the-large-language-models">
+     Preparation II: downloading the large language models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-exploring-the-zuco-corpus">
+   Data: Exploring the ZuCo corpus
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eye-tracking-features-explained">
+     Eye tracking features explained
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note-on-tokenization">
+     A note on tokenization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-eye-tracking-features">
+   Visualizing eye tracking features
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-fixation-times">
+     Visualizing fixation times
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-fixation-proportion">
+     Visualizing fixation proportion
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-data-overview">
+     Training data overview
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-using-pre-trained-large-language-models">
+   Models: using pre-trained large language models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#word-embeddings-with-pen-paper">
+     Word embeddings with pen &amp; paper
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#word-embeddings-from-a-large-language-model">
+     Word embeddings from a large language model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#static-versus-contextualized-word-embeddings">
+       Static versus contextualized word embeddings
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finetuning-the-language-model-on-eye-tracking-data">
+   Finetuning the language model on eye-tracking data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluating-model-predictions">
+   Evaluating model predictions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#baseline">
+     Baseline
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-metric-mean-absolute-error">
+     Evaluation metric: Mean absolute error
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization-of-predictions">
+     Visualization of predictions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-of-speech-analysis">
+     Part of Speech Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Modeling Language Processing: Large Language Models & their use in Predicting eye tracking features</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contents">
+     Contents
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font">
+   Exercises (
+   <font color="darkorange">
+    <b>
+     ToDos
+    </b>
+   </font>
+   /
+   <font color="cornflowerblue">
+    <b>
+     ToThinks
+    </b>
+   </font>
+   )
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparation-i-packages-data-and-helper-functions">
+     Preparation I: Packages, data and helper functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-b">
+     <b>
+     </b>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparation-ii-downloading-the-large-language-models">
+     Preparation II: downloading the large language models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-exploring-the-zuco-corpus">
+   Data: Exploring the ZuCo corpus
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eye-tracking-features-explained">
+     Eye tracking features explained
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note-on-tokenization">
+     A note on tokenization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-eye-tracking-features">
+   Visualizing eye tracking features
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-fixation-times">
+     Visualizing fixation times
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-fixation-proportion">
+     Visualizing fixation proportion
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-data-overview">
+     Training data overview
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-using-pre-trained-large-language-models">
+   Models: using pre-trained large language models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#word-embeddings-with-pen-paper">
+     Word embeddings with pen &amp; paper
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#word-embeddings-from-a-large-language-model">
+     Word embeddings from a large language model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#static-versus-contextualized-word-embeddings">
+       Static versus contextualized word embeddings
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finetuning-the-language-model-on-eye-tracking-data">
+   Finetuning the language model on eye-tracking data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluating-model-predictions">
+   Evaluating model predictions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#baseline">
+     Baseline
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-metric-mean-absolute-error">
+     Evaluation metric: Mean absolute error
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization-of-predictions">
+     Visualization of predictions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-of-speech-analysis">
+     Part of Speech Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling-language-processing-large-language-models-their-use-in-predicting-eye-tracking-features">
+<h1>Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features<a class="headerlink" href="#modeling-language-processing-large-language-models-their-use-in-predicting-eye-tracking-features" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial we will be using language models to predict eye movements during natural reading of English sentences. This notebook is partly based on a tutorial by Nora Hollenstein taught during this year’s <a class="reference external" href="https://esslli2021.unibz.it/page/course/analyzing_the_cognitive_plausibility_of_deep_language_models/">ESSLLI course</a> on cognitive plausibility of language models. It uses eye tracking data from the <a class="reference external" href="https://www.nature.com/articles/sdata2018291">Zurich Cognitive Language Processing Corpus (ZuCo)</a>, as provided for the <a class="reference external" href="https://cmclorg.github.io/shared_task">CMCL 2021 Shared Task</a>. This tutorial was adjusted and extended for ICCN’21 by Marianne de Heer Kloots and Jelle Zuidema.</p>
+<p>Eye-tracking data from reading represent an important resource for both linguistics and natural language processing. The ability to accurately model gaze features is a key source of information for advancing our understanding of language processing. On one hand, it can tell us how well our computational models align with human language processing mechanisms. On the other hand, it may provide more accurate models of reading to further psycholinguistic research.</p>
+<p><strong>What you’ll learn</strong>: At the end of this tutorial, you will…</p>
+<ul class="simple">
+<li><p>have analyzed transformer-based large language models, and computed and visualized both static and contextualized embeddings</p></li>
+<li><p>be acquainted with eye tracking data and the structure of the ZuCo corpus</p></li>
+<li><p>have used transformer language models to predict eye tracking features recorded during reading (fixation duration, fixation proportion, etc.)</p></li>
+<li><p>have compared the performance of a pre-trained model and a model fine-tuned on eye tracking data</p></li>
+<li><p>evaluate and reflect on the ability of a contextualized language model to predict psycholinguistic data.</p></li>
+</ul>
+<p>Throughout the tutoroial there are exercises for you to do. For some excercises you’ll receive points, which will determine your grade (<strong>10 points in total, 10% of the grade for the entire course</strong>).</p>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Setup</p></li>
+<li><p>Exploring the ZuCo corpus</p></li>
+<li><p>Visualizing eye tracking features</p></li>
+<li><p>Pre-trained language models</p></li>
+<li><p>Finetuning the language model on eye-tracking data</p></li>
+<li><p>Evaluating model predictions</p></li>
+</ol>
+<p><img alt="ICCN-CCN-figure" src="_images/ICCN-CCN-figure.png" /></p>
+<p>In this tutorial we will look at Large Language Models from Artificial Intelligence, and eye-tracking data from cognitive science, and consider how well the models help understand the data. We will not look at neuroscience data today, but the same models and some logic is used as in the work we discussed in the lecture and journal club where fMRI, ECoG, EEG and MEG data were considered.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font">
+<h1>Exercises (<font color="darkorange"><b>ToDos</b></font>/<font color="cornflowerblue"><b>ToThinks</b></font>)<a class="headerlink" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font" title="Permalink to this headline">#</a></h1>
+<p>We believe that the best way to understand analysis methods is by <em>actually programming</em> the analyses yourself. You have already seen some of these (ungraded) exercises, which we call “ToDos”. There are different types of exercises throughout the notebook, including:</p>
+<ul class="simple">
+<li><p><font color="darkorange"><b>ToDos</b></font> : short programming exercises</p></li>
+<li><p><font color="cornflowerblue"><b>ToThinks</b></font>: questions about the (preceding) text/material
+Sometimes, you also encounter <font color="limegreen"><b>Tips and Tricks</b></font>, which may contain advice, more information on a specific topic, or links to relevant websites or material.
+For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive points, which will determine your grade (<strong>10 points in total</strong>). The number of points that can be earned, will be specified in the cell.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h1>
+<section id="preparation-i-packages-data-and-helper-functions">
+<h2>Preparation I: Packages, data and helper functions<a class="headerlink" href="#preparation-i-packages-data-and-helper-functions" title="Permalink to this headline">#</a></h2>
+<p>Run these cells to download and import the required packages for this notebook, the eye-tracking dataset, and some helper functions that we will need later for training and evaluating models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Install and import required packages in the current Jupyter kernel</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">!{</span>sys.executable<span class="o">}</span> -m pip install -q numpy pandas seaborn matplotlib torch transformers spacy scipy
+<span class="o">!</span>python3 -m spacy download en_core_web_sm
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">transformers</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cosine</span><span class="p">,</span> <span class="n">euclidean</span><span class="p">,</span> <span class="n">pdist</span><span class="p">,</span> <span class="n">squareform</span><span class="p">,</span> <span class="n">is_valid_dm</span><span class="p">,</span> <span class="n">cdist</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># load English SpaCy model</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+
+<span class="c1"># making sure Spacy doesn&#39;t mess with our tokenization</span>
+<span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">Doc</span>
+<span class="k">def</span> <span class="nf">custom_tokenizer</span><span class="p">(</span><span class="n">wordlist</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;replace spacy tokenizer with already tokenized list of words&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Doc</span><span class="p">(</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">,</span> <span class="n">words</span><span class="o">=</span><span class="n">wordlist</span><span class="p">,</span> <span class="n">spaces</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">custom_tokenizer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Download the eyetracking data</span>
+
+<span class="c1"># create folder to store data</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data already downloaded!&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;week4&#39;</span><span class="p">)</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Main folder already exists&#39;</span><span class="p">)</span>
+  <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;week4&#39;</span><span class="p">)</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data folder already exists&#39;</span><span class="p">)</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;models&#39;</span><span class="p">)</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model folder already exists&#39;</span><span class="p">)</span>
+
+  <span class="c1"># download files</span>
+  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/model.py -O model.py
+  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/dataloader.py -O dataloader.py
+  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/evaluation_metric.py -O evaluation_metric.py
+  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/LM_functions.py -O LM_functions.py
+
+  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/README.md -O data/README.md
+  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/test_data.csv -O data/test_data.csv
+  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/training_data.csv -O data/training_data.csv
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Importing helper functions</span>
+<span class="kn">from</span> <span class="nn">dataloader</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">evaluation_metric</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LM_functions</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="b-b">
+<h2><b> </b><a class="headerlink" href="#b-b" title="Permalink to this headline">#</a></h2>
+<p>If you now go to the File tab (red arrow in the image below) you should see a folder named <em>week4</em>, which contains a folder named <em>data</em> with the downloaded files (and also a folder named <em>models</em>, and some other files).</p>
+<p><img alt="ICCN-file-folders" src="_images/ICCN-file-folders.png" /></p>
+</section>
+<section id="preparation-ii-downloading-the-large-language-models">
+<h2>Preparation II: downloading the large language models<a class="headerlink" href="#preparation-ii-downloading-the-large-language-models" title="Permalink to this headline">#</a></h2>
+<p>Next, we’re going to download the language models that we will use in this tutorial. We will load these into the colab environment from Google Drive, similar to how you’ve loaded the EEG data in week 2. For this, you need to do the following:</p>
+<p><strong>1. Give Colab permission to access Google Drive</strong> Execute the cell below, follow the instructions and copy the token. You now should be able to access your drive through the File tab via the folder <em>drive</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mounted at /content/drive
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2. Add the model files to Google Drive</strong> Below you see how to add the files to My Drive. Please read the instructions carefully and follow the steps.</p>
+<p><img alt="ICCN-drive-steps" src="_images/ICCN-drive-steps.png" /></p>
+<ol class="simple">
+<li><p>The links below will give you access to the models. DON’T click on the blue button, but instead, click on the icon on top for adding a shortcut to your drive (see above). Alternatively, you may need to click the triple points (<span class="math notranslate nohighlight">\(\vdots\)</span>) in the top right, and click on the option ‘Organize’.</p></li>
+</ol>
+<ul class="simple">
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1DxfBsCfxRhEPaKfpiWpBFjuugGWpmTQl/view?usp=sharing">distilbert-base-uncased_0</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1AVfYpZEkf4y4uonFBoIJrPM6K4FsTayF/view?usp=sharing">distilbert-base-uncased_150</a></p></li>
+</ul>
+<ol class="simple">
+<li><p>A dropdown menu will appear, where you should click the button to add the shortcut to your drive. If you want, you can choose or create a subfolder within your Google Drive to store the models.</p></li>
+<li><p>You should then get a confirmation that the shortcut is stored to your Google Drive.</p></li>
+</ol>
+<p><strong>3. Set directory</strong> To import the models in this notebook, you need to specify where in your drive the models are stored. If you saved the files in My Drive you can execute the cell below immediately. (If you’ve saved it in another folder, then change the path accordingly.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distilbert_0_file</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/distilbert-base-uncased_0&#39;</span>
+<span class="n">distilbert_150_file</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/distilbert-base-uncased_150&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-exploring-the-zuco-corpus">
+<h1>Data: Exploring the ZuCo corpus<a class="headerlink" href="#data-exploring-the-zuco-corpus" title="Permalink to this headline">#</a></h1>
+<p>The cell below loads the ZuCo corpus and prints the number of sentences in the training and test sets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/training_data.csv&quot;</span><span class="p">)</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/test_data.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">training_data</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="s2">&quot;training sentences including&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">training_data</span><span class="p">),</span> <span class="s2">&quot;words.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="s2">&quot;test sentences including&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">),</span> <span class="s2">&quot;words.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>800 training sentences including 15736 words.
+191 test sentences including 3554 words.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 1&lt;/b&gt;&lt;/font&gt; (1pt)</span>
+<span class="c1">#@markdown The data are randomly split into a larger train set and a smaller test set. Both parts are thus assumed to be independent samples from the same distribution. We will train our models on the train set, and evaluate them on the test set. How often can we repeat this train &amp; test cycle? Why? (max 5 sentences).</span>
+
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="eye-tracking-features-explained">
+<h2>Eye tracking features explained<a class="headerlink" href="#eye-tracking-features-explained" title="Permalink to this headline">#</a></h2>
+<p>For each word, there are five eye tracking features:</p>
+<ul class="simple">
+<li><p><em>nFix</em> (number of fixations): total number of fixations on the current word.</p></li>
+<li><p><em>FFD</em> (first fixation duration): the duration of the first fixation on the prevailing word.</p></li>
+<li><p><em>GPT</em> (go-past time): the sum of all fixations prior to progressing to the right of the current word, including regressions to previous words that originated from the current word.</p></li>
+<li><p><em>TRT</em> (total reading time): the sum of all fixation durations on the current word, including regressions.</p></li>
+<li><p><em>fixProp</em> (fixation proportion): the proportion of participants that fixated the current word (as a proxy for how likely a word is to be fixated).</p></li>
+</ul>
+<p><font color='limegreen'><b>Tip</b></font> If you are unfamiliar with eye tracking data, have a look at <a class="reference external" href="https://www.sr-research.com/eye-tracking-blog/background/eye-tracking-terminology-eye-movements/">this website</a> to find out what a fixation is.</p>
+<p>Originally, the ZuCo corpus contains eye tracking data from 30 participants. The data was randomly shuffled before splitting into training and test data. Here, the data has already been averaged across readers, and the feature values have been <em>scaled to a range between 0 and 100</em>. The eye-tracking feature values are scaled to facilitate evaluation via the mean absolute error. The features nFix and fixProp are scaled separately, while FFD, GPT and TRT are scaled together since these are all dependent and measured in milliseconds.</p>
+<p><font color='darkorange'><b>ToDo</b></font> Let’s have a look at some sentences and their eye tracking features to get a better idea of the data. Change the sentence_id in the cell below to see a few other sentences (0 - 799).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">training_data</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">444</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sentence_id</th>
+      <th>word_id</th>
+      <th>word</th>
+      <th>nFix</th>
+      <th>FFD</th>
+      <th>GPT</th>
+      <th>TRT</th>
+      <th>fixProp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8670</th>
+      <td>444</td>
+      <td>0</td>
+      <td>The</td>
+      <td>6.896552</td>
+      <td>1.890099</td>
+      <td>2.323104</td>
+      <td>2.323104</td>
+      <td>41.666667</td>
+    </tr>
+    <tr>
+      <th>8671</th>
+      <td>444</td>
+      <td>1</td>
+      <td>original</td>
+      <td>29.885057</td>
+      <td>4.323173</td>
+      <td>5.701227</td>
+      <td>12.316574</td>
+      <td>91.666667</td>
+    </tr>
+    <tr>
+      <th>8672</th>
+      <td>444</td>
+      <td>2</td>
+      <td>wasn't</td>
+      <td>28.735632</td>
+      <td>4.017320</td>
+      <td>7.096464</td>
+      <td>10.443658</td>
+      <td>83.333333</td>
+    </tr>
+    <tr>
+      <th>8673</th>
+      <td>444</td>
+      <td>3</td>
+      <td>a</td>
+      <td>10.344828</td>
+      <td>2.333414</td>
+      <td>5.092959</td>
+      <td>3.484656</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>8674</th>
+      <td>444</td>
+      <td>4</td>
+      <td>good</td>
+      <td>18.390805</td>
+      <td>3.690848</td>
+      <td>4.587787</td>
+      <td>6.065501</td>
+      <td>83.333333</td>
+    </tr>
+    <tr>
+      <th>8675</th>
+      <td>444</td>
+      <td>5</td>
+      <td>movie</td>
+      <td>14.942529</td>
+      <td>3.494965</td>
+      <td>4.928004</td>
+      <td>4.842091</td>
+      <td>83.333333</td>
+    </tr>
+    <tr>
+      <th>8676</th>
+      <td>444</td>
+      <td>6</td>
+      <td>but</td>
+      <td>9.195402</td>
+      <td>2.343723</td>
+      <td>3.563696</td>
+      <td>2.838586</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>8677</th>
+      <td>444</td>
+      <td>7</td>
+      <td>this</td>
+      <td>9.195402</td>
+      <td>2.852332</td>
+      <td>2.852332</td>
+      <td>3.116946</td>
+      <td>58.333333</td>
+    </tr>
+    <tr>
+      <th>8678</th>
+      <td>444</td>
+      <td>8</td>
+      <td>remake</td>
+      <td>24.137931</td>
+      <td>5.900546</td>
+      <td>6.996804</td>
+      <td>8.450462</td>
+      <td>100.000000</td>
+    </tr>
+    <tr>
+      <th>8679</th>
+      <td>444</td>
+      <td>9</td>
+      <td>makes</td>
+      <td>13.793103</td>
+      <td>3.206296</td>
+      <td>3.206296</td>
+      <td>3.793945</td>
+      <td>83.333333</td>
+    </tr>
+    <tr>
+      <th>8680</th>
+      <td>444</td>
+      <td>10</td>
+      <td>it</td>
+      <td>2.298851</td>
+      <td>0.539537</td>
+      <td>0.539537</td>
+      <td>0.539537</td>
+      <td>16.666667</td>
+    </tr>
+    <tr>
+      <th>8681</th>
+      <td>444</td>
+      <td>11</td>
+      <td>look</td>
+      <td>10.344828</td>
+      <td>2.563662</td>
+      <td>2.563662</td>
+      <td>3.701158</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>8682</th>
+      <td>444</td>
+      <td>12</td>
+      <td>like</td>
+      <td>14.942529</td>
+      <td>3.780199</td>
+      <td>10.780439</td>
+      <td>4.570604</td>
+      <td>83.333333</td>
+    </tr>
+    <tr>
+      <th>8683</th>
+      <td>444</td>
+      <td>13</td>
+      <td>a</td>
+      <td>4.597701</td>
+      <td>1.639232</td>
+      <td>2.271556</td>
+      <td>1.639232</td>
+      <td>33.333333</td>
+    </tr>
+    <tr>
+      <th>8684</th>
+      <td>444</td>
+      <td>14</td>
+      <td>masterpiece!&lt;EOS&gt;</td>
+      <td>37.931034</td>
+      <td>4.965806</td>
+      <td>48.142548</td>
+      <td>15.354480</td>
+      <td>100.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 2&lt;/b&gt;&lt;/font&gt; (0.5pt)</span>
+<span class="c1">#@markdown Why are the values in the GPT column always at least as high as those in the FFD column?</span>
+
+<span class="c1">#As described above, some preprocessing was performed to get to the numbers in the table above. Make sure you understand the part about feature scaling. What does it mean for interpreting, for example, the values of the variables originally measured in milliseconds?</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-note-on-tokenization">
+<h2>A note on tokenization<a class="headerlink" href="#a-note-on-tokenization" title="Permalink to this headline">#</a></h2>
+<p>In NLP, tokenization is the task of breaking down text into smaller units called tokens. Tokens can be words, parts of words, or even just characters like punctuation.</p>
+<p>The tokens in this dataset are split in the same manner as they were presented to the participants during the eye tracking experiments. For example, the sequences
+<code class="docutils literal notranslate"><span class="pre">(except,</span></code> and <code class="docutils literal notranslate"><span class="pre">don't</span></code> were presented as such to the reader and not split into <code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, <code class="docutils literal notranslate"><span class="pre">,</span></code> and <code class="docutils literal notranslate"><span class="pre">do</span></code>, <code class="docutils literal notranslate"><span class="pre">n't</span></code> as might be more useful when presenting text to a computer.
+Sentence endings are marked with an <code class="docutils literal notranslate"><span class="pre">&lt;EOS&gt;</span></code> symbol added to the last token.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="visualizing-eye-tracking-features">
+<h1>Visualizing eye tracking features<a class="headerlink" href="#visualizing-eye-tracking-features" title="Permalink to this headline">#</a></h1>
+<p><font color='darkorange'><b>ToDo</b></font> Try out the two visualizations below (the bubble and bar plots) for a few different sentences, by changing the sentence_id in the cell below and rerunning the plot cells afterwards. Also try visualizing a few different features by changing the feature_to_draw variable in the first line of each cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_sentence</span> <span class="o">=</span> <span class="n">training_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">training_data</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">444</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="visualizing-fixation-times">
+<h2>Visualizing fixation times<a class="headerlink" href="#visualizing-fixation-times" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_to_draw</span> <span class="o">=</span> <span class="s2">&quot;TRT&quot;</span> <span class="c1"># or &quot;GPT&quot; or &quot;TRT&quot;</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example_sentence</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;EOS&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">example_sentence</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">]]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">example_sentence</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;word_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">feature_to_draw</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">feature_to_draw</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;flare&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">5000</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">example_sentence</span><span class="p">[</span><span class="s2">&quot;word_id&quot;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">words</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">feature_to_draw</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.07</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-fixation-proportion">
+<h2>Visualizing fixation proportion<a class="headerlink" href="#visualizing-fixation-proportion" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_to_draw</span> <span class="o">=</span> <span class="s2">&quot;fixProp&quot;</span> <span class="c1"># or nFix</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example_sentence</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;EOS&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">example_sentence</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">]]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">example_sentence</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;word_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">feature_to_draw</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">example_sentence</span><span class="p">[</span><span class="s2">&quot;word_id&quot;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">words</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">feature_to_draw</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 3&lt;/b&gt;&lt;/font&gt; (1.5pt)</span>
+<span class="c1">#@markdown What kind of properties of words might cause longer fixation times? Think of at least two properties (1 pt). Can you already spot such a relationship between particular kinds of words and eye tracking features in the example sentences you explored? Include a sentence_id, eye tracking feature and some words to illustrate your answer (0.5 pt).</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-data-overview">
+<h2>Training data overview<a class="headerlink" href="#training-data-overview" title="Permalink to this headline">#</a></h2>
+<p>Now let’s get a complete overview of all eye tracking feature values in the training data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;hls&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">training_data</span><span class="p">[[</span><span class="s2">&quot;nFix&quot;</span><span class="p">,</span><span class="s2">&quot;FFD&quot;</span><span class="p">,</span><span class="s2">&quot;GPT&quot;</span><span class="p">,</span><span class="s2">&quot;TRT&quot;</span><span class="p">,</span><span class="s2">&quot;fixProp&quot;</span><span class="p">]],</span> <span class="n">palette</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="mi">5</span><span class="p">:],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fliersize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">medians</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;nFix&quot;</span><span class="p">,</span><span class="s2">&quot;FFD&quot;</span><span class="p">,</span><span class="s2">&quot;GPT&quot;</span><span class="p">,</span><span class="s2">&quot;TRT&quot;</span><span class="p">,</span><span class="s2">&quot;fixProp&quot;</span><span class="p">]:</span>
+    <span class="n">median</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="n">medians</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">median</span><span class="p">)</span>
+<span class="n">median_labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">medians</span><span class="p">]</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">medians</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">tick</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">tick</span><span class="p">],</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="n">median_labels</span><span class="p">[</span><span class="n">tick</span><span class="p">],</span> <span class="c1">#medians[tick] + offsets[tick]</span>
+            <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span><span class="c1">#, weight=&#39;semibold&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="models-using-pre-trained-large-language-models">
+<h1>Models: using pre-trained large language models<a class="headerlink" href="#models-using-pre-trained-large-language-models" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial we will work with a variant of BERT, a state-of-the-art language model trained for English. BERT was the first widely successful transformer-based language model and remains highly influential. DistilBERT is a variant of BERT that requires less training time due to a considerable reduction of the training parameters while maintaining similar performance on benchmark datasets. In the end, we will finetune the model so that we can use it for predicting eye-tracking features from text. But let’s first look at the insides of DistilBERT itself.</p>
+<p>Note: BERT and DistilBERT are so-called ‘masked language model’. Classical language modelling is about computing the probabilities of possible next words given <em>prior</em> words. Masked language modelling is also about predicting a word given prior words, but additionally a masked language model may also use information about <em>future</em> words. E.g., the model is given a sentence like “The dog [MASK] loudly”, an can predict “barked” or another word at the masked position, based on both “the dog” and “loudly”.</p>
+<section id="word-embeddings-with-pen-paper">
+<h2>Word embeddings with pen &amp; paper<a class="headerlink" href="#word-embeddings-with-pen-paper" title="Permalink to this headline">#</a></h2>
+<p>Before running the pretrained language models that we downloaded, we will first consider briefly what word embeddings are and how they can represent useful information about the meaning (and grammatical properties) of words.</p>
+<p>Consider the following words: child, son, daughter, parent, father, mother, king, queen, princess, prince.</p>
+<p><font color='darkorange'><b>ToDo</b></font> With pen &amp; paper (!), draw a 3 dimensional ‘semantic space’ that could represent the distinctions between these words. Position each of the words in the space (assuming a word like ‘father’ is, most of the time ‘non-royal’).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 4&lt;/b&gt;&lt;/font&gt; (1pt)</span>
+<span class="c1">#@markdown What are the length-3 word embeddings for each of these words? What is the (Euclidean) distance between &#39;father&#39; and &#39;princess&#39;?. What&#39;s PRINCE+(MOTHER-FATHER)? What&#39;s PRINCE+(MOTHER-FATHER)+(PARENT-CHILD)?</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="word-embeddings-from-a-large-language-model">
+<h2>Word embeddings from a large language model<a class="headerlink" href="#word-embeddings-from-a-large-language-model" title="Permalink to this headline">#</a></h2>
+<p>Make the ‘distilbert’ language model and the package scprep available, and make a list of the words. (We will call that list “sentences” as we will later look at sentences of more than 1 word).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Download DistilBERT model and tokenizer from HuggingFace</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert-base-uncased&#39;</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span>
+            <span class="n">output_hidden_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">output_attentions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some weights of the model checkpoint at distilbert-base-uncased were not used when initializing DistilBertModel: [&#39;vocab_projector.bias&#39;, &#39;vocab_layer_norm.bias&#39;, &#39;vocab_layer_norm.weight&#39;, &#39;vocab_transform.weight&#39;, &#39;vocab_projector.weight&#39;, &#39;vocab_transform.bias&#39;]
+- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.autograd.grad_mode.set_grad_enabled at 0x7f2a580eac10&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install scprep #phate umap-learn
+<span class="kn">import</span> <span class="nn">scprep</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scprep in /usr/local/lib/python3.7/dist-packages (1.1.0)
+Requirement already satisfied: pandas&gt;=0.25 in /usr/local/lib/python3.7/dist-packages (from scprep) (1.1.5)
+Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from scprep) (21.0)
+Requirement already satisfied: decorator&gt;=4.3.0 in /usr/local/lib/python3.7/dist-packages (from scprep) (4.4.2)
+Requirement already satisfied: scipy&gt;=0.18.1 in /usr/local/lib/python3.7/dist-packages (from scprep) (1.4.1)
+Requirement already satisfied: numpy&gt;=1.12.0 in /usr/local/lib/python3.7/dist-packages (from scprep) (1.19.5)
+Requirement already satisfied: scikit-learn&gt;=0.19.1 in /usr/local/lib/python3.7/dist-packages (from scprep) (0.22.2.post1)
+Requirement already satisfied: pytz&gt;=2017.2 in /usr/local/lib/python3.7/dist-packages (from pandas&gt;=0.25-&gt;scprep) (2018.9)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas&gt;=0.25-&gt;scprep) (2.8.2)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil&gt;=2.7.3-&gt;pandas&gt;=0.25-&gt;scprep) (1.15.0)
+Requirement already satisfied: joblib&gt;=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn&gt;=0.19.1-&gt;scprep) (1.0.1)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;scprep) (2.4.7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
+         <span class="s2">&quot;boy&quot;</span><span class="p">,</span> <span class="s2">&quot;girl&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span>
+<span class="c1">#&quot;mouse&quot;, &quot;rat&quot;, &quot;elephant&quot;, &quot;mosquito&quot;, &quot;crocodile&quot;, &quot;pigeon&quot;, &quot;dog&quot;, &quot;cat&quot;, &quot;rabbit&quot;, &quot;squirl&quot;, &quot;cockroach&quot;, &quot;democracy&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next step is present each of the ‘sentences’ to the language model, and retrieve the activation vectors at each layer. The following code does that for you, and puts the input embeddings in the first element of the list <em>vecs</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Retrieve activation vectors from various layers (stored in *vecs*)</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="n">vecs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">layer_result</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="n">sent_words</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="n">encoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">encoded</span><span class="o">.</span><span class="n">input_ids</span>
+    <span class="n">attention_mask</span> <span class="o">=</span>  <span class="n">encoded</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">]</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">attention_mask</span><span class="o">=</span><span class="n">attention_mask</span><span class="p">)</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">hidden_states</span>
+    <span class="n">token_len</span> <span class="o">=</span> <span class="n">attention_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">decoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_ids_to_tokens</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;gpt2&quot;</span><span class="p">,</span> <span class="s2">&quot;gpt2-medium&quot;</span><span class="p">,</span> <span class="s2">&quot;gpt2-large&quot;</span><span class="p">]:</span>
+        <span class="n">word_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">e</span><span class="p">,</span> <span class="n">encoded</span><span class="o">.</span><span class="n">word_ids</span><span class="p">())))[:</span><span class="n">token_len</span><span class="p">]</span>
+        <span class="n">word_groups</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">word_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">word_indices</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">t</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Ġ&quot;</span> <span class="k">else</span> <span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">decoded</span><span class="p">)[</span><span class="n">g</span><span class="p">])))</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">word_groups</span><span class="p">]</span>
+        <span class="n">sent_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sw</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">word_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">e</span><span class="p">,</span> <span class="n">encoded</span><span class="o">.</span><span class="n">word_ids</span><span class="p">())))[</span><span class="mi">1</span><span class="p">:</span><span class="n">token_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">word_groups</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">word_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">word_indices</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">sent_words</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="k">if</span> <span class="n">t</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;##&quot;</span> <span class="k">else</span> <span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">decoded</span><span class="p">)[</span><span class="n">g</span><span class="p">])))</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">word_groups</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">layer_group</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">]]):</span>
+        <span class="n">sent_vec</span> <span class="o">=</span> <span class="n">combine_output_for_layers</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">word_groups</span><span class="p">,</span> <span class="n">layer_group</span><span class="p">)</span>
+        <span class="n">layer_result</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sent_vec</span><span class="p">)</span>
+
+<span class="n">vecs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">layer_result</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now have a look at the learned input embeddings of the model. It’s useful to import them in a DataFrame for nicer viewing and compatibility with statistics packages.</p>
+<p><font color='darkorange'><b>ToDo</b></font> enter the following code in a code cell and check in the table what the columns and rows mean.</p>
+<p>staticembeddings = pd.DataFrame(vecs[0])</p>
+<p>print(staticembeddings)</p>
+<p>We can try to visualize the high-dimensional static embeddings by running a standard dimensionality reduction technique, PCA, on them and plotting the position of each word in space consisting of the first three principal components.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_pca</span> <span class="o">=</span> <span class="n">scprep</span><span class="o">.</span><span class="n">reduce</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+<span class="n">scprep</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter3d</span><span class="p">(</span><span class="n">data_pca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dataframe with the words as index </span>
+<span class="n">staticembeddings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">sentences</span><span class="p">)</span> 
+
+<span class="c1">#compute pca </span>
+<span class="n">data_pca</span> <span class="o">=</span> <span class="n">scprep</span><span class="o">.</span><span class="n">reduce</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span> 
+
+<span class="c1"># plot using plotly an interactive plotting library  </span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span> 
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">data_pca</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s1">&#39;PC3&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">data_pca</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> 
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>
+                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            <div id="906c72cb-0b4e-4059-83e6-3badae5d32d6" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <script type="text/javascript">
+
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+
+                if (document.getElementById("906c72cb-0b4e-4059-83e6-3badae5d32d6")) {
+                    Plotly.newPlot(
+                        '906c72cb-0b4e-4059-83e6-3badae5d32d6',
+                        [{"hoverlabel": {"namelength": 0}, "hovertemplate": "color=boy<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=boy", "marker": {"color": "#636efa", "symbol": "circle"}, "mode": "markers", "name": "color=boy", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [0.46390196681022644], "y": [-0.28861182928085327], "z": [-0.38963186740875244]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=girl<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=girl", "marker": {"color": "#EF553B", "symbol": "circle"}, "mode": "markers", "name": "color=girl", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [0.43047672510147095], "y": [-0.2736879289150238], "z": [0.15085099637508392]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=man<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=man", "marker": {"color": "#00cc96", "symbol": "circle"}, "mode": "markers", "name": "color=man", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [0.5254777073860168], "y": [0.35772469639778137], "z": [-0.15198242664337158]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=woman<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=woman", "marker": {"color": "#ab63fa", "symbol": "circle"}, "mode": "markers", "name": "color=woman", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [0.4545423686504364], "y": [0.12494857609272003], "z": [0.43304136395454407]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=king<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=king", "marker": {"color": "#FFA15A", "symbol": "circle"}, "mode": "markers", "name": "color=king", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [-0.3892240524291992], "y": [0.5471475720405579], "z": [-0.2485448718070984]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=queen<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=queen", "marker": {"color": "#19d3f3", "symbol": "circle"}, "mode": "markers", "name": "color=queen", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [-0.5079618692398071], "y": [0.23836450278759003], "z": [0.3733005225658417]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=prince<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=prince", "marker": {"color": "#FF6692", "symbol": "circle"}, "mode": "markers", "name": "color=prince", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [-0.5040796399116516], "y": [-0.22613438963890076], "z": [-0.41019392013549805]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=princess<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=princess", "marker": {"color": "#B6E880", "symbol": "circle"}, "mode": "markers", "name": "color=princess", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [-0.4731329679489136], "y": [-0.4797513782978058], "z": [0.2431599199771881]}],
+                        {"legend": {"tracegroupgap": 0}, "margin": {"t": 60}, "scene": {"domain": {"x": [0.0, 1.0], "y": [0.0, 1.0]}, "xaxis": {"title": {"text": "PC1"}}, "yaxis": {"title": {"text": "PC2"}}, "zaxis": {"title": {"text": "PC3"}}}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}},
+                        {"responsive": true}
+                    ).then(function(){
+
+var gd = document.getElementById('906c72cb-0b4e-4059-83e6-3badae5d32d6');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })
+                };
+
+            </script>
+        </div>
+</body>
+</html></div></div>
+</div>
+<p><font color='darkorange'><b>ToDo</b></font> Inspect the PCA vectors and check where the words are positioned in this 3-dimensional space. Compare the space with the space you drew in the pen &amp; paper exercise above.</p>
+<p><font color='darkorange'><b>ToDo</b></font> Think of another collection of words that might be interesting to inspect in this way and see if you can plot an interpretable 3-dimensional word space.</p>
+<section id="static-versus-contextualized-word-embeddings">
+<h3>Static versus contextualized word embeddings<a class="headerlink" href="#static-versus-contextualized-word-embeddings" title="Permalink to this headline">#</a></h3>
+<p>In Large Language Models, the input embeddings are static (unique for each word/token). But the activation vectors of higher layers in the model are often more useful (e.g., for predicting brain activation). These vectors, however, are not static; if we use them to build up a representation for words, we call these representations “contextualized embeddings”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 5&lt;/b&gt;&lt;/font&gt; (1pt)</span>
+<span class="c1">#@markdown Use a pair of sentences in *sentence* with ambiguous words and a disambiguating context, and report the first three numbers of the word embeddings retrieved from layer 0 (static) and from layer 4 (contextualized).</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;A computer needs a mouse. A cat eats a mouse.&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use tools like “distance (or dissimilarity) matrices” and “representational similarity analysis” to understand better the structure of the embeddings spaces. Below is some code that will compute dissimilarity matrices for you for embeddings retrieved from the different layers of the Large Language Model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Compute distance matrices between embeddings</span>
+<span class="k">def</span> <span class="nf">compute_distance_matrices</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">measure</span><span class="p">):</span>
+  <span class="n">distance_matrices</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">cdist</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">measure</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">vec</span> <span class="ow">in</span> <span class="n">vecs</span>
+  <span class="p">]</span>
+  <span class="k">return</span> <span class="n">distance_matrices</span>
+
+<span class="c1"># measure can be &quot;cosine&quot; or &quot;euclidean&quot;</span>
+<span class="n">distance_matrices</span> <span class="o">=</span> <span class="n">compute_distance_matrices</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Plot distance matrices between word embeddings for different layers</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert-base-uncased&#39;</span> <span class="c1">#model_name = &#39;DistilBERT&#39;</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span> <span class="s2">&quot;needs&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;mouse&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span><span class="s2">&quot;eats&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;mouse&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">]</span>
+
+<span class="n">plot_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;input embedding layer&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;layer 1&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;xy&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;layer 3&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;layer 6&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;: distance matrices between embeddings across layers&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">subplot</span><span class="p">,</span> <span class="p">(</span><span class="n">label_axes</span><span class="p">,</span> <span class="n">matrix_index</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">axes</span><span class="p">),</span> <span class="n">plot_data</span><span class="p">):</span>
+    <span class="n">heatmap_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+        <span class="n">annot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span> 
+        <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">r</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">distance_matrices</span><span class="p">[</span><span class="n">matrix_index</span><span class="p">]]),</span>
+        <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="mf">6.5</span><span class="p">},</span> 
+        <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;magma_r&#39;</span><span class="p">,</span> 
+        <span class="n">xticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> 
+        <span class="n">yticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">heatmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">distance_matrices</span><span class="p">[</span><span class="n">matrix_index</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">subplot</span><span class="p">,</span> <span class="o">**</span><span class="n">heatmap_args</span><span class="p">)</span>
+    <span class="n">subplot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">&quot;xy&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">label_axes</span><span class="p">]:</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="n">subplot</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s2">axis&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/05_extra_lab_ICCN-EyeTracking_58_0.png" src="_images/05_extra_lab_ICCN-EyeTracking_58_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 6&lt;/b&gt;&lt;/font&gt; (1pt)</span>
+<span class="c1">#@markdown Report the distances between computer and mouse1, and cat and mouse2 in layer 0 and layer 6. Explain briefly what is happening.</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font color='darkorange'><strong>ToDo</strong></font></p>
+<p>Now that we have distance (disimilarity) matrices, we can quite straightforwardly run Representational Similarity Analysis, between layers of the Large Langauge Model. Try the following, starting by a somewhat larger piece of text, rerunning the <strong>“retrieve activation vectors”</strong> code above and then computer distance matrices and representational similarity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># input sentences for the model</span>
+<span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Harry had never believed he would meet a boy he hated more than Dudley, but that was before he met Draco Malfoy.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Still, first-year Gryffindors only had Potions with the Slytherins, so they didn&#39;t have to put up with Malfoy much.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Or at least, they didn&#39;t until they spotted a notice pinned up in the Gryffindor common room that made them all groan.&quot;</span>
+           <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_matrices_cosine</span> <span class="o">=</span> <span class="n">compute_distance_matrices</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+<span class="n">rsa_mat_cosine</span> <span class="o">=</span> <span class="n">RSA_matrix</span><span class="p">(</span><span class="n">distance_matrices_cosine</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+<span class="n">plot_RSA</span><span class="p">(</span><span class="n">rsa_mat_cosine</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dist_method</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/05_extra_lab_ICCN-EyeTracking_62_0.png" src="_images/05_extra_lab_ICCN-EyeTracking_62_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 7&lt;/b&gt;&lt;/font&gt; (1pt)</span>
+<span class="c1">#@markdown Briefly describe the pattern you observe in the representational similarity between layers, and relate it to the layer-wise predictivity plot we saw in the Schrimpf et al. paper.</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="finetuning-the-language-model-on-eye-tracking-data">
+<h1>Finetuning the language model on eye-tracking data<a class="headerlink" href="#finetuning-the-language-model-on-eye-tracking-data" title="Permalink to this headline">#</a></h1>
+<p><font color='darkorange'><strong>ToDo</strong></font></p>
+<p>Try fine-tuning the DistilBERT model on the eye tracking data for a few epochs using the code in the cell below. This can take a while (e.g. 30 minutes for 5 epochs). It’s best to start with a low number of epochs (1 or 2). You can ignore the warning about the model checkpoint. After this cell has finished executing, your fine-tuned model should be saved to the <em>models</em> folder within the <em>week4</em> folder (check the File tab).</p>
+<p>Alternatively, you <strong>may also skip the cell below</strong> and work with the models that you have added to your Google Drive at the start of this tutorial:</p>
+<ul class="simple">
+<li><p>A pre-trained, but not fine-tuned DistilBERT model (fine-tuned for 0 epochs), i.e. <code class="docutils literal notranslate"><span class="pre">distilbert_0_file</span></code></p></li>
+<li><p>A fine-tuned DistilBERT model (trained for 150 epochs on the eye-tracking), i.e. <code class="docutils literal notranslate"><span class="pre">distilbert_150_file</span></code></p></li>
+</ul>
+<p>(If you choose the latter, proceed to the <em>Evaluating model predictions</em> section below)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: </span>
+<span class="c1"># You could load any other BERT or DistilBERT model version available in the Huggingface library in the same manner. </span>
+<span class="c1"># DistilBERT was chosen for this tutorial since it has less parameters.</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+    
+<span class="c1"># define model</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert-base-uncased&#39;</span>
+<span class="n">regr_model</span> <span class="o">=</span> <span class="n">TransformerRegressionModel</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">EyeTrackingCSV</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">regr_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">5e-5</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="c1"># train model</span>
+<span class="c1"># set num_epochs to 0 for no fine-tuning</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting training...&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">train</span><span class="p">(</span><span class="n">regr_model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Epoch:&quot;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training done.&quot;</span><span class="p">)</span>
+
+<span class="c1"># save model</span>
+<span class="n">output_model</span> <span class="o">=</span> <span class="s1">&#39;./models/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">regr_model</span><span class="p">,</span> <span class="n">output_model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model saved to&quot;</span><span class="p">,</span> <span class="n">output_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some weights of the model checkpoint at distilbert-base-uncased were not used when initializing DistilBertModel: [&#39;vocab_projector.weight&#39;, &#39;vocab_transform.weight&#39;, &#39;vocab_layer_norm.weight&#39;, &#39;vocab_layer_norm.bias&#39;, &#39;vocab_transform.bias&#39;, &#39;vocab_projector.bias&#39;]
+- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting training...
+Epoch: 0
+Epoch: 1
+Epoch: 2
+Epoch: 3
+Epoch: 4
+Training done.
+Model saved to ./models/distilbert-base-uncased_5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluating-model-predictions">
+<h1>Evaluating model predictions<a class="headerlink" href="#evaluating-model-predictions" title="Permalink to this headline">#</a></h1>
+<p>We will now load a pre-trained model without fine-tuning, and a pre-trained model that is fine-tuned on eye tracking data, and see how well they do at predicting eye tracking features from text. When you run the cells below, you will see tables with the predictions for the different eye tracking features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load pretrained model</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert_0&#39;</span>
+<span class="n">pretrained_model_to_evaluate</span> <span class="o">=</span> <span class="n">distilbert_0_file</span>
+
+<span class="c1"># if you want to load your own pretrained model (downloaded in the cell above), uncomment the lines below,</span>
+<span class="c1"># change the filepath to the location of your model, and define your model&#39;s name (for saving the predictions file)</span>
+<span class="c1"># note that this should be a model that is *not* finetuned (i.e. 0 epochs)</span>
+<span class="c1"># pretrained_model_to_evaluate = &#39;models/distilbert-base-uncased_0&#39;</span>
+<span class="c1"># model_name = &#39;distilbert_0&#39;</span>
+
+<span class="n">pretrained_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pretrained_model_to_evaluate</span><span class="p">)</span>
+<span class="n">predictions_pretrained</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">pretrained_model</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+<span class="n">predictions_pretrained</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load model fine-tuned on eye-tracking data</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert_150&#39;</span>
+<span class="n">finetuned_model_to_evaluate</span> <span class="o">=</span> <span class="n">distilbert_150_file</span>
+
+<span class="c1"># if you want to load a model that you fine-tuned yourself, uncomment the lines below,</span>
+<span class="c1"># change the filepath to the location of your model, and define your model&#39;s name (for saving the predictions file)</span>
+<span class="c1"># finetuned_model_to_evaluate = &#39;models/distilbert-base-uncased_5&#39;</span>
+<span class="c1"># model_name = &#39;distilbert_5&#39;</span>
+
+<span class="n">finetuned_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">finetuned_model_to_evaluate</span><span class="p">)</span>
+<span class="n">predictions_finetuned</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">finetuned_model</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+<span class="n">predictions_finetuned</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="baseline">
+<h2>Baseline<a class="headerlink" href="#baseline" title="Permalink to this headline">#</a></h2>
+<p>We also need a baseline to compare our models’ performances against. We will use the mean central tendency as a baseline, i.e. our estimate for each eye tracking feature will be the mean value of that feature in the training data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute mean values from training file</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nFix&quot;</span><span class="p">,</span><span class="s2">&quot;FFD&quot;</span><span class="p">,</span><span class="s2">&quot;GPT&quot;</span><span class="p">,</span><span class="s2">&quot;TRT&quot;</span><span class="p">,</span><span class="s2">&quot;fixProp&quot;</span><span class="p">]</span>
+<span class="n">mean_feat_values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean feature values in training data:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">training_data</span><span class="p">[</span><span class="n">feat</span><span class="p">])</span>
+    <span class="n">mean_feat_values</span><span class="p">[</span><span class="n">feat</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">feat</span><span class="p">,</span> <span class="n">avg</span><span class="p">)</span>
+
+<span class="c1"># make dataframe of test data with mean values</span>
+<span class="n">mean_data</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+    <span class="n">mean_data</span><span class="p">[</span><span class="n">feat</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_feat_values</span><span class="p">[</span><span class="n">feat</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean feature values in training data:
+nFix 15.10177827483709
+FFD 3.1910228250548047
+GPT 6.345511205701235
+TRT 5.309609916601226
+fixProp 67.05723394392217
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluation-metric-mean-absolute-error">
+<h2>Evaluation metric: Mean absolute error<a class="headerlink" href="#evaluation-metric-mean-absolute-error" title="Permalink to this headline">#</a></h2>
+<p>Now that we have the predictions of the baseline (the mean values) as well as the predictions of the pre-trained and fine-tuned models, we can compare them on an evaluation metric.</p>
+<p>We will evaluate prediction performance by using the <em>mean absolute error</em> metric (MAE), meaning that we average over the error of all samples in the test set:</p>
+<p><span class="math notranslate nohighlight">\(MAE = \frac{\sum_{i=1}^{n} | y_{i} - x_{i}|}{n} \)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate mean absolute error on the predictions</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results pre-trained model:&quot;</span><span class="p">)</span>
+<span class="n">mae_pretrained</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">predictions_pretrained</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results fine-tuned model:&quot;</span><span class="p">)</span>
+<span class="n">mae_finetuned</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">predictions_finetuned</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results mean baseline:&quot;</span><span class="p">)</span>
+<span class="n">mae_mean</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">mean_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;pretrained&quot;</span><span class="p">,</span> <span class="s2">&quot;finetuned&quot;</span><span class="p">],</span> <span class="s1">&#39;mae&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mae_mean</span><span class="p">,</span> <span class="n">mae_pretrained</span><span class="p">,</span> <span class="n">mae_finetuned</span><span class="p">]})</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mae&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;flare&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;MAE overall&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font color='limegreen'><b>Tip</b></font> If you are interested in seeing how good these results are compared to the systems participating in the CMCL Shared Task, have a look at Table 3 of <a class="reference external" href="https://aclanthology.org/2021.cmcl-1.7.pdf">this paper</a>.</p>
+<p>As the numbers and the plot above should show, the pre-trained model that is not trained on eye-tracking features but purely on text, does not beat the mean baseline. However, the model fine-tuned on eye-tracking data is substantially better (i.e., lower MAE) than the baseline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 8&lt;/b&gt;&lt;/font&gt; (1pt)</span>
+<span class="c1">#@markdown Is the difficulty of predicting individual eye-tracking features analogous in all models? Which feature is hardest to predict? Would you say the models are more capable of capturing early processing stages of lexical access or late-stage semantic integration? Which eye-tracking features illustrate this?</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 9&lt;/b&gt;&lt;/font&gt; (1pt)</span>
+<span class="c1">#@markdown Compare the error scores for eye-tracking features across models to the overview of the training data (in the _Training data overview_ section above). Why do you think the error for the features representing reading times (FFD, GPT, TRT) is lower than the error for the other features (nFix and fixProp)? **(0.5pt)** Why might the fixProp feature be particularly difficult to predict? **(0.5pt)**</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualization-of-predictions">
+<h2>Visualization of predictions<a class="headerlink" href="#visualization-of-predictions" title="Permalink to this headline">#</a></h2>
+<p>We can also visualize the predictions of different models, the baseline and the true data for specific sentences.</p>
+<p><font color='darkorange'><strong>Todo</strong></font> Compare the results for a few specific sentences and features (change the sentence_to_plot and feature_to_plot variables in the code cell below).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot a sentence with real eye tracking data and the corresponding model predictions</span>
+<span class="n">sentence_to_plot</span> <span class="o">=</span> <span class="mi">953</span> <span class="c1"># 801, 901, 950, 953</span>
+<span class="n">feature_to_plot</span> <span class="o">=</span> <span class="s2">&quot;FFD&quot;</span> <span class="c1"># TRT, GPT, nFix, fixProp </span>
+
+<span class="n">true_sentence</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sentence_to_plot</span><span class="p">]</span>
+<span class="n">predicted_sentence_finetuned</span> <span class="o">=</span> <span class="n">predictions_finetuned</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">predictions_finetuned</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sentence_to_plot</span><span class="p">]</span>
+<span class="n">predicted_sentence_pretrained</span> <span class="o">=</span> <span class="n">predictions_pretrained</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">predictions_pretrained</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sentence_to_plot</span><span class="p">]</span>
+
+<span class="c1"># todo: change fig size accroding to sent length</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true_sentence</span><span class="p">)</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true_sentence</span><span class="p">))),</span> <span class="n">true_sentence</span><span class="p">[</span><span class="n">feature_to_plot</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;correct&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">predicted_sentence_finetuned</span><span class="p">))),</span> <span class="n">predicted_sentence_finetuned</span><span class="p">[</span><span class="n">feature_to_plot</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fine-tuned&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">predicted_sentence_pretrained</span><span class="p">))),</span> <span class="n">predicted_sentence_pretrained</span><span class="p">[</span><span class="n">feature_to_plot</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;pretrained&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">)</span>
+
+<span class="c1"># todo: add mean as a task</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">predicted_sentence_pretrained</span><span class="p">))),</span> <span class="p">[</span><span class="n">mean_feat_values</span><span class="p">[</span><span class="n">feature_to_plot</span><span class="p">]]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">predicted_sentence_pretrained</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">feature_to_plot</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true_sentence</span><span class="p">))))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">true_sentence</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-of-speech-analysis">
+<h2>Part of Speech Analysis<a class="headerlink" href="#part-of-speech-analysis" title="Permalink to this headline">#</a></h2>
+<p>Above, we have both evaluated the aggregated performance of the models as well as looked at the predictions for specific sentences.</p>
+<p>Next, we want to analyze whether there are certain word categories (i.e. parts of speech, PoS) for which eye tracking features are more easily predictable than others. Therefore, we first use a part-of-speech tagger to get the PoS tags for the sentence in our test data, and then plot the predictions vs. true eye tracking data per PoS tag below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tag the data and add the tags to the dataframe</span>
+<span class="k">def</span> <span class="nf">pos_tag</span><span class="p">(</span><span class="n">data_to_tag</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;EOS&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">data_to_tag</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]]</span>
+    <span class="n">tagged_sents</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+    <span class="n">data_to_tag</span><span class="p">[</span><span class="s1">&#39;pos_tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">pos_</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tagged_sents</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data_to_tag</span>
+
+<span class="n">tagged_data</span> <span class="o">=</span> <span class="n">pos_tag</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="n">tagged_predictions</span> <span class="o">=</span> <span class="n">pos_tag</span><span class="p">(</span><span class="n">predictions_finetuned</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font color='darkorange'><strong>Todo</strong></font> Compare the results for a few different features (change the feature_to_plot variable in the code cell below).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_to_plot</span> <span class="o">=</span> <span class="s2">&quot;TRT&quot;</span>
+
+<span class="c1">#fig = plt.figure(figsize=(10,5))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;pos_tags&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">feature_to_plot</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tagged_data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;true eye tracking data&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;pos_tags&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">feature_to_plot</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tagged_predictions</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;predicted&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><font color='limegreen'><b>Tip</b></font> To look up what the PoS tag abbreviations mean, you can use the <code class="docutils literal notranslate"><span class="pre">spacy.explain()</span></code> function as demonstrated below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spacy</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="s1">&#39;ADJ&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;adjective&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 10&lt;/b&gt;&lt;/font&gt; (1pt)</span>
+<span class="c1">#@markdown Can you think of any additional linguistic analyses that would be interesting to compare the models&#39; performances on?</span>
+<span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="05_extra.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Extra</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="10_mini-projects_resources.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Resources for mini-projects</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
