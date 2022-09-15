@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2B: Representational similarity with story reading fMRI data &#8212; ANCM&#39;22</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 3 - Bayesian perspectives" href="03_intro.html" />
+    <link rel="prev" title="2A: Language model refresher" href="02a_lab_Language-model-refresher.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ANCM'22</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to ANCM’22
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lab assignments
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01_intro.html">
+   Week 1 - Introduction &amp; Logistic regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_lab_Logistic-regression-for-musical-tags.html">
+     Logistic regression for musical tags
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="02_intro.html">
+   Week 2 - Deep learning architectures
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02a_lab_Language-model-refresher.html">
+     2A: Language model refresher
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2B: Representational similarity with story reading fMRI data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03_intro.html">
+   Week 3 - Bayesian perspectives
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_lab_placeholder.html">
+     Lab 3: Bayesian modelling with Stan &amp; music
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04_intro.html">
+   Week 4 - Current language &amp; music research
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_lab_placeholder.html">
+     Lab 4: Deep learning &amp; vision
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05_extra.html">
+   Extra
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_extra_lab_ICCN-EyeTracking.html">
+     Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Mini-projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_mini-projects_resources.html">
+   Resources for mini-projects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/clclab/ANCM/blob/main/book/02b_lab_RSA-fMRI.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clclab/ANCM"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F02b_lab_RSA-fMRI.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/02b_lab_RSA-fMRI.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2B: Representational similarity with story reading fMRI data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment-part-1">
+   ASSIGNMENT (part 1)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2B: Representational similarity with story reading fMRI data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2B: Representational similarity with story reading fMRI data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment-part-1">
+   ASSIGNMENT (part 1)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="b-representational-similarity-with-story-reading-fmri-data">
+<h1>2B: Representational similarity with story reading fMRI data<a class="headerlink" href="#b-representational-similarity-with-story-reading-fmri-data" title="Permalink to this headline">#</a></h1>
+<p><em>by Marianne de Heer Kloots, September 2022</em></p>
+<p>In the first part of this week’s tutorial we saw how the structure of the embeddings space changes over model layers: the embeddings become more contextualized in deeper layers.</p>
+<p>Recent work comparing language model activations to human brain measurements suggests that these deeper and more contextualized layers align better with the brain than the earlier layers (for example <a class="reference external" href="https://doi.org/10.1038/s42003-022-03036-1">Caucheteux &amp; King, 2022</a>; <a class="reference external" href="https://doi.org/10.1073/pnas.2105646118">Schrimpf et al., 2021</a>). These studies use trained regression models to map from model activations to brain signals, but we can also use RSA to analyze the same phenomenon. Just as we computed the correlation of RDMs from different model layers before, we can now compute the correlation between model and brain RDMs. So is it true that embeddings from later model layers form more brain-like representational spaces, compared to earlier model layers?</p>
+<p>To answer this question, we’ll use fMRI scans recorded from one subject in an experiment where subjects read a chapter from the first Harry Potter book (<a class="reference external" href="https://doi.org/10.1371/journal.pone.0123148">Wehbe et al., 2014</a>). Participants in the experiment were presented with the chapter text through Rapid Serial Visual Presentation (RSVP), meaning that the words of the chapter appeared one by one on a screen, for 500 ms each. The brain scan TR (repetition time) was 2 seconds, meaning that every 2 seconds a 3d brain volume was recorded. This means that (almost*) every scan records the activity of reading 4 words. We’ll therefore also average the embeddings over 4 words on the model side, in order to create so-called ‘TR embeddings’ that give us the same temporal resolution as we have from the participant. In addition, to account for the haemodynamic response delay**, we take the brain scan recorded 4 seconds (2 TRs) after each text presentation as the response to that text. Finally, we restrict ourselves to voxels recorded in the left anterior temporal lobe (LATL), which is generally known to be an important area for semantics and language processing (see e.g. <a class="reference external" href="https://doi.org/10.1523/JNEUROSCI.0041-13.2013">Bonner &amp; Price, 2013</a>, <a class="reference external" href="https://doi.org/10.1093/cercor/bhs170">Bemis &amp; Pylkkänen, 2013</a>).</p>
+<hr class="docutils" />
+<p>* In practice, the experiment was divided into 4 blocks, and the last scan in each block contains reading activity for only 3 words. In the code below, we provide you with all 1295 TR texts (one on each line in the <code class="docutils literal notranslate"><span class="pre">tr_texts.txt</span></code> file) and the corresponding 1295 brain responses, so the inputs and recorded activations are aligned correctly.</p>
+<p>** The signal recorded in fMRI studies is the so-called Blood Oxygen Level Dependent (BOLD) response, which takes about <a class="reference external" href="https://www.nature.com/scitable/blog/brain-metrics/what_does_fmri_measure/">4-6 seconds</a> after stimulus presentation to reach its peak. We choose 4 seconds here based on earlier work where we found this to work best for this dataset (<a class="reference external" href="https://aclanthology.org/W19-4820/">Abnar et al., 2019</a>; figure 6).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip -q install pathlib wget transformers nilearn
+</pre></div>
+</div>
+</div>
+</div>
+<p>For this part of the tutorial, we import some helper functions from Marianne’s research code for dealing with the fMRI data. If you’re curious to know what is going on under the hood, you can look up any specific function in the <a class="reference external" href="https://github.com/clclab/ANCM/blob/main/lab2/fmri_data_loading.py">fmri_data_loading.py</a> file, or run a code cell with a function name followed by <code class="docutils literal notranslate"><span class="pre">?</span></code>. Although some of these functions have different names than the ones we used before, it should be clear that we will be following the same steps overall: computing distance matrices for different layers of our model (and now also for the brain), and then calculate the correlation between them for RSA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wget</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;fmri_data_loading.py&#39;</span><span class="p">):</span>
+  <span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/clclab/ANCM/main/lab2/fmri_data_loading.py&#39;</span><span class="p">)</span>
+<span class="n">tr_texts_file</span> <span class="o">=</span> <span class="s1">&#39;tr_texts.txt&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">tr_texts_file</span><span class="p">):</span>
+  <span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/clclab/ANCM/main/lab2/tr_texts.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+<span class="kn">import</span> <span class="nn">nilearn.signal</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">fmri_data_loading</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the model and tokenizer</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;bert-base-uncased&#39;</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span>
+            <span class="n">output_hidden_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">output_attentions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertModel: [&#39;cls.predictions.transform.LayerNorm.weight&#39;, &#39;cls.seq_relationship.bias&#39;, &#39;cls.predictions.transform.dense.bias&#39;, &#39;cls.predictions.decoder.weight&#39;, &#39;cls.predictions.transform.dense.weight&#39;, &#39;cls.predictions.transform.LayerNorm.bias&#39;, &#39;cls.predictions.bias&#39;, &#39;cls.seq_relationship.weight&#39;]
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.autograd.grad_mode.set_grad_enabled at 0x7f0bbc3cdf90&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below we download the data from subject 8 in the Wehbe et al. (2014) experiment. You can find more information on this dataset, as well as the data from other subjects, <a class="reference external" href="http://www.cs.cmu.edu/~fmri/plosone/">here</a>. In particular, a description of all the information available per subject is available <a class="reference external" href="http://www.cs.cmu.edu/~fmri/plosone/files/description.txt">here</a> (the original data is stored in .mat files, which we convert to python dictionaries below, but they contain the same information; you can run the <code class="docutils literal notranslate"><span class="pre">load_subj_dict?</span></code> cell below to see more information about the structure of the dictionaries).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>load_subj_dict?
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># download data for subject 8</span>
+<span class="n">subj_raw_file</span> <span class="o">=</span> <span class="s1">&#39;subject_8.mat&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">subj_raw_file</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.cs.cmu.edu/~fmri/plosone/files/subject_8.mat&#39;</span>
+    <span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># load into python dictionary</span>
+<span class="n">subj_dict</span> <span class="o">=</span> <span class="n">load_subj_dict</span><span class="p">(</span><span class="n">subj_raw_file</span><span class="p">)</span>
+
+<span class="c1"># preprocess fMRI signals</span>
+<span class="n">subj_cleaned_file</span> <span class="o">=</span> <span class="s1">&#39;subject_8_clean.npy&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">subj_cleaned_file</span><span class="p">):</span>
+    <span class="c1"># preprocessing parameters</span>
+    <span class="n">cleaning_params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;t_r&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>                 <span class="c1"># TR length in seconds</span>
+        <span class="s1">&#39;low_pass&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>         <span class="c1"># low-pass filter frequency cutoff (Hz)</span>
+        <span class="s1">&#39;high_pass&#39;</span><span class="p">:</span> <span class="mf">0.005</span><span class="p">,</span>       <span class="c1"># high-pass filter frequency cutoff (Hz)</span>
+        <span class="s1">&#39;standardize&#39;</span><span class="p">:</span> <span class="s1">&#39;zscore&#39;</span><span class="p">,</span>  <span class="c1"># standardization method</span>
+        <span class="s1">&#39;detrend&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>          <span class="c1"># whether to apply detrending</span>
+    <span class="p">}</span>
+
+    <span class="n">cleaned_subj_dict</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">subj_dict</span><span class="p">)</span>
+    <span class="n">cleaned_subj_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nilearn</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">subj_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> 
+                                    <span class="n">runs</span><span class="o">=</span><span class="n">subj_dict</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span> 
+                                    <span class="o">**</span><span class="n">cleaning_params</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">subj_cleaned_file</span><span class="p">,</span> <span class="n">cleaned_subj_dict</span><span class="p">)</span>
+<span class="n">subj_dict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">subj_cleaned_file</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below we select the regions of interest (ROIs) in the left anterior temporal lobe (LATL) from which we will retrieve the brain responses and construct the brain-side RDMs. You can later define another selection of ROIs yourself, if you like (run <code class="docutils literal notranslate"><span class="pre">subj_dict['meta']['ROInumToName']</span></code> to see a list of all available ROIs in this dataset, they are based on the <a class="reference external" href="https://www.pmod.com/files/download/v36/doc/pneuro/6750.htm">AAL Single-Subject atlas</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># subregions of left-anterior temporal lobe</span>
+<span class="n">LATL_ROI</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Temporal_Sup_L&#39;</span><span class="p">,</span> <span class="s1">&#39;Temporal_Pole_Sup_L&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;Temporal_Mid_L&#39;</span><span class="p">,</span> <span class="s1">&#39;Temporal_Pole_Mid_L&#39;</span><span class="p">,</span> <span class="s1">&#39;Temporal_Inf_L&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;Fusiform_L&#39;</span><span class="p">,</span> <span class="s1">&#39;ParaHippocampal_L&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now have the brain response scans for each of the 1295 text TRs; there are 4210 voxels in our LATL ROI selection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">brain_responses</span> <span class="o">=</span> <span class="n">get_text_response_scans</span><span class="p">(</span><span class="n">subj_dict</span><span class="p">,</span> 
+                                          <span class="n">delay</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                          <span class="n">ROI</span><span class="o">=</span><span class="n">LATL_ROI</span><span class="p">)</span> <span class="c1"># delay in TRs (1 TR = 2 sec)</span>
+<span class="n">brain_responses</span><span class="p">[</span><span class="s1">&#39;voxel_signals&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1295, 4210)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below we load <code class="docutils literal notranslate"><span class="pre">tr_texts</span></code> (a list of texts, one for every TR containing the text presented during that TR), and we calculate the number of words presented during each TR (a list of mostly 4s and some 3s). We then split the text into sentences which we will present to our model to extract the embeddings. Note that for BERT, this means that the model will for some TRs have access to the words at the end of the sentence, which the experiment participant hadn’t seen at the time the brain scan was recorded. If you’d like, you can try out different ways of providing input text to the model, for example a fixed text window for each TR excluding words presented after that TR (a way to ‘make BERT causal’ as discussed in the lecture).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tr_texts</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">tr_texts_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+<span class="n">words_per_tr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">tr_texts</span><span class="p">]</span>
+<span class="n">hp_sentences</span> <span class="o">=</span> <span class="n">create_context_sentences</span><span class="p">(</span><span class="n">tr_texts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We process all sentences of the Harry Potter chapter through BERT, and extract the embeddings for each word at every layer. There are 5176 words and 13 ‘layers’ (input embeddings + 12 model layers), which each have a 768-dimensional activation vector for every word.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="c1"># this will take a few minutes</span>
+<span class="n">layer_acts_bert</span> <span class="o">=</span> <span class="n">get_layer_activations</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> 
+                      <span class="n">tokenizer</span><span class="p">,</span> 
+                      <span class="n">hp_sentences</span><span class="p">)</span>
+<span class="n">layer_acts_bert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">layer_acts_bert</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer_acts_bert</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5176, 13, 768)
+CPU times: user 4min 42s, sys: 1.84 s, total: 4min 44s
+Wall time: 4min 46s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we average over the words in each TR to get the ‘TR embeddings’:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tr_embeddings_bert</span> <span class="o">=</span> <span class="n">get_tr_embeddings</span><span class="p">(</span><span class="n">layer_acts_bert</span><span class="p">,</span> <span class="n">words_per_tr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tr_embeddings_bert</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1295, 13, 768)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have activations vectors for each of the 1295 text TRs for each layer of the model. We also have brain responses to each of the 1295 text TRs, so we can create RDMs for both! (13 RDMs for each layer of the model, and 1 RDM for subject 8’s brain responses)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RDMs_bert</span> <span class="o">=</span> <span class="p">[</span><span class="n">vector_distance_matrix</span><span class="p">(</span><span class="n">tr_embeddings_bert</span><span class="p">[:,</span><span class="n">layer</span><span class="p">,:],</span>
+                                   <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+             <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tr_embeddings_bert</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+<span class="n">RDM_brain</span> <span class="o">=</span> <span class="n">vector_distance_matrix</span><span class="p">(</span><span class="n">brain_responses</span><span class="p">[</span><span class="s1">&#39;voxel_signals&#39;</span><span class="p">],</span>
+                                   <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">RDMs_bert</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># one of the model RDMs</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">RDM_brain</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># the brain RDM</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1295, 1295)
+(1295, 1295)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can compute the RSA score (Pearson’s correlation) between each of the model layers and the brain responses now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rsa_scores_bert</span> <span class="o">=</span> <span class="p">[</span><span class="n">compute_rsa_score</span><span class="p">(</span><span class="n">RDM_brain</span><span class="p">,</span>
+                                     <span class="n">RDMs_bert</span><span class="p">[</span><span class="n">layer</span><span class="p">],</span>
+                                     <span class="n">score</span><span class="o">=</span><span class="s2">&quot;pearsonr&quot;</span><span class="p">)</span>
+                   <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">RDMs_bert</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we see below, the correlation values themselves are quite low (they might get a bit higher if you provide the model with more context text). But we do observe the expected qualitative pattern: the higher layers with more contextualized embeddings score up to twice as high in representational similarity compared to lower layers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rsa_scores_bert</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;model layer&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rsa_scores_bert</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;similarity score (pearson</span><span class="se">\&#39;</span><span class="s1">s r)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Model-brain similarity over model layers&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02b_lab_RSA-fMRI_24_0.png" src="_images/02b_lab_RSA-fMRI_24_0.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="assignment-part-1">
+<h1>ASSIGNMENT (part 1)<a class="headerlink" href="#assignment-part-1" title="Permalink to this headline">#</a></h1>
+<p>At first sight, the result above seems to nicely confirm the idea that the more contextualized embeddings from middle-to-high model layers show better alignment with human brain responses. But what have we really learned about language processing?</p>
+<p>To make sure that this result really captures something about the linguistic processes involved in story reading, we would ideally compare it to some ‘control’ or ‘baseline’ condition where we would <em>not</em> expect the effect to occur. One option would be to compare results with a different brain region that we would not expect to be as much involved in language processing. Another option could be to shuffle the RDMs before computing the RSA scores, such that we compute the correlation between model and brain RDMs for unmatched TRs (you could do this several times to create a ‘null distribution’ of RSA scores). You might also want to see if the result can be reproduced at the group level (comparing RSA scores across individual subjects or computing a mean RDM for several subjects), compute some kind of ‘noise ceiling’ based on RDM-correlation across subjects (<a class="reference external" href="https://doi.org/10.1371/journal.pcbi.1003553">Nili et al., 2014</a>), or compare to results using a different model architecture (like GPT-2).</p>
+<p>Choose at least one of the options above, and include one (or more) plot(s) in your report comparing the result obtained above to your ‘baseline’ / ‘control’ condition or analysis extension. Then describe your approach in around 200-300 words, focussing on what your analysis teaches us about human brain activity involved in language processing, and answering the following questions:</p>
+<ul class="simple">
+<li><p>Do your new results still confirm the idea that contextualized embeddings from middle-to-high model layers show better alignment with language processing in the human brain?</p></li>
+<li><p>Why is your particular baseline / control / extension important to include in analyses comparing DNN activations and brain responses?</p></li>
+<li><p>What are some limitations of this particular baseline / control / extension for your analysis (i.e. alternative explanations that it does not rule out yet)?</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02a_lab_Language-model-refresher.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2A: Language model refresher</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03_intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 3 - Bayesian perspectives</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

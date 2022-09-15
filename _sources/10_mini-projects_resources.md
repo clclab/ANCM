@@ -9,9 +9,9 @@ We'll update this page with more resources as we go!
 - Li et al. (2022) - Le Petit Prince multilingual naturalistic fMRI corpus (French, Chinese, English) [paper](https://doi.org/10.1038/s41597-022-01625-7), [data](https://doi.org/10.18112/openneuro.ds003643.v1.0.3)
 - Nastase et al. (2021) - The “Narratives” fMRI dataset for evaluating models of naturalistic language comprehension [paper](https://doi.org/10.1038/s41597-021-01033-3), [data](https://datasets.datalad.org/?dir=/labs/hasson/narratives)
 - Gwilliams et al. (2022) - MEG-MASC: a high-quality magneto-encephalography dataset for evaluating natural speech processing [paper](https://doi.org/10.48550/arXiv.2208.11488), [data](https://osf.io/ag3kj/)
-- Wehbe et al. (2014) - Simultaneously Uncovering the Patterns of Brain Regions Involved in Different Story Reading Subprocesses [paper](https://doi.org/10.1371/journal.pone.0112575), [data](http://www.cs.cmu.edu/~fmri/plosone/)
+- Wehbe et al. (2014) - Simultaneously Uncovering the Patterns of Brain Regions Involved in Different Story Reading Subprocesses [paper](https://doi.org/10.1371/journal.pone.0112575), [data](http://www.cs.cmu.edu/~fmri/plosone/) (we will work with this data in lab 2)
 - Pereira et al. (2018) - Toward a universal decoder of linguistic meaning from brain activation (fMRI, words/sentences & pictures) [paper](https://doi.org/10.1038/s41467-018-03068-4), [data](https://osf.io/crwz7)
-- Broderick et al. (2018) - Electrophysiological Correlates of Semantic Dissimilarity Reflect the Comprehension of Natural, Narrative Speech [paper](https://doi.org/10.1016/j.cub.2018.01.080), [data](https://datadryad.org/stash/dataset/doi:10.5061/dryad.070jc) (we will work with this data in lab 2)
+- Broderick et al. (2018) - Electrophysiological Correlates of Semantic Dissimilarity Reflect the Comprehension of Natural, Narrative Speech [paper](https://doi.org/10.1016/j.cub.2018.01.080), [data](https://datadryad.org/stash/dataset/doi:10.5061/dryad.070jc)
 - Huth et al. (2016). Natural speech reveals the semantic maps that tile human cerebral cortex [paper](https://doi.org/10.1038/nature17637), [data](https://github.com/HuthLab/speechmodeltutorial)
 - More datasets on Nora Hollenstein's [Cognitive NLP wiki](https://github.com/norahollenstein/cognitiveNLP-dataCollection/wiki/)
 
