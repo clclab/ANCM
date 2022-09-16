@@ -1,0 +1,1325 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2C: Language model surprisal and EEG data &#8212; ANCM&#39;22</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 3 - Bayesian perspectives" href="03_intro.html" />
+    <link rel="prev" title="2B: Representational similarity with story reading fMRI data" href="02b_lab_RSA-fMRI.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ANCM'22</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to ANCM’22
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lab assignments
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01_intro.html">
+   Week 1 - Introduction &amp; Logistic regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_lab_Logistic-regression-for-musical-tags.html">
+     Logistic regression for musical tags
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="02_intro.html">
+   Week 2 - Deep learning architectures
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02a_lab_Language-model-refresher.html">
+     2A: Language model refresher
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02b_lab_RSA-fMRI.html">
+     2B: Representational similarity with story reading fMRI data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2C: Language model surprisal and EEG data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03_intro.html">
+   Week 3 - Bayesian perspectives
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_lab_placeholder.html">
+     Lab 3: Bayesian modelling with Stan &amp; music
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04_intro.html">
+   Week 4 - Current language &amp; music research
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_lab_placeholder.html">
+     Lab 4: Deep learning &amp; vision
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05_extra.html">
+   Extra
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_extra_lab_ICCN-EyeTracking.html">
+     Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Mini-projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_mini-projects_resources.html">
+   Resources for mini-projects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/clclab/ANCM/blob/main/book/02c_lab_Surprisal-EEG.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clclab/ANCM"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F02c_lab_Surprisal-EEG.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/02c_lab_Surprisal-EEG.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2C: Language model surprisal and EEG data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-required-libraries">
+     load required libraries
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-datasets-available">
+     make datasets available
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment-1">
+   Assignment 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-the-trfs-or-not">
+   Training the TRFs (or not)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-obtained-trf-coefficients">
+   Plotting the obtained TRF coefficients
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment-2">
+   Assignment 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra">
+   Extra
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2C: Language model surprisal and EEG data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2C: Language model surprisal and EEG data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-required-libraries">
+     load required libraries
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-datasets-available">
+     make datasets available
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment-1">
+   Assignment 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-the-trfs-or-not">
+   Training the TRFs (or not)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-obtained-trf-coefficients">
+   Plotting the obtained TRF coefficients
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment-2">
+   Assignment 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra">
+   Extra
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="c-language-model-surprisal-and-eeg-data">
+<h1>2C: Language model surprisal and EEG data<a class="headerlink" href="#c-language-model-surprisal-and-eeg-data" title="Permalink to this headline">#</a></h1>
+<p><em>by Jelle Zuidema, September 2022</em></p>
+<p>This notebook is based on <em><a class="reference external" href="https://github.com/Rasyan/Thesis">Rasyan Ahmed’s master thesis code</a></em>. Goal of the notebook is to introduce you to an interesting dataset (the EEG data collected by <em><a class="reference external" href="https://doi.org/10.1016/j.cub.2018.01.080">Broderick et al., 2018</a></em> from subjects listening to an audiobook), and to show an example of how next word probabilities as computed by a modern Deep Language Model can be successfully used to predict some aspect of language processing in the brain.</p>
+<section id="load-required-libraries">
+<h2>load required libraries<a class="headerlink" href="#load-required-libraries" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install mne==0.20.7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install -q scipy #transformers 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">sio</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">mne</span>
+<span class="kn">from</span> <span class="nn">mne.decoding</span> <span class="kn">import</span> <span class="n">ReceptiveField</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-datasets-available">
+<h2>make datasets available<a class="headerlink" href="#make-datasets-available" title="Permalink to this headline">#</a></h2>
+<p>Add shortcuts to drive: (JZ: how do these become shortcuts rather than downloads?)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1ZWopKDEf1FPDciVPATcUrAkF8XY0WgK6/view?usp=sharing">Subject19.zip</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1c04Z8YNUjoRkGfNu2zGQDM6gFpRs-Cab/view?usp=sharing">Stimuli.zip</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1yF3PK94RFRxZyMuQHHOk8iS7yZMMJ15j/view?usp=sharing">vectors.zip</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1lXNhl3WUK48Juj0oA-itR_tkONdlK2G4/view?usp=sharing">results.zip</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!unzip -qq &#39;/content/drive/MyDrive/Subject19.zip&#39;
+!unzip -qq &#39;/content/drive/MyDrive/Stimuli.zip&#39;
+!unzip -qq &#39;/content/drive/MyDrive/vectors.zip&#39;
+!unzip -qq &#39;/content/drive/MyDrive/results.zip&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alternatively, download the files above and upload them to colab/wherever you run this notebook </span>
+<span class="c1">#!unzip -qq &#39;Subject19.zip&#39;</span>
+<span class="c1">#!unzip -qq &#39;Stimuli.zip&#39;</span>
+<span class="c1">#!unzip -qq &#39;vectors.zip&#39;</span>
+<span class="c1">#!unzip -qq &#39;results.zip&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Loading and preprocessing the EEG data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper function 1: load_eeg_and_dissimilarity_vector()</span>
+
+<span class="k">def</span> <span class="nf">load_eeg_and_disimilarlity_vector</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+
+    <span class="c1"># flatten the similarity values (from 3D list to 1D list)</span>
+    <span class="n">flat_sim</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="p">[</span><span class="n">sentence</span> <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">sim</span> <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">run</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">]</span>
+    
+    <span class="c1"># normalize to the values of the broderick similarity values.</span>
+    <span class="n">normalise</span> <span class="o">=</span> <span class="n">norm</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flat_sim</span><span class="p">)</span>
+     
+    <span class="c1"># </span>
+    <span class="n">raw_subs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ms_subs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">dis_vector_subs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">subs</span><span class="p">):</span>  <span class="c1"># for each subject</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dis_vector</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#print(&#39;Load eeg &amp; dissimilarity values: subject: &#39;, sub, &quot;/&quot;, len(subs), end = &quot;\r&quot;, flush=True)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">):</span>  <span class="c1"># for each run</span>
+
+            <span class="c1"># load data</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">eeg_location</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/Subject&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_Run&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span>  <span class="s2">&quot;.mat&quot;</span><span class="p">)</span>
+            <span class="n">raw_i</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;eegData&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">ms_i</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;mastoids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">stimuli_location</span> <span class="o">+</span> <span class="s2">&quot;/Run&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.mat&quot;</span>
+            <span class="n">words</span> <span class="o">=</span> <span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+
+            <span class="c1"># create list of word similaritys in order and normalise.</span>
+            <span class="n">norm_flat_sim</span> <span class="o">=</span> <span class="p">[</span><span class="n">simz</span> <span class="o">*</span> <span class="n">normalise</span> <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sim</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">simz</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">norm_flat_sim</span><span class="p">)</span><span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="s1">&#39;onset_time&#39;</span><span class="p">]):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">norm_flat_sim</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="s1">&#39;onset_time&#39;</span><span class="p">]))</span>
+
+            <span class="c1"># create empty vector of same size as the eeg.</span>
+            <span class="n">dis_vector_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">raw_i</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            
+            <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;random_loc&#39;</span><span class="p">:</span> 
+                <span class="n">random_locations</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">raw_i</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">norm_flat_sim</span><span class="p">))</span>
+            
+            <span class="c1">#print(asdfasdfasdfasdf)</span>
+            <span class="c1"># for each word, find its onset, and then place it there in the empty vector.</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">norm_flat_sim</span><span class="p">)):</span>
+                
+                <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;random_loc&#39;</span><span class="p">:</span>
+                    <span class="n">on</span> <span class="o">=</span> <span class="n">random_locations</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span> 
+                    <span class="n">on</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="s1">&#39;onset_time&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">sfreq</span><span class="p">))</span>
+                    
+                <span class="n">dis_vector_i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">on</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">norm_flat_sim</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> 
+            
+
+            
+                <span class="c1"># This is also where the random vectors and such are created. </span>
+                <span class="c1"># comment out to do something else than the normal method</span>
+
+
+                <span class="c1"># dis_vector_i[0][on] = 0.33820258789060476                     # one at onset</span>
+                <span class="c1"># dis_vector_i[0][on] = random.uniform(0, 1)  # random value on onset</span>
+
+    <span class="c1">#         for i in range(1,len(dis_vector_i[0])):          # value at specific or all times</span>
+    <span class="c1">#             dis_vector_i[0][i] = 1</span>
+
+
+            <span class="n">raw</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">raw_i</span><span class="p">)</span>     
+            <span class="n">dis_vector</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dis_vector_i</span><span class="p">)</span>
+            <span class="n">ms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ms_i</span><span class="p">)</span>
+
+        <span class="n">raw_subs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">ms_subs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ms</span><span class="p">)</span>
+        <span class="n">dis_vector_subs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dis_vector</span><span class="p">)</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Load eeg &amp; dissimilarity values: Done&#39;</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">dis_vector_subs</span><span class="p">,</span><span class="n">ms_subs</span><span class="p">,</span><span class="n">raw_subs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define location, filename, subject number and number of segments in the dataset</span>
+
+<span class="c1"># location of files</span>
+<span class="n">eeg_location</span> <span class="o">=</span> <span class="s2">&quot;Subject&quot;</span>            <span class="c1"># &quot;/content/drive/MyDrive/Subject&quot; # -- check what these should be</span>
+<span class="n">stimuli_location</span> <span class="o">=</span> <span class="s2">&quot;Stimuli/Text&quot;</span>   <span class="c1"># &quot;/content/drive/MyDrive/Stimuli/Text&quot;</span>
+<span class="n">vector_loc</span> <span class="o">=</span> <span class="s2">&quot;vectors/&quot;</span>             <span class="c1"># &quot;/content/drive/MyDrive/vectors/&quot;</span>
+<span class="n">results_folder</span> <span class="o">=</span> <span class="s1">&#39;results/&#39;</span>         <span class="c1"># &quot;/content/drive/MyDrive/results/&quot;</span>
+
+<span class="c1"># details of the dataset we will use</span>
+<span class="n">subs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">19</span><span class="p">]</span>
+<span class="n">n_runs</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># number of runs (which we will call &quot;segments&quot; here)</span>
+
+<span class="c1"># frequency of the EEG data</span>
+<span class="n">sfreq</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="c1"># number of channels</span>
+<span class="n">n_channels</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="c1"># Define the delays that we will use in the receptive field (0 = event, so this means we take into account upto 0.6seconds after event)</span>
+<span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.6</span>
+
+<span class="c1"># the mean similarity for the broderick method, everything is normalised to this.</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="mf">0.33820258789060476</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span> <span class="o">=</span> <span class="s1">&#39;bert_4_False&#39;</span> <span class="c1"># use word likehoods obtained from a Bert model, with access to 4 prior words and no access to future context</span>
+<span class="n">similarity_location</span> <span class="o">=</span> <span class="n">vector_loc</span> <span class="o">+</span>  <span class="n">vector</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">similarity_location</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dis_vector</span><span class="p">,</span> <span class="n">raw_mastoids</span><span class="p">,</span> <span class="n">raw_eeg</span> <span class="o">=</span> <span class="n">load_eeg_and_disimilarlity_vector</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "3eff5aee9cd24a92a06bf21589618747"}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Load eeg &amp; dissimilarity values: Done
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper function 2: process_eeg()</span>
+
+<span class="k">def</span> <span class="nf">process_eeg</span><span class="p">(</span><span class="n">dis_vector</span><span class="p">,</span> <span class="n">raw_mastoids</span><span class="p">,</span> <span class="n">raw_eeg</span><span class="p">,</span> <span class="n">var_limit</span><span class="p">):</span> 
+    
+    <span class="n">fixes</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fixes2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">subject_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">subs</span><span class="p">):</span>
+        <span class="c1">#print(&#39;Process eeg: subject: &#39;, sub, &quot;/&quot;, len(subs), end = &quot;\r&quot;, flush=True)</span>
+        <span class="n">raws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">20</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">ms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">20</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">dv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">20</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">filterd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">20</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">):</span>
+
+            <span class="c1"># load data of the prev cell</span>
+            <span class="n">raws</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">raw_eeg</span><span class="p">[</span><span class="n">subs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">)][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">ms</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">raw_mastoids</span><span class="p">[</span><span class="n">subs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">)][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">dv</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">dis_vector</span><span class="p">[</span><span class="n">subs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">)][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+
+
+            <span class="c1"># add mastoids as the last two channels.</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">raw_eeg</span><span class="p">[</span><span class="n">subs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">)][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">raw_mastoids</span><span class="p">[</span><span class="n">subs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">)][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            
+            
+            <span class="n">montage</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">channels</span><span class="o">.</span><span class="n">make_standard_montage</span><span class="p">(</span><span class="s1">&#39;biosemi128&#39;</span><span class="p">);</span>
+            <span class="n">montage</span><span class="o">.</span><span class="n">ch_names</span> <span class="o">=</span> <span class="n">montage</span><span class="o">.</span><span class="n">ch_names</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;M1&#39;</span><span class="p">,</span> <span class="s1">&#39;M2&#39;</span><span class="p">]</span>
+            <span class="n">montage</span><span class="o">.</span><span class="n">dig</span> <span class="o">=</span> <span class="n">montage</span><span class="o">.</span><span class="n">dig</span> <span class="o">+</span> <span class="p">[</span><span class="n">montage</span><span class="o">.</span><span class="n">dig</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">montage</span><span class="o">.</span><span class="n">dig</span><span class="p">[</span><span class="mi">5</span><span class="p">]]</span>
+            
+
+            <span class="n">info</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">create_info</span><span class="p">(</span><span class="n">montage</span><span class="o">.</span><span class="n">ch_names</span><span class="p">[:</span><span class="mi">130</span><span class="p">],</span> <span class="n">sfreq</span><span class="p">,</span> <span class="s1">&#39;eeg&#39;</span><span class="p">,</span> <span class="n">montage</span><span class="o">=</span><span class="n">montage</span><span class="p">)</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">RawArray</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+            <span class="n">raw</span><span class="o">.</span><span class="n">add_channels</span>
+
+
+            <span class="c1"># remove the standerd reference mne sets upon it.</span>
+            <span class="n">raw</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">set_eeg_reference</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="p">[])</span>
+
+            <span class="c1"># reference instead using the average of the last two channels (mastoids)</span>
+            <span class="n">raw</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">set_eeg_reference</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">montage</span><span class="o">.</span><span class="n">ch_names</span><span class="p">[</span><span class="mi">128</span><span class="p">:</span><span class="mi">130</span><span class="p">])</span>
+
+            <span class="c1"># bandpass filter the data without the mastoids</span>
+            <span class="c1">#raw.info[&#39;bad&#39;] = montage.ch_names[128:130]</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">drop_channels</span><span class="p">(</span><span class="n">montage</span><span class="o">.</span><span class="n">ch_names</span><span class="p">[</span><span class="mi">128</span><span class="p">:</span><span class="mi">130</span><span class="p">])</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+            
+            <span class="n">test</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+        
+            <span class="n">var</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">channel</span><span class="p">[</span><span class="mi">1280</span><span class="p">:</span><span class="o">-</span><span class="mi">1280</span><span class="p">])</span> <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">test</span><span class="p">]</span>
+            <span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;bads&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">montage</span><span class="o">.</span><span class="n">ch_names</span><span class="p">[:</span><span class="mi">128</span><span class="p">])[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">var</span><span class="p">[:</span><span class="mi">128</span><span class="p">])</span><span class="o">&gt;</span><span class="n">var_limit</span><span class="p">]</span>
+            <span class="n">fixes2</span> <span class="o">+=</span> <span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;bads&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+            <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;bads&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">fixes</span> <span class="o">+=</span><span class="mi">1</span>
+            <span class="n">raw</span><span class="o">.</span><span class="n">interpolate_bads</span><span class="p">()</span>
+            
+            <span class="c1">#print(raw.get_data.size())</span>
+            <span class="n">filt</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+            <span class="n">filterd</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">filt</span><span class="p">[:</span><span class="mi">128</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>   
+
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;raw&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">raws</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ms</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dv</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;filterd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filterd</span>
+        <span class="n">subject_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Process eeg: Done&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total fixes: &quot;</span><span class="p">,</span> <span class="n">fixes</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total fixes: &quot;</span><span class="p">,</span> <span class="n">fixes2</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">subject_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run standard EEG preprocessing on the dataset to filter signal outside the 1-8Hz bandwidth and remove noise in the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">process_eeg</span><span class="p">(</span><span class="n">dis_vector</span><span class="p">,</span> <span class="n">raw_mastoids</span><span class="p">,</span> <span class="n">raw_eeg</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have loaded and processed the data, it is time to have a look at the original EEG measurements and the effects of preprocessing. The original data is available as data[‘raw’]; the filter data as data[‘filterd’].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">the_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">eeg_before</span> <span class="o">=</span> <span class="n">the_data</span><span class="p">[</span><span class="s1">&#39;raw&#39;</span><span class="p">]</span>
+<span class="n">eeg_after</span> <span class="o">=</span> <span class="n">the_data</span><span class="p">[</span><span class="s1">&#39;filterd&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#let&#39;s decide what parts of the data to look at</span>
+<span class="n">which_segments</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># let&#39;s focus on a middle piece, say segments 10,11 and 12. </span>
+<span class="n">channel_number</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># let&#39;s focus on one channel</span>
+
+<span class="n">ourchannel_eeg_after</span> <span class="o">=</span> <span class="p">[(</span><span class="n">eeg_after</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[</span><span class="n">channel_number</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">which_segments</span><span class="p">]</span> <span class="c1">#range(n_segments)]</span>
+<span class="n">ourchannel_eeg_before</span> <span class="o">=</span> <span class="p">[(</span><span class="n">eeg_before</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[</span><span class="n">channel_number</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">which_segments</span><span class="p">]</span> <span class="c1">#in range(n_segments)]</span>
+
+<span class="n">timeseries_before</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">ourchannel_eeg_before</span><span class="p">)</span>
+<span class="n">timeseries_after</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">ourchannel_eeg_after</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># and plot the timeseries</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timeseries_before</span><span class="p">[</span><span class="mi">9000</span><span class="p">:</span><span class="mi">9100</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7feaf3952150&gt;]
+</pre></div>
+</div>
+<img alt="_images/02c_lab_Surprisal-EEG_20_1.png" src="_images/02c_lab_Surprisal-EEG_20_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="assignment-1">
+<h1>Assignment 1<a class="headerlink" href="#assignment-1" title="Permalink to this headline">#</a></h1>
+<p>Plot some fragments from both the before and after timeseries, and investigate – in rough outline – what the preprocessing has done to the data.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="training-the-trfs-or-not">
+<h1>Training the TRFs (or not)<a class="headerlink" href="#training-the-trfs-or-not" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper functions 3 &amp; 4: TRF() and train()</span>
+
+<span class="k">def</span> <span class="nf">TRF</span><span class="p">(</span><span class="n">subject_data</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">second_folder</span> <span class="o">=</span> <span class="s1">&#39;randoms/&#39;</span><span class="p">):</span>
+    
+    <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">)):</span>
+    
+        <span class="c1">#print(&#39;run&#39;, run)</span>
+        <span class="n">scores_subs</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">coefs_subs</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">error_subs</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">subs</span><span class="p">):</span>
+
+            <span class="c1"># run value as random seed. makes reproduction possible if we need extra info later on.</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">run</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">subject_data</span><span class="p">[</span><span class="n">subs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sub</span><span class="p">)]</span>
+            <span class="n">dv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dv&#39;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
+                <span class="c1"># create a list of all disimilarity values.</span>
+                <span class="n">ddv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dv</span> <span class="k">if</span> <span class="n">d</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">])</span>
+
+                <span class="c1"># shuffle this list.</span>
+                <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">ddv</span><span class="p">)</span>
+
+                <span class="c1"># for each non 0 in real dissimilarity vector</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dv</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">dv</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+                        <span class="c1"># add the i element of the shuffled list of dissimilarity values.</span>
+                        <span class="n">dv</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;filterd&#39;</span><span class="p">])</span> 
+
+            <span class="c1"># normalisation method. basicly just subtracts the average and devides by the standerd deviations</span>
+            <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>           <span class="c1"># initalise scaler</span>
+            <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>                       <span class="c1"># finds the average and sd</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>      <span class="c1"># scales each value.</span>
+
+
+            <span class="c1">#Initialize the model</span>
+            <span class="n">rf</span> <span class="o">=</span> <span class="n">ReceptiveField</span><span class="p">(</span><span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">sfreq</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;envelope&#39;</span><span class="p">],</span>
+                                <span class="n">estimator</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;corrcoef&#39;</span><span class="p">)</span>
+
+            <span class="c1"># calculate how many items there are between the delays</span>
+            <span class="n">n_delays</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tmax</span> <span class="o">-</span> <span class="n">tmin</span><span class="p">)</span> <span class="o">*</span> <span class="n">sfreq</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+
+            <span class="c1"># setup 5fold CV</span>
+            <span class="n">n_splits</span> <span class="o">=</span> <span class="mi">5</span>
+            <span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="p">)</span>
+
+            <span class="n">DV</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dv</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">78</span><span class="p">:</span><span class="n">i</span><span class="p">,]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">78</span><span class="p">,</span><span class="n">dv</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+
+            <span class="c1"># Simple linear regression for each time step using 5fold CV</span>
+            <span class="n">coefs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_splits</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_delays</span><span class="p">))</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_splits</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+
+            <span class="n">err</span><span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># Iterate through splits, fit the model, and predict/test on held-out data</span>
+            <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">dv</span><span class="p">)):</span>  <span class="c1"># split the data 4:1 (train:test) for each different way.</span>
+                <span class="c1">#print(&#39;split %s / %s&#39; % (ii + 1, n_splits))</span>
+
+                <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dv</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">train</span><span class="p">])</span>
+
+                <span class="n">scores</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">dv</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">])</span>
+                <span class="c1"># coef_ is shape (n_outputs, n_features, n_delays). we only have 1 feature</span>
+                <span class="n">coefs</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+
+                <span class="c1"># calculate errors</span>
+
+                <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">coefs</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># define Weights as the flipped coefs</span>
+                <span class="c1">#print(test)</span>
+
+                <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">[</span><span class="n">test</span><span class="o">&gt;=</span><span class="mi">78</span><span class="p">]</span> <span class="c1"># remove the first 78 values, as we dont have full data for them</span>
+                <span class="n">test</span><span class="o">=</span><span class="n">test</span> <span class="o">-</span><span class="mi">78</span> 
+                <span class="c1">#print(test)</span>
+                <span class="n">DV2</span> <span class="o">=</span> <span class="n">DV</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="c1"># select only the dissimilarity values for the test set</span>
+                <span class="n">real</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
+
+                <span class="n">DVs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">DV2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> 
+                <span class="n">mask</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">DV2</span><span class="p">))</span> <span class="k">if</span> <span class="n">DVs</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">DV2</span> <span class="o">=</span> <span class="n">DV2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="c1"># remove all test cases with 0 dv values</span>
+                <span class="n">real</span> <span class="o">=</span> <span class="n">real</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+                <span class="n">pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">W</span> <span class="o">@</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">DV2</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="c1"># calculate predicted value.</span>
+
+                <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">real</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">SStot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">real</span><span class="o">-</span><span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">SSreg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">pred</span><span class="o">-</span><span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">SSres</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">real</span><span class="o">-</span><span class="n">pred</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">r2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">SSres</span><span class="o">/</span><span class="n">SStot</span><span class="p">)</span>
+                <span class="n">errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">SStot</span><span class="p">,</span><span class="n">SSreg</span><span class="p">,</span><span class="n">SSres</span><span class="p">,</span><span class="n">r2</span><span class="p">])</span>
+
+                <span class="n">err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+
+            <span class="n">times</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">delays_</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">sfreq</span><span class="p">)</span>
+
+            <span class="n">scores_subs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+            <span class="n">coefs_subs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coefs</span><span class="p">)</span>
+            <span class="n">error_subs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">shuffle</span><span class="o">==</span><span class="kc">True</span> <span class="ow">and</span> <span class="n">save</span> <span class="ow">and</span> <span class="p">((</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># save results</span>
+            <span class="n">saveFunc</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">run_string</span> <span class="p">,</span> <span class="n">scores_subs</span><span class="p">,</span> <span class="n">coefs_subs</span><span class="p">,</span> <span class="n">error_subs</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">scores_subs</span><span class="p">,</span> <span class="n">coefs_subs</span><span class="p">,</span> <span class="n">error_subs</span><span class="p">)</span> <span class="c1"># save last run results</span>
+
+<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">backup</span> <span class="o">=</span> <span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="n">vector</span> <span class="o">==</span> <span class="s1">&#39;random_loc&#39;</span><span class="p">:</span>
+        <span class="n">similarity_location</span> <span class="o">=</span> <span class="n">vector_loc</span> <span class="o">+</span>  <span class="n">backup</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">similarity_location</span> <span class="o">=</span> <span class="n">vector_loc</span> <span class="o">+</span>  <span class="n">vector</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span>
+    
+    <span class="c1"># loads the similarity values </span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">similarity_location</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">dis_vector</span><span class="p">,</span> <span class="n">raw_mastoids</span><span class="p">,</span> <span class="n">raw_eeg</span> <span class="o">=</span> <span class="n">load_eeg_and_disimilarlity_vector</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">vector</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">process_eeg</span><span class="p">(</span><span class="n">dis_vector</span><span class="p">,</span> <span class="n">raw_mastoids</span><span class="p">,</span> <span class="n">raw_eeg</span><span class="p">,</span> <span class="n">preprocess</span><span class="p">)</span>
+    
+    <span class="n">scores_subs</span><span class="p">,</span> <span class="n">coefs_subs</span><span class="p">,</span> <span class="n">error_subs</span> <span class="o">=</span> <span class="n">TRF</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="c1">#scores_subs, coefs_subs, error_subs = TRF(data, start=3, end=100, save=save, shuffle=True, second_folder)</span>
+    
+    <span class="k">if</span> <span class="n">end</span><span class="o">-</span><span class="n">start</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">combine_multi_runs</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">vector</span> <span class="o">==</span> <span class="s1">&#39;pearson&#39;</span><span class="p">:</span>
+            <span class="n">run_string</span> <span class="o">=</span> <span class="n">vector</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="n">vector</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bert&#39;</span><span class="p">:</span>
+            <span class="n">run_string</span> <span class="o">=</span> <span class="n">vector</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="n">vector</span> <span class="o">==</span> <span class="s1">&#39;static&#39;</span><span class="p">:</span>
+            <span class="n">run_string</span> <span class="o">=</span> <span class="n">vector</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">vector</span> <span class="o">==</span> <span class="s1">&#39;random_loc&#39;</span><span class="p">:</span>
+            <span class="n">run_string</span> <span class="o">=</span> <span class="n">vector</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="n">backup</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">shuffle</span><span class="p">:</span>
+            <span class="n">run_string</span> <span class="o">=</span> <span class="s1">&#39;shuffle(&#39;</span> <span class="o">+</span> <span class="n">vector</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span>
+        
+        <span class="n">saveFunc</span><span class="p">(</span><span class="n">results_folder</span><span class="p">,</span> <span class="n">run_string</span><span class="p">,</span> <span class="n">scores_subs</span><span class="p">,</span> <span class="n">coefs_subs</span><span class="p">,</span> <span class="n">error_subs</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">scores_subs</span><span class="p">,</span> <span class="n">coefs_subs</span><span class="p">,</span> <span class="n">error_subs</span><span class="p">)</span>
+    
+<span class="c1">#scores_subz, coefs_subz, error_subz = train(vector_loc, method,  999999999999999999)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now train a temporal response function (TRF) by using helper functions 3 and 4. This is, however, quite time consuming. To save time, we will used the precomputed TRF’s that are available in the results folder (after you have unzipped results.zip).</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="plotting-the-obtained-trf-coefficients">
+<h1>Plotting the obtained TRF coefficients<a class="headerlink" href="#plotting-the-obtained-trf-coefficients" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper function 5: plot_curve()</span>
+
+<span class="k">def</span> <span class="nf">plot_curve</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span><span class="n">ax</span><span class="p">,</span><span class="n">title</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">plot_data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tup</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;single&quot;</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span><span class="n">coefs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">ch</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span> <span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+
+        <span class="k">elif</span> <span class="n">tup</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;multi&quot;</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span><span class="n">multi_coefs_avg</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">ch</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; mean&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">times</span><span class="p">,</span><span class="n">multi_coefs_avg</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">ch</span><span class="p">]</span><span class="o">-</span><span class="n">multi_coefs_std3</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">ch</span><span class="p">]</span><span class="o">*</span><span class="n">sd</span><span class="p">,</span> <span class="n">multi_coefs_avg</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">ch</span><span class="p">]</span><span class="o">+</span><span class="n">multi_coefs_std3</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">ch</span><span class="p">]</span><span class="o">*</span><span class="n">sd</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sd</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;sd&quot;</span><span class="p">)</span>
+            <span class="n">j</span><span class="o">+=</span><span class="mi">0</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="c1">#ax.set_ylim(-0.09 ,0.05)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the data to use in plotting </span>
+
+<span class="c1"># select data to load</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">19</span><span class="p">])</span>
+<span class="n">sun</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plot_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">results_folder</span> <span class="o">=</span> <span class="s1">&#39;results/&#39;</span>
+<span class="c1">#second_folder = &#39;randoms/&#39;</span>
+
+<span class="c1"># start/ end time of relevant time period of word onset.</span>
+<span class="n">tmin</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">tmax</span> <span class="o">=</span> <span class="mf">0.6</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;coefs&#39;</span><span class="p">,</span> <span class="s1">&#39;scores&#39;</span><span class="p">,</span><span class="s1">&#39;errors&#39;</span><span class="p">]</span>
+
+<span class="c1"># change tuples as required. form: file name, legend name, colour, single or multi </span>
+
+<span class="c1"># Broderick</span>
+<span class="n">plot_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;pearson_100000.npy&quot;</span><span class="p">,</span><span class="s1">&#39;Broderick (1-8Hz)&#39;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;single&quot;</span><span class="p">))</span>
+
+<span class="c1"># static</span>
+<span class="c1">#plot_data.append((&quot;static_100000.npy&quot;,&quot;static&quot;,&quot;brown&quot;, &quot;single&quot;))</span>
+
+<span class="c1"># bert_4_false</span>
+<span class="n">plot_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;bert_4_False_100000.npy&quot;</span><span class="p">,</span><span class="s2">&quot;b4&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;single&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#now indeed load that data</span>
+
+<span class="n">coefs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">#errors = []</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">plot_data</span><span class="p">:</span>
+    
+    <span class="k">if</span> <span class="n">tup</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;single&quot;</span><span class="p">:</span>
+        <span class="c1"># load the data of the subjects you want to include + square scores to get r2</span>
+        <span class="n">coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">results_folder</span> <span class="o">+</span> <span class="s2">&quot;coefs/&quot;</span> <span class="o">+</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="n">sub</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+ <span class="c1">#       error = np.load(results_folder + &quot;errors/&quot; + tup[0])[sub-1]</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">results_folder</span> <span class="o">+</span> <span class="s2">&quot;scores/&quot;</span> <span class="o">+</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="n">sub</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+        <span class="c1"># mean out the subject axis</span>
+        <span class="n">coef</span> <span class="o">=</span> <span class="n">coef</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="c1">#      error = error.mean(axis=0)</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># mean out the cross validation axis</span>
+        <span class="n">coef</span> <span class="o">=</span> <span class="n">coef</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+   <span class="c1">#     error = error.mean(axis=0)</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">coefs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span>
+    <span class="c1">#    errors.append(error)</span>
+        <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+<span class="n">n_channels</span> <span class="o">=</span> <span class="n">coefs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">n_points</span> <span class="o">=</span>  <span class="n">coefs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># define a n_points long array that defines what time a coefficent belongs to.</span>
+<span class="c1"># used as the x axis in plotmtrfs.</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_points</span><span class="p">))</span><span class="o">/</span> <span class="mi">128</span>
+
+<span class="c1"># create the mne info file with the right montage (layout of channels)</span>
+<span class="c1"># mne is a library we use to process EEG files, or in this case visualise them.</span>
+<span class="n">montage</span> <span class="o">=</span>  <span class="n">mne</span><span class="o">.</span><span class="n">channels</span><span class="o">.</span><span class="n">make_standard_montage</span><span class="p">(</span><span class="s1">&#39;biosemi128&#39;</span><span class="p">);</span>
+<span class="c1">#montage.selection = montage.selection[:n_channels]</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">create_info</span><span class="p">(</span><span class="n">montage</span><span class="o">.</span><span class="n">ch_names</span><span class="p">[:</span><span class="n">n_channels</span><span class="p">],</span> <span class="n">n_channels</span><span class="p">,</span> <span class="s1">&#39;eeg&#39;</span><span class="p">,</span> <span class="n">montage</span><span class="o">=</span><span class="n">montage</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># And plot the coefficient of the Temporal Response Functions found for three different models of word suprisal.</span>
+<span class="n">sd</span> <span class="o">=</span> <span class="mf">1.6</span>
+<span class="n">pl</span> <span class="o">=</span><span class="mi">1</span>
+<span class="n">nrow</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ncol</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">widths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">heights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mf">0.33</span><span class="p">,</span><span class="mf">0.33</span><span class="p">]</span>
+<span class="c1"># gr = grid.GridSpec(wspace= , hspace= width_ratios= , height_ratios= )</span>
+<span class="n">gri</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span><span class="s1">&#39;hspace&#39;</span><span class="p">:</span><span class="mf">0.4</span><span class="p">,</span><span class="s1">&#39;width_ratios&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]}</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span><span class="n">ncol</span><span class="p">,</span> <span class="n">squeeze</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">gridspec_kw</span> <span class="o">=</span> <span class="n">gri</span><span class="p">)</span>
+<span class="n">plot_curve</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;fz&#39;</span><span class="p">)</span>
+<span class="n">plot_curve</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;cz&#39;</span><span class="p">)</span>
+<span class="n">plot_curve</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;pz&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/02c_lab_Surprisal-EEG_29_0.png" src="_images/02c_lab_Surprisal-EEG_29_0.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="assignment-2">
+<h1>Assignment 2<a class="headerlink" href="#assignment-2" title="Permalink to this headline">#</a></h1>
+<p>Study the temporal response functions you find for a model that uses Broderick’s model of word surprisal versus one that uses the Bert model (with 4 words prior context). Do you observe the N400 component (negative polarization approximately 400 ms after word onset) in some of the channels? Are those the relevant channels? Do you find differences between the two models?</p>
+<p>Now consider the results you get with a model that simple assign uniform suprisal values to all words (i.e., it does not distinguish between suprising or unsurpring words): the data which you can find in the “static_100000.npy” file. Does that model change your assessment of the performance of the Broderick and Bert models?</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="extra">
+<h1>Extra<a class="headerlink" href="#extra" title="Permalink to this headline">#</a></h1>
+<p>Below you find some code to plot to create brain plots; this code is provided as it might be useful later on, but it is currently still undocumented and needs to be studied in some detail to be sure about what we are plotting…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper function 6: plot_brain()</span>
+
+<span class="k">def</span> <span class="nf">plot_brain</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">sel</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">the_title</span><span class="p">):</span>
+    <span class="c1"># plot_coefs = np.tile(np.expand_dims(scores[1],1),78) - np.tile(np.expand_dims(scores[0],1),78)</span>
+    <span class="n">plot_coefs</span> <span class="o">=</span> <span class="n">coefs</span><span class="p">[</span><span class="n">sel</span><span class="p">]</span>
+
+    <span class="c1">#c = np.mean([a1,b1])</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">times</span><span class="o">&gt;</span> <span class="n">a1</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">times</span><span class="o">&lt;</span> <span class="n">b1</span>
+    <span class="n">selection</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
+
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">plot_coefs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">),</span><span class="n">s1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">)):</span>
+        <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">plot_coefs</span><span class="p">[:,</span><span class="n">selection</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+    <span class="n">mean_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+     
+    <span class="n">max_coef</span> <span class="o">=</span> <span class="n">plot_coefs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">min_coef</span> <span class="o">=</span> <span class="n">plot_coefs</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="c1"># Make a topographic map of coefficients for a given delay (see Fig 2C in [1])</span>
+    <span class="c1">#ix_plot = np.argmin(np.abs(time_plot - times))</span>
+    <span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">plot_topomap</span><span class="p">(</span><span class="n">mean_plot</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">info</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                         <span class="n">vmin</span><span class="o">=</span><span class="n">min_coef</span><span class="o">*</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">max_coef</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">128</span><span class="p">),</span> <span class="n">show_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sensors</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">the_title</span><span class="p">)</span>
+    <span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sd</span> <span class="o">=</span> <span class="mf">1.6</span>
+<span class="n">pl</span> <span class="o">=</span><span class="mi">0</span>
+<span class="n">nrow</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ncol</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="c1">#gri = {&#39;wspace&#39;:0.5,&#39;hspace&#39;:0.4,&#39;width_ratios&#39;:[1,2,0.1]}</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="n">squeeze</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plot_brain</span><span class="p">(</span><span class="mf">0.148</span><span class="p">,</span><span class="mf">0.203</span><span class="p">,</span><span class="n">pl</span><span class="p">,</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;~175ms&quot;</span><span class="p">)</span>
+<span class="n">plot_brain</span><span class="p">(</span><span class="mf">0.297</span><span class="p">,</span><span class="mf">0.352</span><span class="p">,</span><span class="n">pl</span><span class="p">,</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s2">&quot;~325ms&quot;</span><span class="p">)</span>
+<span class="n">plot_brain</span><span class="p">(</span><span class="mf">0.359</span><span class="p">,</span><span class="mf">0.422</span><span class="p">,</span><span class="n">pl</span><span class="p">,</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="s2">&quot;~385ms&quot;</span><span class="p">)</span>
+<span class="n">plot_brain</span><span class="p">(</span><span class="mf">0.477</span><span class="p">,</span><span class="mf">0.531</span><span class="p">,</span><span class="n">pl</span><span class="p">,</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="s2">&quot;~500ms&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/mne/io/pick.py:385: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  pick = np.zeros(nchan, dtype=np.bool)
+/usr/local/lib/python3.7/dist-packages/mne/io/pick.py:385: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  pick = np.zeros(nchan, dtype=np.bool)
+/usr/local/lib/python3.7/dist-packages/mne/io/pick.py:385: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  pick = np.zeros(nchan, dtype=np.bool)
+/usr/local/lib/python3.7/dist-packages/mne/io/pick.py:385: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  pick = np.zeros(nchan, dtype=np.bool)
+</pre></div>
+</div>
+<img alt="_images/02c_lab_Surprisal-EEG_33_1.png" src="_images/02c_lab_Surprisal-EEG_33_1.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02b_lab_RSA-fMRI.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2B: Representational similarity with story reading fMRI data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03_intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 3 - Bayesian perspectives</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
