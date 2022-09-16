@@ -12,7 +12,9 @@ parts:
           - file: 01_lab_Logistic-regression-for-musical-tags
       - file: 02_intro
         sections:
-          - file: 02_lab_placeholder
+          - file: 02a_lab_Language-model-refresher
+          - file: 02b_lab_RSA-fMRI
+          - file: 02c_lab_Surprisal-EEG
       - file: 03_intro
         sections:
           - file: 03_lab_placeholder
@@ -21,7 +23,7 @@ parts:
           - file: 04_lab_placeholder
       - file: 05_extra
         sections:
-          - file: 05_extra_lab_ICCN-EyeTracking.ipynb
+          - file: 05_extra_lab_ICCN-EyeTracking
 
   - caption: Mini-projects
     chapters:
