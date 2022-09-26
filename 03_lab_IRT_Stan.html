@@ -573,7 +573,7 @@ CmdStan version 2.30.1 already installed
 <p>The data in this lab come from the Eurovision Song Contest edition of the Hooked on Music experiment. You can try the experiment (here)[<a class="reference external" href="https://hooked.amsterdammusiclab.nl/experiment/eurovision_2021">https://hooked.amsterdammusiclab.nl/experiment/eurovision_2021</a>].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">segment_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/irt4ancm/segment_list.csv&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">segment_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;irt4ancm/segment_list.csv&#39;</span><span class="p">)</span>
 <span class="n">segment_df</span> <span class="o">=</span> <span class="n">segment_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;segment&#39;</span><span class="p">)</span>
 <span class="n">segment_df</span>
 </pre></div>
@@ -826,7 +826,7 @@ CmdStan version 2.30.1 already installed
 <p>Every time you change the model, you will need to recompile it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">CmdStanModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;irt4ancm&quot;</span><span class="p">,</span> <span class="n">stan_file</span><span class="o">=</span><span class="s2">&quot;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">CmdStanModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;irt4ancm&quot;</span><span class="p">,</span> <span class="n">stan_file</span><span class="o">=</span><span class="s2">&quot;irt4ancm/irt4ancm.stan&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -855,7 +855,7 @@ INFO:cmdstanpy:compiled model executable: /content/drive/MyDrive/irt4ancm/irt4an
 <p>We fit the model here using <code class="docutils literal notranslate"><span class="pre">all_plays.json</span></code>, which contains a complete set of data. You may find it more interesting to explore <code class="docutils literal notranslate"><span class="pre">rec_only.json</span></code> as an alternative, which contains only plays where the participant claimed to recognise the segment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s2">&quot;/content/drive/MyDrive/irt4ancm/all_plays.json&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s2">&quot;irt4ancm/all_plays.json&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -867,13 +867,13 @@ INFO:cmdstanpy:CmdStan start processing
 </pre></div>
 </div>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "fb6c02568e0b4092bd4a08717e6b14cc"}
+{"model_id": "fb6c02568e0b4092bd4a08717e6b14cc", "version_major": 2, "version_minor": 0}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "4a2e24e8e0a34f4bb01bd56aa1fe3dd3"}
+{"model_id": "4a2e24e8e0a34f4bb01bd56aa1fe3dd3", "version_major": 2, "version_minor": 0}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "328dc811e99e400d9dcd0606376a1ecf"}
+{"model_id": "328dc811e99e400d9dcd0606376a1ecf", "version_major": 2, "version_minor": 0}
 </script><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "b85910c3602545559c9b5e9c4e3813ea"}
+{"model_id": "b85910c3602545559c9b5e9c4e3813ea", "version_major": 2, "version_minor": 0}
 </script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:cmdstanpy:idx 0
 DEBUG:cmdstanpy:running CmdStan, num_threads: 1
 DEBUG:cmdstanpy:CmdStan args: [&#39;/content/drive/MyDrive/irt4ancm/irt4ancm&#39;, &#39;id=1&#39;, &#39;random&#39;, &#39;seed=3603&#39;, &#39;data&#39;, &#39;file=/content/drive/MyDrive/irt4ancm/all_plays.json&#39;, &#39;output&#39;, &#39;file=/tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_1.csv&#39;, &#39;method=sample&#39;, &#39;algorithm=hmc&#39;, &#39;adapt&#39;, &#39;engaged=1&#39;]
