@@ -1,0 +1,1404 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Item Response Theory and Stan &#8212; ANCM&#39;22</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 4 - Current language &amp; music research" href="04_intro.html" />
+    <link rel="prev" title="Week 3 - Bayesian perspectives" href="03_intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ANCM'22</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to ANCM’22
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lab assignments
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01_intro.html">
+   Week 1 - Introduction &amp; Logistic regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_lab_Logistic-regression-for-musical-tags.html">
+     Logistic regression for musical tags
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02_intro.html">
+   Week 2 - Deep learning architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02a_lab_Language-model-refresher.html">
+     2A: Language model refresher
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02b_lab_RSA-fMRI.html">
+     2B: Representational similarity with story reading fMRI data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02c_lab_Surprisal-EEG.html">
+     2C: Language model surprisal and EEG data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="03_intro.html">
+   Week 3 - Bayesian perspectives
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Item Response Theory and Stan
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04_intro.html">
+   Week 4 - Current language &amp; music research
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_lab_placeholder.html">
+     Lab 4: Deep learning &amp; vision
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05_extra.html">
+   Extra
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_extra_lab_ICCN-EyeTracking.html">
+     Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Mini-projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_mini-projects_resources.html">
+   Resources for mini-projects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/clclab/ANCM/blob/main/book/03_lab_IRT_Stan.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/clclab/ANCM"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F03_lab_IRT_Stan.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/03_lab_IRT_Stan.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab">
+   Lab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment">
+   Assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-resources">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Item Response Theory and Stan</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab">
+   Lab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment">
+   Assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-resources">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="item-response-theory-and-stan">
+<h1>Item Response Theory and Stan<a class="headerlink" href="#item-response-theory-and-stan" title="Permalink to this headline">#</a></h1>
+<p>In this lab, you will explore item response theory and Bayesian modelling with the Stan language.</p>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<p>First, you need to install Stan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># Colab setup (courtesy of Justin Bois)</span>
+<span class="c1">#   N.B. This cell may take several minutes to complete (3 mins on the instructor&#39;s machine)</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">subprocess</span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;pip install --upgrade iqplot bebi103 arviz cmdstanpy watermark&quot;</span>
+<span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+<span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">cmdstanpy</span><span class="p">;</span> <span class="n">cmdstanpy</span><span class="o">.</span><span class="n">install_cmdstan</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing CmdStan version: 2.30.1
+Install directory: /root/.cmdstan
+CmdStan version 2.30.1 already installed
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, you need to download the data and Stan template <a class="reference external" href="https://drive.google.com/file/d/1-ccSj_VuTfw4cx2qC4080pgci0z3P_Dh/view?usp=sharing">here</a>. Save it to your own Google Drive as in previous labs, and then mount your drive.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mounted at /content/drive
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unzip the files into a folder (you will be able to find this folder if you click the folder icon in your left sidebar):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!unzip -qq &#39;/content/drive/MyDrive/irt4ancm.zip&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following cell prints a list of all of the segments used in the experiment, so that you can find and listen to the results. All of the audio was extracted from the official YouTube videos of the Eurovision Song Contest finals.</p>
+</section>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<p>The data in this lab come from the Eurovision Song Contest edition of the Hooked on Music experiment. You can try the experiment (here)[<a class="reference external" href="https://hooked.amsterdammusiclab.nl/experiment/eurovision_2021">https://hooked.amsterdammusiclab.nl/experiment/eurovision_2021</a>].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">segment_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/irt4ancm/segment_list.csv&#39;</span><span class="p">)</span>
+<span class="n">segment_df</span> <span class="o">=</span> <span class="n">segment_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;segment&#39;</span><span class="p">)</span>
+<span class="n">segment_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-276a69bd-97ec-4482-926c-fe0ef8237ce9">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>song</th>
+      <th>country</th>
+      <th>year</th>
+      <th>artist</th>
+      <th>title</th>
+      <th>start_position</th>
+      <th>segment_type</th>
+    </tr>
+    <tr>
+      <th>segment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Ukraine</td>
+      <td>2016</td>
+      <td>Jamala</td>
+      <td>1944</td>
+      <td>0.000</td>
+      <td>i</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Ukraine</td>
+      <td>2016</td>
+      <td>Jamala</td>
+      <td>1944</td>
+      <td>7.925</td>
+      <td>v</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>Ukraine</td>
+      <td>2016</td>
+      <td>Jamala</td>
+      <td>1944</td>
+      <td>39.500</td>
+      <td>c</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Ukraine</td>
+      <td>2016</td>
+      <td>Jamala</td>
+      <td>1944</td>
+      <td>72.043</td>
+      <td>v</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>Ukraine</td>
+      <td>2016</td>
+      <td>Jamala</td>
+      <td>1944</td>
+      <td>132.559</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>69</td>
+      <td>Czechia</td>
+      <td>2019</td>
+      <td>Lake Malawi</td>
+      <td>Friend of a Friend</td>
+      <td>78.128</td>
+      <td>v</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>70</td>
+      <td>Denmark</td>
+      <td>2019</td>
+      <td>Leonora</td>
+      <td>Love Is Forever</td>
+      <td>61.508</td>
+      <td>v</td>
+    </tr>
+    <tr>
+      <th>435</th>
+      <td>71</td>
+      <td>Cyprus</td>
+      <td>2019</td>
+      <td>Tamta</td>
+      <td>Replay</td>
+      <td>66.212</td>
+      <td>v</td>
+    </tr>
+    <tr>
+      <th>436</th>
+      <td>73</td>
+      <td>Slovenia</td>
+      <td>2019</td>
+      <td>Zala Kralj &amp; Gašper Šantl</td>
+      <td>Sebi</td>
+      <td>70.698</td>
+      <td>v</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>75</td>
+      <td>Serbia</td>
+      <td>2019</td>
+      <td>Nevena Božović</td>
+      <td>Kruna</td>
+      <td>106.544</td>
+      <td>v</td>
+    </tr>
+  </tbody>
+</table>
+<p>437 rows × 7 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-276a69bd-97ec-4482-926c-fe0ef8237ce9')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-276a69bd-97ec-4482-926c-fe0ef8237ce9 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-276a69bd-97ec-4482-926c-fe0ef8237ce9');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="lab">
+<h2>Lab<a class="headerlink" href="#lab" title="Permalink to this headline">#</a></h2>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">irt4ancm.stan</span></code> file in the right-hand pane. You will make any adjstments to your model here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cmdstanpy</span> <span class="kn">import</span> <span class="n">CmdStanModel</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Every time you change the model, you will need to recompile it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">CmdStanModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;irt4ancm&quot;</span><span class="p">,</span> <span class="n">stan_file</span><span class="o">=</span><span class="s2">&quot;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:cmdstanpy:Removing /content/drive/MyDrive/irt4ancm/irt4ancm
+10:12:10 - cmdstanpy - INFO - compiling stan file /content/drive/MyDrive/irt4ancm/irt4ancm.stan to exe file /content/drive/MyDrive/irt4ancm/irt4ancm
+INFO:cmdstanpy:compiling stan file /content/drive/MyDrive/irt4ancm/irt4ancm.stan to exe file /content/drive/MyDrive/irt4ancm/irt4ancm
+DEBUG:cmdstanpy:cmd: make /content/drive/MyDrive/irt4ancm/irt4ancm
+cwd: /root/.cmdstan/cmdstan-2.30.1
+DEBUG:cmdstanpy:Console output:
+
+--- Translating Stan model to C++ code ---
+bin/stanc  --o=/content/drive/MyDrive/irt4ancm/irt4ancm.hpp /content/drive/MyDrive/irt4ancm/irt4ancm.stan
+
+--- Compiling, linking C++ code ---
+g++ -std=c++1y -pthread -D_REENTRANT -Wno-sign-compare -Wno-ignored-attributes      -I stan/lib/stan_math/lib/tbb_2020.3/include    -O3 -I src -I stan/src -I lib/rapidjson_1.1.0/ -I lib/CLI11-1.9.1/ -I stan/lib/stan_math/ -I stan/lib/stan_math/lib/eigen_3.3.9 -I stan/lib/stan_math/lib/boost_1.78.0 -I stan/lib/stan_math/lib/sundials_6.1.1/include -I stan/lib/stan_math/lib/sundials_6.1.1/src/sundials    -DBOOST_DISABLE_ASSERTS          -c -Wno-ignored-attributes   -x c++ -o /content/drive/MyDrive/irt4ancm/irt4ancm.o /content/drive/MyDrive/irt4ancm/irt4ancm.hpp
+g++ -std=c++1y -pthread -D_REENTRANT -Wno-sign-compare -Wno-ignored-attributes      -I stan/lib/stan_math/lib/tbb_2020.3/include    -O3 -I src -I stan/src -I lib/rapidjson_1.1.0/ -I lib/CLI11-1.9.1/ -I stan/lib/stan_math/ -I stan/lib/stan_math/lib/eigen_3.3.9 -I stan/lib/stan_math/lib/boost_1.78.0 -I stan/lib/stan_math/lib/sundials_6.1.1/include -I stan/lib/stan_math/lib/sundials_6.1.1/src/sundials    -DBOOST_DISABLE_ASSERTS                -Wl,-L,&quot;/root/.cmdstan/cmdstan-2.30.1/stan/lib/stan_math/lib/tbb&quot; -Wl,-rpath,&quot;/root/.cmdstan/cmdstan-2.30.1/stan/lib/stan_math/lib/tbb&quot;      /content/drive/MyDrive/irt4ancm/irt4ancm.o src/cmdstan/main.o        -Wl,-L,&quot;/root/.cmdstan/cmdstan-2.30.1/stan/lib/stan_math/lib/tbb&quot; -Wl,-rpath,&quot;/root/.cmdstan/cmdstan-2.30.1/stan/lib/stan_math/lib/tbb&quot;   stan/lib/stan_math/lib/sundials_6.1.1/lib/libsundials_nvecserial.a stan/lib/stan_math/lib/sundials_6.1.1/lib/libsundials_cvodes.a stan/lib/stan_math/lib/sundials_6.1.1/lib/libsundials_idas.a stan/lib/stan_math/lib/sundials_6.1.1/lib/libsundials_kinsol.a  stan/lib/stan_math/lib/tbb/libtbb.so.2 -o /content/drive/MyDrive/irt4ancm/irt4ancm
+rm -f /content/drive/MyDrive/irt4ancm/irt4ancm.o
+
+10:12:24 - cmdstanpy - INFO - compiled model executable: /content/drive/MyDrive/irt4ancm/irt4ancm
+INFO:cmdstanpy:compiled model executable: /content/drive/MyDrive/irt4ancm/irt4ancm
+</pre></div>
+</div>
+</div>
+</div>
+<p>We fit the model here using <code class="docutils literal notranslate"><span class="pre">all_plays.json</span></code>, which contains a complete set of data. You may find it more interesting to explore <code class="docutils literal notranslate"><span class="pre">rec_only.json</span></code> as an alternative, which contains only plays where the participant claimed to recognise the segment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s2">&quot;/content/drive/MyDrive/irt4ancm/all_plays.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:cmdstanpy:cmd: /content/drive/MyDrive/irt4ancm/irt4ancm info
+cwd: None
+10:14:38 - cmdstanpy - INFO - CmdStan start processing
+INFO:cmdstanpy:CmdStan start processing
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "fb6c02568e0b4092bd4a08717e6b14cc"}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "4a2e24e8e0a34f4bb01bd56aa1fe3dd3"}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "328dc811e99e400d9dcd0606376a1ecf"}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "b85910c3602545559c9b5e9c4e3813ea"}
+</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:cmdstanpy:idx 0
+DEBUG:cmdstanpy:running CmdStan, num_threads: 1
+DEBUG:cmdstanpy:CmdStan args: [&#39;/content/drive/MyDrive/irt4ancm/irt4ancm&#39;, &#39;id=1&#39;, &#39;random&#39;, &#39;seed=3603&#39;, &#39;data&#39;, &#39;file=/content/drive/MyDrive/irt4ancm/all_plays.json&#39;, &#39;output&#39;, &#39;file=/tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_1.csv&#39;, &#39;method=sample&#39;, &#39;algorithm=hmc&#39;, &#39;adapt&#39;, &#39;engaged=1&#39;]
+DEBUG:cmdstanpy:idx 1
+DEBUG:cmdstanpy:running CmdStan, num_threads: 1
+DEBUG:cmdstanpy:CmdStan args: [&#39;/content/drive/MyDrive/irt4ancm/irt4ancm&#39;, &#39;id=2&#39;, &#39;random&#39;, &#39;seed=3603&#39;, &#39;data&#39;, &#39;file=/content/drive/MyDrive/irt4ancm/all_plays.json&#39;, &#39;output&#39;, &#39;file=/tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_2.csv&#39;, &#39;method=sample&#39;, &#39;algorithm=hmc&#39;, &#39;adapt&#39;, &#39;engaged=1&#39;]
+DEBUG:cmdstanpy:idx 2
+DEBUG:cmdstanpy:running CmdStan, num_threads: 1
+DEBUG:cmdstanpy:CmdStan args: [&#39;/content/drive/MyDrive/irt4ancm/irt4ancm&#39;, &#39;id=3&#39;, &#39;random&#39;, &#39;seed=3603&#39;, &#39;data&#39;, &#39;file=/content/drive/MyDrive/irt4ancm/all_plays.json&#39;, &#39;output&#39;, &#39;file=/tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_3.csv&#39;, &#39;method=sample&#39;, &#39;algorithm=hmc&#39;, &#39;adapt&#39;, &#39;engaged=1&#39;]
+DEBUG:cmdstanpy:idx 3
+DEBUG:cmdstanpy:running CmdStan, num_threads: 1
+DEBUG:cmdstanpy:CmdStan args: [&#39;/content/drive/MyDrive/irt4ancm/irt4ancm&#39;, &#39;id=4&#39;, &#39;random&#39;, &#39;seed=3603&#39;, &#39;data&#39;, &#39;file=/content/drive/MyDrive/irt4ancm/all_plays.json&#39;, &#39;output&#39;, &#39;file=/tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_4.csv&#39;, &#39;method=sample&#39;, &#39;algorithm=hmc&#39;, &#39;adapt&#39;, &#39;engaged=1&#39;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                                                                                                                                                                                                                                                                
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10:20:07 - cmdstanpy - INFO - CmdStan done processing.
+INFO:cmdstanpy:CmdStan done processing.
+DEBUG:cmdstanpy:runset
+RunSet: chains=4, chain_ids=[1, 2, 3, 4], num_processes=4
+ cmd (chain 1):
+	[&#39;/content/drive/MyDrive/irt4ancm/irt4ancm&#39;, &#39;id=1&#39;, &#39;random&#39;, &#39;seed=3603&#39;, &#39;data&#39;, &#39;file=/content/drive/MyDrive/irt4ancm/all_plays.json&#39;, &#39;output&#39;, &#39;file=/tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_1.csv&#39;, &#39;method=sample&#39;, &#39;algorithm=hmc&#39;, &#39;adapt&#39;, &#39;engaged=1&#39;]
+ retcodes=[0, 0, 0, 0]
+ per-chain output files (showing chain 1 only):
+ csv_file:
+	/tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_1.csv
+ console_msgs (if any):
+	/tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_0-stdout.txt
+DEBUG:cmdstanpy:Chain 1 console:
+method = sample (Default)
+  sample
+    num_samples = 1000 (Default)
+    num_warmup = 1000 (Default)
+    save_warmup = 0 (Default)
+    thin = 1 (Default)
+    adapt
+      engaged = 1 (Default)
+      gamma = 0.050000000000000003 (Default)
+      delta = 0.80000000000000004 (Default)
+      kappa = 0.75 (Default)
+      t0 = 10 (Default)
+      init_buffer = 75 (Default)
+      term_buffer = 50 (Default)
+      window = 25 (Default)
+    algorithm = hmc (Default)
+      hmc
+        engine = nuts (Default)
+          nuts
+            max_depth = 10 (Default)
+        metric = diag_e (Default)
+        metric_file =  (Default)
+        stepsize = 1 (Default)
+        stepsize_jitter = 0 (Default)
+    num_chains = 1 (Default)
+id = 1 (Default)
+data
+  file = /content/drive/MyDrive/irt4ancm/all_plays.json
+init = 2 (Default)
+random
+  seed = 3603
+output
+  file = /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_1.csv
+  diagnostic_file =  (Default)
+  refresh = 100 (Default)
+  sig_figs = -1 (Default)
+  profile_file = profile.csv (Default)
+num_threads = 1 (Default)
+
+
+Gradient evaluation took 0.005164 seconds
+1000 transitions using 10 leapfrog steps per transition would take 51.64 seconds.
+Adjust your expectations accordingly!
+
+
+Iteration:    1 / 2000 [  0%]  (Warmup)
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 32, column 2 to column 33)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 32, column 2 to column 33)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Iteration:  100 / 2000 [  5%]  (Warmup)
+Iteration:  200 / 2000 [ 10%]  (Warmup)
+Iteration:  300 / 2000 [ 15%]  (Warmup)
+Iteration:  400 / 2000 [ 20%]  (Warmup)
+Iteration:  500 / 2000 [ 25%]  (Warmup)
+Iteration:  600 / 2000 [ 30%]  (Warmup)
+Iteration:  700 / 2000 [ 35%]  (Warmup)
+Iteration:  800 / 2000 [ 40%]  (Warmup)
+Iteration:  900 / 2000 [ 45%]  (Warmup)
+Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Iteration: 1100 / 2000 [ 55%]  (Sampling)
+Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Iteration: 1300 / 2000 [ 65%]  (Sampling)
+Iteration: 1400 / 2000 [ 70%]  (Sampling)
+Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Iteration: 1600 / 2000 [ 80%]  (Sampling)
+Iteration: 1700 / 2000 [ 85%]  (Sampling)
+Iteration: 1800 / 2000 [ 90%]  (Sampling)
+Iteration: 1900 / 2000 [ 95%]  (Sampling)
+Iteration: 2000 / 2000 [100%]  (Sampling)
+
+ Elapsed Time: 96.686 seconds (Warm-up)
+               63.451 seconds (Sampling)
+               160.137 seconds (Total)
+
+
+10:20:07 - cmdstanpy - WARNING - Non-fatal error during sampling:
+Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 32, column 2 to column 33)
+	Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 32, column 2 to column 33)
+Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 33, column 2 to column 33)
+Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 33, column 2 to column 33)
+Consider re-running with show_console=True if the above output is unclear!
+WARNING:cmdstanpy:Non-fatal error during sampling:
+Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 32, column 2 to column 33)
+	Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 32, column 2 to column 33)
+Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 33, column 2 to column 33)
+Exception: normal_lpdf: Scale parameter is 0, but must be positive! (in &#39;/content/drive/MyDrive/irt4ancm/irt4ancm.stan&#39;, line 33, column 2 to column 33)
+Consider re-running with show_console=True if the above output is unclear!
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Stan has a handy set of diagnostics that can warn you of any problems with your model fit. For the purposes of this lab, you will probably not have time to fix any problems, but you can report on them in the assignment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">diagnose</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:cmdstanpy:cmd: /root/.cmdstan/cmdstan-2.30.1/bin/diagnose /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_1.csv /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_2.csv /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_3.csv /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_4.csv
+cwd: None
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing csv files: /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_1.csv, /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_2.csv, /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_3.csv, /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_4.csv
+
+Checking sampler transitions treedepth.
+Treedepth satisfactory for all transitions.
+
+Checking sampler transitions for divergences.
+No divergent transitions found.
+
+Checking E-BFMI - sampler transitions HMC potential energy.
+E-BFMI satisfactory.
+
+Effective sample size satisfactory.
+
+Split R-hat values satisfactory all parameters.
+
+Processing complete, no problems detected.
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the model is (mostly) problem-free, you can look at a summary of the parameter values. Remember that we get not a specific value but rather a whole distribution on each parameter. Stan reports means, standard error and deviation, and (most popular in the literature) 5%/50%/95% quantiles.</p>
+<p>The final three columns are convergence statistics. As a (very) rough rule of thumb, you want <code class="docutils literal notranslate"><span class="pre">N_eff</span></code> to be above 400 and <code class="docutils literal notranslate"><span class="pre">R_hat</span></code> to be less than 1.05.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:cmdstanpy:cmd: /root/.cmdstan/cmdstan-2.30.1/bin/stansummary --percentiles= 5,50,95 --sig_figs=6 --csv_filename=/tmp/tmpccgkrh54/stansummary-irt4ancm-ioqyc4k3.csv /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_1.csv /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_2.csv /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_3.csv /tmp/tmpccgkrh54/irt4ancmugp9oyf4/irt4ancm-20220926101439_4.csv
+cwd: None
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-9f448cc2-2487-4ec3-a333-4959df745a8a">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>MCSE</th>
+      <th>StdDev</th>
+      <th>5%</th>
+      <th>50%</th>
+      <th>95%</th>
+      <th>N_Eff</th>
+      <th>N_Eff/s</th>
+      <th>R_hat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>lp__</th>
+      <td>-5636.280000</td>
+      <td>0.809916</td>
+      <td>25.282800</td>
+      <td>-5679.260000</td>
+      <td>-5636.200000</td>
+      <td>-5595.490000</td>
+      <td>974.474</td>
+      <td>3.80931</td>
+      <td>1.000620</td>
+    </tr>
+    <tr>
+      <th>mu</th>
+      <td>-0.018374</td>
+      <td>0.013676</td>
+      <td>1.020980</td>
+      <td>-1.677350</td>
+      <td>-0.021882</td>
+      <td>1.650180</td>
+      <td>5573.720</td>
+      <td>21.78820</td>
+      <td>0.999639</td>
+    </tr>
+    <tr>
+      <th>sigma_theta</th>
+      <td>1.994040</td>
+      <td>0.002346</td>
+      <td>0.091265</td>
+      <td>1.848120</td>
+      <td>1.991530</td>
+      <td>2.151640</td>
+      <td>1513.350</td>
+      <td>5.91584</td>
+      <td>1.001110</td>
+    </tr>
+    <tr>
+      <th>sigma_delta</th>
+      <td>0.872888</td>
+      <td>0.001572</td>
+      <td>0.049021</td>
+      <td>0.794273</td>
+      <td>0.871882</td>
+      <td>0.956395</td>
+      <td>972.827</td>
+      <td>3.80287</td>
+      <td>1.001640</td>
+    </tr>
+    <tr>
+      <th>theta[1]</th>
+      <td>-2.900060</td>
+      <td>0.012507</td>
+      <td>0.799056</td>
+      <td>-4.322610</td>
+      <td>-2.838710</td>
+      <td>-1.689460</td>
+      <td>4081.970</td>
+      <td>15.95680</td>
+      <td>1.000740</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>delta[433]</th>
+      <td>-0.292742</td>
+      <td>0.005331</td>
+      <td>0.355262</td>
+      <td>-0.878330</td>
+      <td>-0.300504</td>
+      <td>0.304796</td>
+      <td>4440.450</td>
+      <td>17.35810</td>
+      <td>0.999877</td>
+    </tr>
+    <tr>
+      <th>delta[434]</th>
+      <td>0.214229</td>
+      <td>0.005013</td>
+      <td>0.359587</td>
+      <td>-0.380022</td>
+      <td>0.217208</td>
+      <td>0.800408</td>
+      <td>5145.810</td>
+      <td>20.11550</td>
+      <td>1.000100</td>
+    </tr>
+    <tr>
+      <th>delta[435]</th>
+      <td>-0.021495</td>
+      <td>0.005051</td>
+      <td>0.374217</td>
+      <td>-0.642577</td>
+      <td>-0.020770</td>
+      <td>0.606995</td>
+      <td>5489.670</td>
+      <td>21.45960</td>
+      <td>0.999949</td>
+    </tr>
+    <tr>
+      <th>delta[436]</th>
+      <td>0.613609</td>
+      <td>0.005638</td>
+      <td>0.380584</td>
+      <td>-0.008727</td>
+      <td>0.607133</td>
+      <td>1.251060</td>
+      <td>4557.440</td>
+      <td>17.81540</td>
+      <td>0.999413</td>
+    </tr>
+    <tr>
+      <th>delta[437]</th>
+      <td>1.059740</td>
+      <td>0.005813</td>
+      <td>0.413095</td>
+      <td>0.392908</td>
+      <td>1.054800</td>
+      <td>1.748900</td>
+      <td>5049.300</td>
+      <td>19.73820</td>
+      <td>0.999554</td>
+    </tr>
+  </tbody>
+</table>
+<p>936 rows × 9 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-9f448cc2-2487-4ec3-a333-4959df745a8a')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-9f448cc2-2487-4ec3-a333-4959df745a8a button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-9f448cc2-2487-4ec3-a333-4959df745a8a');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">irt4ancn.stan</span></code> to try different models. Ask Ashley for help with the syntax! Handy distributions include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">std_normal()</span></code> for a standard normal (or half-normal) distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">normal(mu,</span> <span class="pre">sigma)</span></code> for a normal distribution with specified mean and standard deviation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">bernoulli(p)</span></code> for a Bernoulli distribution parameterised by the probability of success</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">bernoulli(z)</span></code> for a Bernoulli distribution parameterised by the inverse logistic function of the probability of success</p></li>
+</ul>
+<p>The full 4PL IRT model looks like this:</p>
+<p><span class="math notranslate nohighlight">\(\mathrm{P}[x_{ni} = 1] = \gamma_i + (\zeta_i - \gamma_i) \frac{\mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}{1 + \mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}\)</span></p>
+<ul class="simple">
+<li><p>For the 3PL, <span class="math notranslate nohighlight">\(\zeta\)</span> is fixed to 1.</p></li>
+<li><p>For the 2PL, <span class="math notranslate nohighlight">\(\zeta\)</span> is fixed to 1 and <span class="math notranslate nohighlight">\(\gamma\)</span> is fixed to 0.</p></li>
+<li><p>For the 1PL (Rasch model), <span class="math notranslate nohighlight">\(\zeta\)</span> is fixed to 1, <span class="math notranslate nohighlight">\(\gamma\)</span> is fixed to 0, and <span class="math notranslate nohighlight">\(\alpha\)</span> is fixed to 1.</p></li>
+</ul>
+<p>Don’t forget to add priors as you add more parameters!</p>
+<p><strong>WARNING</strong>: In the 2PL, 3PL, and 4PL, <span class="math notranslate nohighlight">\(\theta\)</span> needs to be distributed as a standard normal distribution and there can be no hyper-parameter <span class="math notranslate nohighlight">\(\sigma_\theta\)</span>. Otherwise, the model is not identified, and Stan will run into many problems while sampling.</p>
+</section>
+<section id="assignment">
+<h2>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Explore 1-, 2-, 3- and 4-parameter IRT models for the Hooked on Music data according to the template. Which segments are most difficult? Which are easiest? Most/least discriminating? Are the guessing parameters what you would expect?</p></li>
+<li><p>Explore an alternative data model (e.g., using <code class="docutils literal notranslate"><span class="pre">rec_only.json</span></code> or focussing on <code class="docutils literal notranslate"><span class="pre">is_recognised</span></code> instead of <code class="docutils literal notranslate"><span class="pre">is_verified</span></code>), again with 1-, 2-, 3- and 4-parameter IRT models. How do your results compare to what you found in Step 1</p></li>
+<li><p>(Optional) Expand one of your models to include a regression on audio features recognition time, or Goldsmith’s music sophistication to predict difficulty and ability.</p></li>
+</ol>
+<p>Write a short report (250–500 words) summarising your findings and (to the extent you can) any musical explanations or surprising findings based on what you can hear in the songs.</p>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">cmdstanpy</span></code> <a class="reference external" href="https://cmdstanpy.readthedocs.io/en/v1.0.7/">documentation</a></p></li>
+<li><p>The Stan <a class="reference external" href="https://mc-stan.org/docs/stan-users-guide/index.html%5D">User’s Guide</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="03_intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Week 3 - Bayesian perspectives</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04_intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 4 - Current language &amp; music research</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
