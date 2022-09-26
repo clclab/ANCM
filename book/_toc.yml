@@ -17,7 +17,7 @@ parts:
           - file: 02c_lab_Surprisal-EEG
       - file: 03_intro
         sections:
-          - file: 03_lab_placeholder
+          - file: 03_lab_IRT_Stan
       - file: 04_intro
         sections:
           - file: 04_lab_placeholder
