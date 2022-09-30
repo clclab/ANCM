@@ -20,7 +20,7 @@ parts:
           - file: 03_lab_IRT_Stan
       - file: 04_intro
         sections:
-          - file: 04_lab_placeholder
+          - file: 04_lab_visionConvolutionsRecurrence
       - file: 05_extra
         sections:
           - file: 05_extra_lab_ICCN-EyeTracking
