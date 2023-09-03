@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features &#8212; ANCM&#39;22</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +63,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05_extra_lab_ICCN-EyeTracking';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Resources for mini-projects" href="10_mini-projects_resources.html" />
     <link rel="prev" title="Extra" href="05_extra.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">ANCM'22</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,650 +158,329 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lab assignments
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab assignments</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01_intro.html">
-   Week 1 - Introduction &amp; Logistic regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01_lab_Logistic-regression-for-musical-tags.html">
-     Logistic regression for musical tags
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="02_intro.html">
-   Week 2 - Deep learning architectures
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02a_lab_Language-model-refresher.html">
-     2A: Language model refresher
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02b_lab_RSA-fMRI.html">
-     2B: Representational similarity with story reading fMRI data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02c_lab_Surprisal-EEG.html">
-     2C: Language model surprisal and EEG data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03_intro.html">
-   Week 3 - Bayesian perspectives
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03_lab_IRT_Stan.html">
-     Item Response Theory and Stan
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="04_intro.html">
-   Week 4 - Current language &amp; music research
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04_lab_visionConvolutionsRecurrence.html">
-     Lab 4: Vision, convolutions, recurrence
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="05_extra.html">
-   Extra
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_intro.html">Week 1 - Introduction &amp; Logistic regression</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_lab_Logistic-regression-for-musical-tags.html">Logistic regression for musical tags</a></li>
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Mini-projects
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02_intro.html">Week 2 - Deep learning architectures</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="02a_lab_Language-model-refresher.html">2A: Language model refresher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02b_lab_RSA-fMRI.html">2B: Representational similarity with story reading fMRI data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="02c_lab_Surprisal-EEG.html">2C: Language model surprisal and EEG data</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="03_intro.html">Week 3 - Bayesian perspectives</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="03_lab_IRT_Stan.html">Item Response Theory and Stan</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="04_intro.html">Week 4 - Current language &amp; music research</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_lab_visionConvolutionsRecurrence.html">Lab 4: Vision, convolutions, recurrence</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="05_extra.html">Extra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini-projects</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="10_mini-projects_resources.html">
-   Resources for mini-projects
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="10_mini-projects_resources.html">Resources for mini-projects</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://colab.research.google.com/github/clclab/ANCM/blob/main/book/05_extra_lab_ICCN-EyeTracking.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/clclab/ANCM/blob/main/book/05_extra_lab_ICCN-EyeTracking.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/clclab/ANCM" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F05_extra_lab_ICCN-EyeTracking.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/05_extra_lab_ICCN-EyeTracking.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/clclab/ANCM"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F05_extra_lab_ICCN-EyeTracking.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/05_extra_lab_ICCN-EyeTracking.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contents">
-     Contents
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font">
-   Exercises (
-   <font color="darkorange">
-    <b>
-     ToDos
-    </b>
-   </font>
-   /
-   <font color="cornflowerblue">
-    <b>
-     ToThinks
-    </b>
-   </font>
-   )
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparation-i-packages-data-and-helper-functions">
-     Preparation I: Packages, data and helper functions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-b">
-     <b>
-     </b>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparation-ii-downloading-the-large-language-models">
-     Preparation II: downloading the large language models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-exploring-the-zuco-corpus">
-   Data: Exploring the ZuCo corpus
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eye-tracking-features-explained">
-     Eye tracking features explained
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-note-on-tokenization">
-     A note on tokenization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-eye-tracking-features">
-   Visualizing eye tracking features
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualizing-fixation-times">
-     Visualizing fixation times
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualizing-fixation-proportion">
-     Visualizing fixation proportion
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training-data-overview">
-     Training data overview
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#models-using-pre-trained-large-language-models">
-   Models: using pre-trained large language models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#word-embeddings-with-pen-paper">
-     Word embeddings with pen &amp; paper
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#word-embeddings-from-a-large-language-model">
-     Word embeddings from a large language model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#static-versus-contextualized-word-embeddings">
-       Static versus contextualized word embeddings
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finetuning-the-language-model-on-eye-tracking-data">
-   Finetuning the language model on eye-tracking data
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#evaluating-model-predictions">
-   Evaluating model predictions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#baseline">
-     Baseline
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluation-metric-mean-absolute-error">
-     Evaluation metric: Mean absolute error
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualization-of-predictions">
-     Visualization of predictions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-of-speech-analysis">
-     Part of Speech Analysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Modeling Language Processing: Large Language Models & their use in Predicting eye tracking features</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contents">
-     Contents
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font">
-   Exercises (
-   <font color="darkorange">
-    <b>
-     ToDos
-    </b>
-   </font>
-   /
-   <font color="cornflowerblue">
-    <b>
-     ToThinks
-    </b>
-   </font>
-   )
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparation-i-packages-data-and-helper-functions">
-     Preparation I: Packages, data and helper functions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-b">
-     <b>
-     </b>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preparation-ii-downloading-the-large-language-models">
-     Preparation II: downloading the large language models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-exploring-the-zuco-corpus">
-   Data: Exploring the ZuCo corpus
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eye-tracking-features-explained">
-     Eye tracking features explained
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-note-on-tokenization">
-     A note on tokenization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-eye-tracking-features">
-   Visualizing eye tracking features
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualizing-fixation-times">
-     Visualizing fixation times
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualizing-fixation-proportion">
-     Visualizing fixation proportion
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training-data-overview">
-     Training data overview
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#models-using-pre-trained-large-language-models">
-   Models: using pre-trained large language models
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#word-embeddings-with-pen-paper">
-     Word embeddings with pen &amp; paper
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#word-embeddings-from-a-large-language-model">
-     Word embeddings from a large language model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#static-versus-contextualized-word-embeddings">
-       Static versus contextualized word embeddings
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finetuning-the-language-model-on-eye-tracking-data">
-   Finetuning the language model on eye-tracking data
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#evaluating-model-predictions">
-   Evaluating model predictions
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#baseline">
-     Baseline
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluation-metric-mean-absolute-error">
-     Evaluation metric: Mean absolute error
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualization-of-predictions">
-     Visualization of predictions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-of-speech-analysis">
-     Part of Speech Analysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modeling Language Processing: Large Language Models & their use in Predicting eye tracking features</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font">Exercises (<font color="darkorange"><b>ToDos</b></font>/<font color="cornflowerblue"><b>ToThinks</b></font>)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-i-packages-data-and-helper-functions">Preparation I: Packages, data and helper functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-b"><b> </b></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-ii-downloading-the-large-language-models">Preparation II: downloading the large language models</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploring-the-zuco-corpus">Data: Exploring the ZuCo corpus</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eye-tracking-features-explained">Eye tracking features explained</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-tokenization">A note on tokenization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-eye-tracking-features">Visualizing eye tracking features</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-fixation-times">Visualizing fixation times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-fixation-proportion">Visualizing fixation proportion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-data-overview">Training data overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#models-using-pre-trained-large-language-models">Models: using pre-trained large language models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings-with-pen-paper">Word embeddings with pen &amp; paper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings-from-a-large-language-model">Word embeddings from a large language model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-versus-contextualized-word-embeddings">Static versus contextualized word embeddings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#finetuning-the-language-model-on-eye-tracking-data">Finetuning the language model on eye-tracking data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-model-predictions">Evaluating model predictions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline">Baseline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metric-mean-absolute-error">Evaluation metric: Mean absolute error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-predictions">Visualization of predictions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-of-speech-analysis">Part of Speech Analysis</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="modeling-language-processing-large-language-models-their-use-in-predicting-eye-tracking-features">
-<h1>Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features<a class="headerlink" href="#modeling-language-processing-large-language-models-their-use-in-predicting-eye-tracking-features" title="Permalink to this headline">#</a></h1>
+<h1>Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features<a class="headerlink" href="#modeling-language-processing-large-language-models-their-use-in-predicting-eye-tracking-features" title="Permalink to this heading">#</a></h1>
 <p>In this tutorial we will be using language models to predict eye movements during natural reading of English sentences. This notebook is partly based on a tutorial by Nora Hollenstein taught during this year’s <a class="reference external" href="https://esslli2021.unibz.it/page/course/analyzing_the_cognitive_plausibility_of_deep_language_models/">ESSLLI course</a> on cognitive plausibility of language models. It uses eye tracking data from the <a class="reference external" href="https://www.nature.com/articles/sdata2018291">Zurich Cognitive Language Processing Corpus (ZuCo)</a>, as provided for the <a class="reference external" href="https://cmclorg.github.io/shared_task">CMCL 2021 Shared Task</a>. This tutorial was adjusted and extended for ICCN’21 by Marianne de Heer Kloots and Jelle Zuidema.</p>
 <p>Eye-tracking data from reading represent an important resource for both linguistics and natural language processing. The ability to accurately model gaze features is a key source of information for advancing our understanding of language processing. On one hand, it can tell us how well our computational models align with human language processing mechanisms. On the other hand, it may provide more accurate models of reading to further psycholinguistic research.</p>
 <p><strong>What you’ll learn</strong>: At the end of this tutorial, you will…</p>
@@ -771,8 +493,8 @@ title="Print to PDF"
 </ul>
 <p>Throughout the tutoroial there are exercises for you to do. For some excercises you’ll receive points, which will determine your grade (<strong>10 points in total, 10% of the grade for the entire course</strong>).</p>
 <section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
 <li><p>Setup</p></li>
 <li><p>Exploring the ZuCo corpus</p></li>
 <li><p>Visualizing eye tracking features</p></li>
@@ -785,7 +507,7 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font">
-<h1>Exercises (<font color="darkorange"><b>ToDos</b></font>/<font color="cornflowerblue"><b>ToThinks</b></font>)<a class="headerlink" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font" title="Permalink to this headline">#</a></h1>
+<h1>Exercises (<font color="darkorange"><b>ToDos</b></font>/<font color="cornflowerblue"><b>ToThinks</b></font>)<a class="headerlink" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font" title="Permalink to this heading">#</a></h1>
 <p>We believe that the best way to understand analysis methods is by <em>actually programming</em> the analyses yourself. You have already seen some of these (ungraded) exercises, which we call “ToDos”. There are different types of exercises throughout the notebook, including:</p>
 <ul class="simple">
 <li><p><font color="darkorange"><b>ToDos</b></font> : short programming exercises</p></li>
@@ -795,9 +517,9 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="setup">
-<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h1>
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
 <section id="preparation-i-packages-data-and-helper-functions">
-<h2>Preparation I: Packages, data and helper functions<a class="headerlink" href="#preparation-i-packages-data-and-helper-functions" title="Permalink to this headline">#</a></h2>
+<h2>Preparation I: Packages, data and helper functions<a class="headerlink" href="#preparation-i-packages-data-and-helper-functions" title="Permalink to this heading">#</a></h2>
 <p>Run these cells to download and import the required packages for this notebook, the eye-tracking dataset, and some helper functions that we will need later for training and evaluating models.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -883,12 +605,12 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </div>
 </section>
 <section id="b-b">
-<h2><b> </b><a class="headerlink" href="#b-b" title="Permalink to this headline">#</a></h2>
+<h2><b> </b><a class="headerlink" href="#b-b" title="Permalink to this heading">#</a></h2>
 <p>If you now go to the File tab (red arrow in the image below) you should see a folder named <em>week4</em>, which contains a folder named <em>data</em> with the downloaded files (and also a folder named <em>models</em>, and some other files).</p>
 <p><img alt="ICCN-file-folders" src="_images/ICCN-file-folders.png" /></p>
 </section>
 <section id="preparation-ii-downloading-the-large-language-models">
-<h2>Preparation II: downloading the large language models<a class="headerlink" href="#preparation-ii-downloading-the-large-language-models" title="Permalink to this headline">#</a></h2>
+<h2>Preparation II: downloading the large language models<a class="headerlink" href="#preparation-ii-downloading-the-large-language-models" title="Permalink to this heading">#</a></h2>
 <p>Next, we’re going to download the language models that we will use in this tutorial. We will load these into the colab environment from Google Drive, similar to how you’ve loaded the EEG data in week 2. For this, you need to do the following:</p>
 <p><strong>1. Give Colab permission to access Google Drive</strong> Execute the cell below, follow the instructions and copy the token. You now should be able to access your drive through the File tab via the folder <em>drive</em>.</p>
 <div class="cell docutils container">
@@ -906,14 +628,14 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </div>
 <p><strong>2. Add the model files to Google Drive</strong> Below you see how to add the files to My Drive. Please read the instructions carefully and follow the steps.</p>
 <p><img alt="ICCN-drive-steps" src="_images/ICCN-drive-steps.png" /></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The links below will give you access to the models. DON’T click on the blue button, but instead, click on the icon on top for adding a shortcut to your drive (see above). Alternatively, you may need to click the triple points (<span class="math notranslate nohighlight">\(\vdots\)</span>) in the top right, and click on the option ‘Organize’.</p></li>
 </ol>
 <ul class="simple">
 <li><p><a class="reference external" href="https://drive.google.com/file/d/1DxfBsCfxRhEPaKfpiWpBFjuugGWpmTQl/view?usp=sharing">distilbert-base-uncased_0</a></p></li>
 <li><p><a class="reference external" href="https://drive.google.com/file/d/1AVfYpZEkf4y4uonFBoIJrPM6K4FsTayF/view?usp=sharing">distilbert-base-uncased_150</a></p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>A dropdown menu will appear, where you should click the button to add the shortcut to your drive. If you want, you can choose or create a subfolder within your Google Drive to store the models.</p></li>
 <li><p>You should then get a confirmation that the shortcut is stored to your Google Drive.</p></li>
 </ol>
@@ -929,7 +651,7 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-exploring-the-zuco-corpus">
-<h1>Data: Exploring the ZuCo corpus<a class="headerlink" href="#data-exploring-the-zuco-corpus" title="Permalink to this headline">#</a></h1>
+<h1>Data: Exploring the ZuCo corpus<a class="headerlink" href="#data-exploring-the-zuco-corpus" title="Permalink to this heading">#</a></h1>
 <p>The cell below loads the ZuCo corpus and prints the number of sentences in the training and test sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,7 +681,7 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </div>
 </div>
 <section id="eye-tracking-features-explained">
-<h2>Eye tracking features explained<a class="headerlink" href="#eye-tracking-features-explained" title="Permalink to this headline">#</a></h2>
+<h2>Eye tracking features explained<a class="headerlink" href="#eye-tracking-features-explained" title="Permalink to this heading">#</a></h2>
 <p>For each word, there are five eye tracking features:</p>
 <ul class="simple">
 <li><p><em>nFix</em> (number of fixations): total number of fixations on the current word.</p></li>
@@ -1198,7 +920,7 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </div>
 </section>
 <section id="a-note-on-tokenization">
-<h2>A note on tokenization<a class="headerlink" href="#a-note-on-tokenization" title="Permalink to this headline">#</a></h2>
+<h2>A note on tokenization<a class="headerlink" href="#a-note-on-tokenization" title="Permalink to this heading">#</a></h2>
 <p>In NLP, tokenization is the task of breaking down text into smaller units called tokens. Tokens can be words, parts of words, or even just characters like punctuation.</p>
 <p>The tokens in this dataset are split in the same manner as they were presented to the participants during the eye tracking experiments. For example, the sequences
 <code class="docutils literal notranslate"><span class="pre">(except,</span></code> and <code class="docutils literal notranslate"><span class="pre">don't</span></code> were presented as such to the reader and not split into <code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, <code class="docutils literal notranslate"><span class="pre">,</span></code> and <code class="docutils literal notranslate"><span class="pre">do</span></code>, <code class="docutils literal notranslate"><span class="pre">n't</span></code> as might be more useful when presenting text to a computer.
@@ -1206,7 +928,7 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="visualizing-eye-tracking-features">
-<h1>Visualizing eye tracking features<a class="headerlink" href="#visualizing-eye-tracking-features" title="Permalink to this headline">#</a></h1>
+<h1>Visualizing eye tracking features<a class="headerlink" href="#visualizing-eye-tracking-features" title="Permalink to this heading">#</a></h1>
 <p><font color='darkorange'><b>ToDo</b></font> Try out the two visualizations below (the bubble and bar plots) for a few different sentences, by changing the sentence_id in the cell below and rerunning the plot cells afterwards. Also try visualizing a few different features by changing the feature_to_draw variable in the first line of each cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1216,7 +938,7 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </div>
 </div>
 <section id="visualizing-fixation-times">
-<h2>Visualizing fixation times<a class="headerlink" href="#visualizing-fixation-times" title="Permalink to this headline">#</a></h2>
+<h2>Visualizing fixation times<a class="headerlink" href="#visualizing-fixation-times" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_to_draw</span> <span class="o">=</span> <span class="s2">&quot;TRT&quot;</span> <span class="c1"># or &quot;GPT&quot; or &quot;TRT&quot;</span>
@@ -1238,7 +960,7 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </div>
 </section>
 <section id="visualizing-fixation-proportion">
-<h2>Visualizing fixation proportion<a class="headerlink" href="#visualizing-fixation-proportion" title="Permalink to this headline">#</a></h2>
+<h2>Visualizing fixation proportion<a class="headerlink" href="#visualizing-fixation-proportion" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_to_draw</span> <span class="o">=</span> <span class="s2">&quot;fixProp&quot;</span> <span class="c1"># or nFix</span>
@@ -1268,7 +990,7 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </div>
 </section>
 <section id="training-data-overview">
-<h2>Training data overview<a class="headerlink" href="#training-data-overview" title="Permalink to this headline">#</a></h2>
+<h2>Training data overview<a class="headerlink" href="#training-data-overview" title="Permalink to this heading">#</a></h2>
 <p>Now let’s get a complete overview of all eye tracking feature values in the training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1295,11 +1017,11 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="models-using-pre-trained-large-language-models">
-<h1>Models: using pre-trained large language models<a class="headerlink" href="#models-using-pre-trained-large-language-models" title="Permalink to this headline">#</a></h1>
+<h1>Models: using pre-trained large language models<a class="headerlink" href="#models-using-pre-trained-large-language-models" title="Permalink to this heading">#</a></h1>
 <p>In this tutorial we will work with a variant of BERT, a state-of-the-art language model trained for English. BERT was the first widely successful transformer-based language model and remains highly influential. DistilBERT is a variant of BERT that requires less training time due to a considerable reduction of the training parameters while maintaining similar performance on benchmark datasets. In the end, we will finetune the model so that we can use it for predicting eye-tracking features from text. But let’s first look at the insides of DistilBERT itself.</p>
 <p>Note: BERT and DistilBERT are so-called ‘masked language model’. Classical language modelling is about computing the probabilities of possible next words given <em>prior</em> words. Masked language modelling is also about predicting a word given prior words, but additionally a masked language model may also use information about <em>future</em> words. E.g., the model is given a sentence like “The dog [MASK] loudly”, an can predict “barked” or another word at the masked position, based on both “the dog” and “loudly”.</p>
 <section id="word-embeddings-with-pen-paper">
-<h2>Word embeddings with pen &amp; paper<a class="headerlink" href="#word-embeddings-with-pen-paper" title="Permalink to this headline">#</a></h2>
+<h2>Word embeddings with pen &amp; paper<a class="headerlink" href="#word-embeddings-with-pen-paper" title="Permalink to this heading">#</a></h2>
 <p>Before running the pretrained language models that we downloaded, we will first consider briefly what word embeddings are and how they can represent useful information about the meaning (and grammatical properties) of words.</p>
 <p>Consider the following words: child, son, daughter, parent, father, mother, king, queen, princess, prince.</p>
 <p><font color='darkorange'><b>ToDo</b></font> With pen &amp; paper (!), draw a 3 dimensional ‘semantic space’ that could represent the distinctions between these words. Position each of the words in the space (assuming a word like ‘father’ is, most of the time ‘non-royal’).</p>
@@ -1314,7 +1036,7 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </div>
 </section>
 <section id="word-embeddings-from-a-large-language-model">
-<h2>Word embeddings from a large language model<a class="headerlink" href="#word-embeddings-from-a-large-language-model" title="Permalink to this headline">#</a></h2>
+<h2>Word embeddings from a large language model<a class="headerlink" href="#word-embeddings-from-a-large-language-model" title="Permalink to this heading">#</a></h2>
 <p>Make the ‘distilbert’ language model and the package scprep available, and make a list of the words. (We will call that list “sentences” as we will later look at sentences of more than 1 word).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1452,9 +1174,9 @@ Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/d
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
             <div id="906c72cb-0b4e-4059-83e6-3badae5d32d6" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
-
+                
                     window.PLOTLYENV=window.PLOTLYENV || {};
-
+                    
                 if (document.getElementById("906c72cb-0b4e-4059-83e6-3badae5d32d6")) {
                     Plotly.newPlot(
                         '906c72cb-0b4e-4059-83e6-3badae5d32d6',
@@ -1462,7 +1184,7 @@ Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/d
                         {"legend": {"tracegroupgap": 0}, "margin": {"t": 60}, "scene": {"domain": {"x": [0.0, 1.0], "y": [0.0, 1.0]}, "xaxis": {"title": {"text": "PC1"}}, "yaxis": {"title": {"text": "PC2"}}, "zaxis": {"title": {"text": "PC3"}}}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
-
+                            
 var gd = document.getElementById('906c72cb-0b4e-4059-83e6-3badae5d32d6');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
@@ -1487,7 +1209,7 @@ if (outputEl) {{
 
                         })
                 };
-
+                
             </script>
         </div>
 </body>
@@ -1496,7 +1218,7 @@ if (outputEl) {{
 <p><font color='darkorange'><b>ToDo</b></font> Inspect the PCA vectors and check where the words are positioned in this 3-dimensional space. Compare the space with the space you drew in the pen &amp; paper exercise above.</p>
 <p><font color='darkorange'><b>ToDo</b></font> Think of another collection of words that might be interesting to inspect in this way and see if you can plot an interpretable 3-dimensional word space.</p>
 <section id="static-versus-contextualized-word-embeddings">
-<h3>Static versus contextualized word embeddings<a class="headerlink" href="#static-versus-contextualized-word-embeddings" title="Permalink to this headline">#</a></h3>
+<h3>Static versus contextualized word embeddings<a class="headerlink" href="#static-versus-contextualized-word-embeddings" title="Permalink to this heading">#</a></h3>
 <p>In Large Language Models, the input embeddings are static (unique for each word/token). But the activation vectors of higher layers in the model are often more useful (e.g., for predicting brain activation). These vectors, however, are not static; if we use them to build up a representation for words, we call these representations “contextualized embeddings”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1571,7 +1293,7 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05_extra_lab_ICCN-EyeTracking_58_0.png" src="_images/05_extra_lab_ICCN-EyeTracking_58_0.png" />
+<img alt="_images/1f9aaf53a3b68a891a855a7d7bac539526d410cdc5d7eca50ad754156f84434b.png" src="_images/1f9aaf53a3b68a891a855a7d7bac539526d410cdc5d7eca50ad754156f84434b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1606,7 +1328,7 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05_extra_lab_ICCN-EyeTracking_62_0.png" src="_images/05_extra_lab_ICCN-EyeTracking_62_0.png" />
+<img alt="_images/c472f4f1250b8f4c370fc3141cc27580c4f2a6522e92b2c99330aa4755682f42.png" src="_images/c472f4f1250b8f4c370fc3141cc27580c4f2a6522e92b2c99330aa4755682f42.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1622,7 +1344,7 @@ if (outputEl) {{
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="finetuning-the-language-model-on-eye-tracking-data">
-<h1>Finetuning the language model on eye-tracking data<a class="headerlink" href="#finetuning-the-language-model-on-eye-tracking-data" title="Permalink to this headline">#</a></h1>
+<h1>Finetuning the language model on eye-tracking data<a class="headerlink" href="#finetuning-the-language-model-on-eye-tracking-data" title="Permalink to this heading">#</a></h1>
 <p><font color='darkorange'><strong>ToDo</strong></font></p>
 <p>Try fine-tuning the DistilBERT model on the eye tracking data for a few epochs using the code in the cell below. This can take a while (e.g. 30 minutes for 5 epochs). It’s best to start with a low number of epochs (1 or 2). You can ignore the warning about the model checkpoint. After this cell has finished executing, your fine-tuned model should be saved to the <em>models</em> folder within the <em>week4</em> folder (check the File tab).</p>
 <p>Alternatively, you <strong>may also skip the cell below</strong> and work with the models that you have added to your Google Drive at the start of this tutorial:</p>
@@ -1685,7 +1407,7 @@ Model saved to ./models/distilbert-base-uncased_5
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="evaluating-model-predictions">
-<h1>Evaluating model predictions<a class="headerlink" href="#evaluating-model-predictions" title="Permalink to this headline">#</a></h1>
+<h1>Evaluating model predictions<a class="headerlink" href="#evaluating-model-predictions" title="Permalink to this heading">#</a></h1>
 <p>We will now load a pre-trained model without fine-tuning, and a pre-trained model that is fine-tuned on eye tracking data, and see how well they do at predicting eye tracking features from text. When you run the cells below, you will see tables with the predictions for the different eye tracking features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1725,7 +1447,7 @@ Model saved to ./models/distilbert-base-uncased_5
 </div>
 </div>
 <section id="baseline">
-<h2>Baseline<a class="headerlink" href="#baseline" title="Permalink to this headline">#</a></h2>
+<h2>Baseline<a class="headerlink" href="#baseline" title="Permalink to this heading">#</a></h2>
 <p>We also need a baseline to compare our models’ performances against. We will use the mean central tendency as a baseline, i.e. our estimate for each eye tracking feature will be the mean value of that feature in the training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1758,7 +1480,7 @@ fixProp 67.05723394392217
 </div>
 </section>
 <section id="evaluation-metric-mean-absolute-error">
-<h2>Evaluation metric: Mean absolute error<a class="headerlink" href="#evaluation-metric-mean-absolute-error" title="Permalink to this headline">#</a></h2>
+<h2>Evaluation metric: Mean absolute error<a class="headerlink" href="#evaluation-metric-mean-absolute-error" title="Permalink to this heading">#</a></h2>
 <p>Now that we have the predictions of the baseline (the mean values) as well as the predictions of the pre-trained and fine-tuned models, we can compare them on an evaluation metric.</p>
 <p>We will evaluate prediction performance by using the <em>mean absolute error</em> metric (MAE), meaning that we average over the error of all samples in the test set:</p>
 <p><span class="math notranslate nohighlight">\(MAE = \frac{\sum_{i=1}^{n} | y_{i} - x_{i}|}{n} \)</span></p>
@@ -1802,7 +1524,7 @@ fixProp 67.05723394392217
 </div>
 </section>
 <section id="visualization-of-predictions">
-<h2>Visualization of predictions<a class="headerlink" href="#visualization-of-predictions" title="Permalink to this headline">#</a></h2>
+<h2>Visualization of predictions<a class="headerlink" href="#visualization-of-predictions" title="Permalink to this heading">#</a></h2>
 <p>We can also visualize the predictions of different models, the baseline and the true data for specific sentences.</p>
 <p><font color='darkorange'><strong>Todo</strong></font> Compare the results for a few specific sentences and features (change the sentence_to_plot and feature_to_plot variables in the code cell below).</p>
 <div class="cell docutils container">
@@ -1835,7 +1557,7 @@ fixProp 67.05723394392217
 </div>
 </section>
 <section id="part-of-speech-analysis">
-<h2>Part of Speech Analysis<a class="headerlink" href="#part-of-speech-analysis" title="Permalink to this headline">#</a></h2>
+<h2>Part of Speech Analysis<a class="headerlink" href="#part-of-speech-analysis" title="Permalink to this heading">#</a></h2>
 <p>Above, we have both evaluated the aggregated performance of the models as well as looked at the predictions for specific sentences.</p>
 <p>Next, we want to analyze whether there are certain word categories (i.e. parts of speech, PoS) for which eye tracking features are more easily predictable than others. Therefore, we first use a part-of-speech tagger to get the PoS tags for the sentence in our test data, and then plot the predictions vs. true eye tracking data per PoS tag below.</p>
 <div class="cell docutils container">
@@ -1905,7 +1627,7 @@ fixProp 67.05723394392217
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1913,53 +1635,138 @@ fixProp 67.05723394392217
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="05_extra.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Extra</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_extra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Extra</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="10_mini-projects_resources.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="10_mini-projects_resources.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Resources for mini-projects</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+</div></div>
   
-    <div class="extra_footer">
-      <div>
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-font-color-darkorange-b-todos-b-font-font-color-cornflowerblue-b-tothinks-b-font">Exercises (<font color="darkorange"><b>ToDos</b></font>/<font color="cornflowerblue"><b>ToThinks</b></font>)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-i-packages-data-and-helper-functions">Preparation I: Packages, data and helper functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-b"><b> </b></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-ii-downloading-the-large-language-models">Preparation II: downloading the large language models</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploring-the-zuco-corpus">Data: Exploring the ZuCo corpus</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eye-tracking-features-explained">Eye tracking features explained</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-tokenization">A note on tokenization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-eye-tracking-features">Visualizing eye tracking features</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-fixation-times">Visualizing fixation times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-fixation-proportion">Visualizing fixation proportion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-data-overview">Training data overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#models-using-pre-trained-large-language-models">Models: using pre-trained large language models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings-with-pen-paper">Word embeddings with pen &amp; paper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings-from-a-large-language-model">Word embeddings from a large language model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-versus-contextualized-word-embeddings">Static versus contextualized word embeddings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#finetuning-the-language-model-on-eye-tracking-data">Finetuning the language model on eye-tracking data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-model-predictions">Evaluating model predictions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline">Baseline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metric-mean-absolute-error">Evaluation metric: Mean absolute error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-predictions">Visualization of predictions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-of-speech-analysis">Part of Speech Analysis</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
 </div>
 
-    </div>
-</p>
-        </footer>
-    </div>
-    
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
