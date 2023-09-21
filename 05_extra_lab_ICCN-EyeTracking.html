@@ -525,8 +525,8 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Install and import required packages in the current Jupyter kernel</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="o">!{</span>sys.executable<span class="o">}</span> -m pip install -q numpy pandas seaborn matplotlib torch transformers spacy scipy
-<span class="o">!</span>python3 -m spacy download en_core_web_sm
+<span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>seaborn<span class="w"> </span>matplotlib<span class="w"> </span>torch<span class="w"> </span>transformers<span class="w"> </span>spacy<span class="w"> </span>scipy
+<span class="o">!</span>python3<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_sm
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -550,7 +550,7 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 <span class="c1"># making sure Spacy doesn&#39;t mess with our tokenization</span>
 <span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">Doc</span>
 <span class="k">def</span> <span class="nf">custom_tokenizer</span><span class="p">(</span><span class="n">wordlist</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;replace spacy tokenizer with already tokenized list of words&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;replace spacy tokenizer with already tokenized list of words&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">Doc</span><span class="p">(</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">,</span> <span class="n">words</span><span class="o">=</span><span class="n">wordlist</span><span class="p">,</span> <span class="n">spaces</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">custom_tokenizer</span>
 </pre></div>
@@ -580,14 +580,14 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model folder already exists&#39;</span><span class="p">)</span>
 
   <span class="c1"># download files</span>
-  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/model.py -O model.py
-  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/dataloader.py -O dataloader.py
-  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/evaluation_metric.py -O evaluation_metric.py
-  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/LM_functions.py -O LM_functions.py
+  <span class="o">!</span>wget<span class="w"> </span>-q<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://raw.githubusercontent.com/clclab/ICCN-Language/main/model.py<span class="w"> </span>-O<span class="w"> </span>model.py
+  <span class="o">!</span>wget<span class="w"> </span>-q<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://raw.githubusercontent.com/clclab/ICCN-Language/main/dataloader.py<span class="w"> </span>-O<span class="w"> </span>dataloader.py
+  <span class="o">!</span>wget<span class="w"> </span>-q<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://raw.githubusercontent.com/clclab/ICCN-Language/main/evaluation_metric.py<span class="w"> </span>-O<span class="w"> </span>evaluation_metric.py
+  <span class="o">!</span>wget<span class="w"> </span>-q<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://raw.githubusercontent.com/clclab/ICCN-Language/main/LM_functions.py<span class="w"> </span>-O<span class="w"> </span>LM_functions.py
 
-  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/README.md -O data/README.md
-  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/test_data.csv -O data/test_data.csv
-  <span class="o">!</span>wget -q --no-check-certificate https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/training_data.csv -O data/training_data.csv
+  <span class="o">!</span>wget<span class="w"> </span>-q<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/README.md<span class="w"> </span>-O<span class="w"> </span>data/README.md
+  <span class="o">!</span>wget<span class="w"> </span>-q<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/test_data.csv<span class="w"> </span>-O<span class="w"> </span>data/test_data.csv
+  <span class="o">!</span>wget<span class="w"> </span>-q<span class="w"> </span>--no-check-certificate<span class="w"> </span>https://raw.githubusercontent.com/clclab/ICCN-Language/main/data/training_data.csv<span class="w"> </span>-O<span class="w"> </span>data/training_data.csv
 </pre></div>
 </div>
 </div>
@@ -1065,7 +1065,7 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install scprep #phate umap-learn
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>scprep<span class="w"> </span>#phate<span class="w"> </span>umap-learn
 <span class="kn">import</span> <span class="nn">scprep</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>

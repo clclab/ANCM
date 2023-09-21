@@ -466,9 +466,27 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing CmdStan version: 2.30.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing CmdStan version: 2.33.1
 Install directory: /root/.cmdstan
-CmdStan version 2.30.1 already installed
+Downloading CmdStan version 2.33.1
+Download successful, file: /tmp/tmpuxm6lth4
+Extracting distribution
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:cmdstanpy:cmd: make build -j1
+cwd: None
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unpacked download as cmdstan-2.33.1
+Building version cmdstan-2.33.1, may take several minutes, depending on your system.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:cmdstanpy:cmd: make examples/bernoulli/bernoulli
+cwd: None
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test model compilation
+Installed cmdstan-2.33.1
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
@@ -476,7 +494,7 @@ CmdStan version 2.30.1 already installed
 </div>
 </div>
 </div>
-<p>Next, you need to download the data and Stan template <a class="reference external" href="https://drive.google.com/file/d/1-ccSj_VuTfw4cx2qC4080pgci0z3P_Dh/view?usp=sharing">here</a>. Save it to your own Google Drive as in previous labs, and then mount your drive.</p>
+<p>Next, you need to download the data and Stan template <a class="reference external" href="https://drive.google.com/file/d/1BBeL2BtfTIBqMlJFTC_OZTUdT_pt9mpR/view?usp=share_link">here</a>. Save it to your own Google Drive as in previous labs, and then mount your drive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
@@ -502,7 +520,7 @@ CmdStan version 2.30.1 already installed
 </section>
 <section id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
-<p>The data in this lab come from the Eurovision Song Contest edition of the Hooked on Music experiment. You can try the experiment <a class="reference external" href="https://hooked.amsterdammusiclab.nl/experiment/eurovision_2021">here</a>.</p>
+<p>The data in this lab come from the Eurovision Song Contest edition of the Hooked on Music experiment. You can try the experiment (here)[<a class="reference external" href="https://hooked.amsterdammusiclab.nl/experiment/eurovision_2021">https://hooked.amsterdammusiclab.nl/experiment/eurovision_2021</a>].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">segment_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;irt4ancm/segment_list.csv&#39;</span><span class="p">)</span>
@@ -1225,8 +1243,9 @@ cwd: None
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">std_normal()</span></code> for a standard normal (or half-normal) distribution</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">normal(mu,</span> <span class="pre">sigma)</span></code> for a normal distribution with specified mean and standard deviation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">lognormal(mu,</span> <span class="pre">sigma)</span></code> for a log-normal distribution (handy for discrimination parameters)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">bernoulli(p)</span></code> for a Bernoulli distribution parameterised by the probability of success</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">bernoulli(z)</span></code> for a Bernoulli distribution parameterised by the inverse logistic function of the probability of success</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span> <span class="pre">bernoulli_logit(z)</span></code> for a Bernoulli distribution parameterised by the inverse logistic function of the probability of success</p></li>
 </ul>
 <p>The full 4PL IRT model looks like this:</p>
 <p><span class="math notranslate nohighlight">\(\mathrm{P}[x_{ni} = 1] = \gamma_i + (\zeta_i - \gamma_i) \frac{\mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}{1 + \mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}\)</span></p>
