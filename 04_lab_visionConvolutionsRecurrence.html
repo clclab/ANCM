@@ -469,10 +469,10 @@ document.write(`
 <h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
 <p>In this lab we will explore information processing in a pretrained recurrent neural network (RNN) trained for object recognition from visual input and investigate the role of a <em>recurrent</em> information flow.</p>
 <p>We will look at a neural network model that uses both convolutions (as in the convolutional neural nets we saw for audio and image processing) and recurrent connections (i.e., connection that break the feedforward structure we are used to in these models).</p>
-<p><img alt="Figure 1" src="_images/04_lab_paper_figure1.png" /></p>
+<p><img alt="Figure 1" src="https://github.com/clclab/ANCM/blob/main/book/img/04_lab_paper_figure1.png?raw=1" /></p>
 <p>The lab assignment is based on this paper:</p>
 <font color='blue'>
-Thorat, S., Aldegheri, G., & Kietzmann, T. C. (2021). Category-orthogonal object features guide information processing in recurrent neural networks trained for object categorization. arXiv preprint arXiv:2111.07898. 
+Thorat, S., Aldegheri, G., & Kietzmann, T. C. (2021). Category-orthogonal object features guide information processing in recurrent neural networks trained for object categorization. arXiv preprint arXiv:2111.07898.
 https://doi.org/10.48550/arXiv.2111.07898
 </font>
 <p>We advice you to open the paper in parallel to this notebook, since it offers background information as well as additional info with regard to methods and analysis.</p>
@@ -487,20 +487,11 @@ https://doi.org/10.48550/arXiv.2111.07898
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
-<p>To make use of the original code of the authors, an older version  of tensorflow version (1.13 or 1.15) is required.</p>
+<p>To be able to run this tutorial, we need to import a file from an older version of Tensorflow. To do so, download <a class="reference external" href="https://drive.google.com/file/d/1Oqz6bVL-qDGVhouDpUdb4AhX1Q1p0FF-/view?usp=sharing">this file</a> and upload it in this Colab environment.</p>
+<p>Then, import the file as a module:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip uninstall tensorflow
-!pip install tensorflow-gpu==1.15
-!apt install --allow-change-held-packages libcudnn7=7.4.1.5-1+cuda10.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># specifying the TensorFlow version; UPDATE (Sept 2022): this no longer works in Colab.</span>
-<span class="c1">#%tensorflow_version 1.13</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">input_data</span>
 </pre></div>
 </div>
 </div>
@@ -518,7 +509,6 @@ https://doi.org/10.48550/arXiv.2111.07898
 <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">shuffle</span>
 
 <span class="c1"># import MNIST and fashion MNIST datasets</span>
-<span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="kn">import</span> <span class="n">input_data</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span> <span class="k">as</span> <span class="n">mnist_plot</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">fashion_mnist</span> <span class="k">as</span> <span class="n">fashion_mnist_plot</span>
 
@@ -533,10 +523,9 @@ https://doi.org/10.48550/arXiv.2111.07898
 <span class="kn">from</span> <span class="nn">torch.utils.data.sampler</span> <span class="kn">import</span> <span class="n">SubsetRandomSampler</span>
 <span class="kn">from</span> <span class="nn">torchsummary</span> <span class="kn">import</span> <span class="n">summary</span>
 
-<span class="c1"># suppress warnings and tensorflow warnings for visibility</span>
+<span class="c1"># suppress warnings for visibility</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">set_verbosity</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
 
 <span class="c1"># This command makes sure that the figure is plotted in the notebook instead of in a separate window!</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -675,9 +664,12 @@ https://doi.org/10.48550/arXiv.2111.07898
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;svrhm21_RNN_explain&#39;...
-remote: Enumerating objects: 51, done.
-remote: Total 51 (delta 0), reused 0 (delta 0), pack-reused 51
-Unpacking objects: 100% (51/51), done.
+remote: Enumerating objects: 54, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 54 (delta 0), reused 0 (delta 0), pack-reused 51
+Receiving objects: 100% (54/54), 42.42 MiB | 15.70 MiB/s, done.
+Resolving deltas: 100% (4/4), done.
 </pre></div>
 </div>
 </div>
@@ -686,7 +678,7 @@ Unpacking objects: 100% (51/51), done.
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <p>Humans are able to recognize objects even when there is occlusion or clutter present in the image. As you can experience in the famous gestalt figure below humans perceive this image as if there would be a white triangle lying over black dots and another black triangle? Can you see it?</p>
-<p><img alt="Triangle" src="_images/04_lab_triangle.jpeg" /></p>
+<p><img alt="Triangle" src="https://github.com/clclab/ANCM/blob/main/book/img/04_lab_triangle.jpeg?raw=1" /></p>
 <p><a class="reference external" href="https://miro.medium.com/max/2000/0*NnBMMDYOlNXHJYCw.png">source</a></p>
 <p>But in fact there is no white triangle. However, we humans tend to group parts of the images such that we perceive coherent, global shapes. It has been argued that <em>recurrence</em> in the neural substrate responsible for visual processing may underlie computations that benefit task performance by making use of these contextual signals (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627307007623">Roelfsema et al., 2007</a>; <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0959438820301768">van Bergen &amp; Kriegeskorte, 2020</a>).</p>
 <p>Feedforward Neural Networks (FNN) have been widely used to solve object recognition. However, Recurrent Neural Networks (RNN) – already popular for decades in language processing – have been recently been introduced into the domain of visual processing to help solve common problems of FNN approaches and to model information that humans seem to use when categorizing objects. They do this by incorporating an abundance of recurrent activity which means that the unit activations are a fuction both of the input and their prior activations. It is however, still unclear whether during object recognition category orthogonal information (such as objects location, orientation or scale) are discarded or used by RNNs as auxillary information. Looking at the image above suggests that these auxillary information can indeed be very important for object categorization.</p>
@@ -699,8 +691,8 @@ Unpacking objects: 100% (51/51), done.
 <p>Let’s start with visualizing some of the images contained in the vanilla versions of the <a class="reference external" href="https://www.tensorflow.org/datasets/catalog/mnist">MNIST</a> and <a class="reference external" href="https://github.com/zalandoresearch/fashion-mnist">Fashion-MNIST (FMNIST)</a> datasets: Both datasets contain 10 image classes consisting either a single digit number or a clothing item respectivly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># load datasets </span>
-<span class="c1"># it is important to note that read_data_sets will download vanilla MNIST when </span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># load datasets</span>
+<span class="c1"># it is important to note that read_data_sets will download vanilla MNIST when</span>
 <span class="c1"># no path specified. Therefore we use the dowloaded datasets from the github page!</span>
 
 <span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s1">&#39;/content/svrhm21_RNN_explain/MNIST_data&#39;</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -709,8 +701,32 @@ Unpacking objects: 100% (51/51), done.
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:From &lt;ipython-input-27-aa901f1ec981&gt;:5: read_data_sets (from input_data) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as: tensorflow_datasets.load(&#39;mnist&#39;)
+WARNING:tensorflow:From /content/input_data.py:296: _maybe_download (from input_data) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please write your own downloading logic.
+WARNING:tensorflow:From /content/input_data.py:299: _extract_images (from input_data) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting /content/svrhm21_RNN_explain/MNIST_data/train-images-idx3-ubyte.gz
-Extracting /content/svrhm21_RNN_explain/MNIST_data/train-labels-idx1-ubyte.gz
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:From /content/input_data.py:304: _extract_labels (from input_data) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+WARNING:tensorflow:From /content/input_data.py:112: _dense_to_one_hot (from input_data) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.one_hot on tensors.
+WARNING:tensorflow:From /content/input_data.py:328: _DataSet.__init__ (from input_data) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/_DataSet.py from tensorflow/models.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting /content/svrhm21_RNN_explain/MNIST_data/train-labels-idx1-ubyte.gz
 Extracting /content/svrhm21_RNN_explain/MNIST_data/t10k-images-idx3-ubyte.gz
 Extracting /content/svrhm21_RNN_explain/MNIST_data/t10k-labels-idx1-ubyte.gz
 Extracting /content/svrhm21_RNN_explain/fMNIST_data/train-images-idx3-ubyte.gz
@@ -766,7 +782,7 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c8d529beb6dfd8c5f65935d036f2d40973283b7f65b3dd5cd9730d50ab3a46e4.png" src="_images/c8d529beb6dfd8c5f65935d036f2d40973283b7f65b3dd5cd9730d50ab3a46e4.png" />
+<img alt="_images/a36ec203b9f5fb5246b1cf0eeda122546cc6735b6006ecc63696266f13e1afb7.png" src="_images/a36ec203b9f5fb5246b1cf0eeda122546cc6735b6006ecc63696266f13e1afb7.png" />
 </div>
 </div>
 <section id="introduce-environment-clutter">
@@ -815,7 +831,7 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4fb8fa5840304db8a39e3f78c55daa176c9fd34657951ce1f8274a0dc7d185d7.png" src="_images/4fb8fa5840304db8a39e3f78c55daa176c9fd34657951ce1f8274a0dc7d185d7.png" />
+<img alt="_images/283e5a2337bd54158a861ce3d064f108df702fd96591dfc569662eacd23564f9.png" src="_images/283e5a2337bd54158a861ce3d064f108df702fd96591dfc569662eacd23564f9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -831,7 +847,7 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;red&#39;&gt;&lt;b&gt;ToSubmit 1&lt;/b&gt;&lt;/font&gt;</span>
 
-<span class="c1">#@markdown Plot four images of the cluttered stimuli next to each other containing two pairs with the same ground truth labels (e.g., 2x &#39;5&#39; and 2x &#39;Sandal&#39;). </span>
+<span class="c1">#@markdown Plot four images of the cluttered stimuli next to each other containing two pairs with the same ground truth labels (e.g., 2x &#39;5&#39; and 2x &#39;Sandal&#39;).</span>
 </pre></div>
 </div>
 </div>
@@ -848,7 +864,7 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 <section class="tex2jax_ignore mathjax_ignore" id="rnn-architecture">
 <h1>RNN architecture<a class="headerlink" href="#rnn-architecture" title="Permalink to this heading">#</a></h1>
 <p>The RNN used for training and subsequent analyses consists of two convolutional layers followed by one fully connected (FC) layer, as illustrated in the paper below (Figure 2 in the paper). The architecture contained both lateral and top-down connections and the RNN was unrolled for 4 timesteps. Finally, the activations of the FC layer were concatenated and mapped to the classification output (i.e. <code class="docutils literal notranslate"><span class="pre">class_names</span></code>) using an FC layer.</p>
-<p><img alt="Figure 2" src="_images/04_lab_paper_figure2.png" /></p>
+<p><img alt="Figure 2" src="https://github.com/clclab/ANCM/blob/main/book/img/04_lab_paper_figure2.png?raw=1" /></p>
 <section id="import-network-architecture">
 <h2>Import network architecture<a class="headerlink" href="#import-network-architecture" title="Permalink to this heading">#</a></h2>
 <p>Here we use the authors’ code from <a class="reference external" href="https://github.com/KietzmannLab/svrhm21_RNN_explain.git">Github</a> to instantiate their RNN implementation which incorporates both lateral and top-down connections. By clicking on the cell you can view their code to understand the implementation details.</p>
@@ -1009,6 +1025,41 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-09-26 16:19:41--  https://osf.io/wxmkv/download/
+Resolving osf.io (osf.io)... 35.190.84.173
+Connecting to osf.io (osf.io)|35.190.84.173|:443... connected.
+HTTP request sent, awaiting response... 302 FOUND
+Location: https://files.de-1.osf.io/v1/resources/pf4u5/providers/osfstorage/6188e956dde25b0240fa44e5?action=download&amp;direct&amp;version=1 [following]
+--2023-09-26 16:19:42--  https://files.de-1.osf.io/v1/resources/pf4u5/providers/osfstorage/6188e956dde25b0240fa44e5?action=download&amp;direct&amp;version=1
+Resolving files.de-1.osf.io (files.de-1.osf.io)... 35.186.249.111
+Connecting to files.de-1.osf.io (files.de-1.osf.io)|35.186.249.111|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 100598907 (96M) [application/octet-stream]
+Saving to: ‘rnn_bglt_0111_t_4_num_1.pth’
+
+rnn_bglt_0111_t_4_n 100%[===================&gt;]  95.94M  10.4MB/s    in 11s     
+
+2023-09-26 16:19:55 (8.72 MB/s) - ‘rnn_bglt_0111_t_4_num_1.pth’ saved [100598907/100598907]
+
+--2023-09-26 16:19:55--  https://osf.io/98tgk/download
+Resolving osf.io (osf.io)... 35.190.84.173
+Connecting to osf.io (osf.io)|35.190.84.173|:443... connected.
+HTTP request sent, awaiting response... 302 FOUND
+Location: https://files.de-1.osf.io/v1/resources/pf4u5/providers/osfstorage/6188e9556c2dfb0217efa59b?action=download&amp;direct&amp;version=1 [following]
+--2023-09-26 16:19:55--  https://files.de-1.osf.io/v1/resources/pf4u5/providers/osfstorage/6188e9556c2dfb0217efa59b?action=download&amp;direct&amp;version=1
+Resolving files.de-1.osf.io (files.de-1.osf.io)... 35.186.249.111
+Connecting to files.de-1.osf.io (files.de-1.osf.io)|35.186.249.111|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 100598907 (96M) [application/octet-stream]
+Saving to: ‘rnn_bglt_1011_t_4_num_1.pth’
+
+rnn_bglt_1011_t_4_n 100%[===================&gt;]  95.94M  5.79MB/s    in 17s     
+
+2023-09-26 16:20:14 (5.78 MB/s) - ‘rnn_bglt_1011_t_4_num_1.pth’ saved [100598907/100598907]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1079,11 +1130,19 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print true label and predicted label for each of the input images in inputs_v </span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print true label and predicted label for each of the input images in inputs_v</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">img_num</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index:&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;True label:&#39;</span><span class="p">,</span> <span class="n">class_names</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">labels_v</span><span class="p">[</span><span class="n">i</span><span class="p">,:])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> 
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index:&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;True label:&#39;</span><span class="p">,</span> <span class="n">class_names</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">labels_v</span><span class="p">[</span><span class="n">i</span><span class="p">,:])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span>
         <span class="s1">&#39;; Predicted label:&#39;</span><span class="p">,</span> <span class="n">class_names</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span>
- 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index: 0 True label: 6 ; Predicted label: 6
+Index: 1 True label: 1 ; Predicted label: 1
+Index: 2 True label: 5 ; Predicted label: 5
+Index: 3 True label: 5 ; Predicted label: 7
+Index: 4 True label: 2 ; Predicted label: 2
 </pre></div>
 </div>
 </div>
@@ -1114,14 +1173,14 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bcf24e2d017d7a5a2f1a08af94f2bf172dc04f193cf12a569a8330f20c5d6507.png" src="_images/bcf24e2d017d7a5a2f1a08af94f2bf172dc04f193cf12a569a8330f20c5d6507.png" />
+<img alt="_images/0f0dd0c2a570da38d1a76c3f48ca906e5633c28811da934d53ed6b3a76a1d5e4.png" src="_images/0f0dd0c2a570da38d1a76c3f48ca906e5633c28811da934d53ed6b3a76a1d5e4.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 2&lt;/b&gt;&lt;/font&gt;</span>
 
-<span class="c1">#@markdown How would you define a control condition against which you could compare the accuracy you just calculated? </span>
+<span class="c1">#@markdown How would you define a control condition against which you could compare the accuracy you just calculated?</span>
 <span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
@@ -1137,7 +1196,7 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 3&lt;/b&gt;&lt;/font&gt;</span>
 
-<span class="c1">#@markdown Look back at the network architecture in the &quot;Recurrent neural network architecture&quot; section above. How is the recurrent connectivity operationalized? What could be the purpose of the recurrent connections? </span>
+<span class="c1">#@markdown Look back at the network architecture in the &quot;Recurrent neural network architecture&quot; section above. How is the recurrent connectivity operationalized? What could be the purpose of the recurrent connections?</span>
 <span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
@@ -1171,10 +1230,10 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True label: Coat ; Predicted label: T-shirt/top
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True label: 5 ; Predicted label: 5
 </pre></div>
 </div>
-<img alt="_images/8d00251622892262c87aaad1653829c286621a74e7aaaee988ec94b5852b079f.png" src="_images/8d00251622892262c87aaad1653829c286621a74e7aaaee988ec94b5852b079f.png" />
+<img alt="_images/238744688628f43ba02829da8d7bc19c74bb5c6416980ea9357dd982a63bfe11.png" src="_images/238744688628f43ba02829da8d7bc19c74bb5c6416980ea9357dd982a63bfe11.png" />
 </div>
 </div>
 <p>Now, let’s have a look at man input images at once, and the effect of the recurrent information flow for all timesteps:</p>
@@ -1194,12 +1253,12 @@ Extracting /content/svrhm21_RNN_explain/fMNIST_data/t10k-labels-idx1-ubyte.gz
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True label: 6 ; Predicted label: 6
-True label: 9 ; Predicted label: 9
-True label: T-shirt/top ; Predicted label: T-shirt/top
-True label: Ankle boot ; Predicted label: Ankle boot
+True label: 1 ; Predicted label: 1
+True label: 5 ; Predicted label: 5
+True label: 5 ; Predicted label: 7
 </pre></div>
 </div>
-<img alt="_images/211eab06d3ea3750b467ae54e577318fc83926a1a41b35b34daf03270958947f.png" src="_images/211eab06d3ea3750b467ae54e577318fc83926a1a41b35b34daf03270958947f.png" />
+<img alt="_images/0713f7e2a6be8a4854d094605263ba0a6871b7b8c9373c36e93e19753506d953.png" src="_images/0713f7e2a6be8a4854d094605263ba0a6871b7b8c9373c36e93e19753506d953.png" />
 </div>
 </div>
 <p><strong>Paper Figure 3 (B)</strong></p>
@@ -1254,19 +1313,27 @@ True label: Ankle boot ; Predicted label: Ankle boot
     <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">var_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Timestep&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-    
+
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Output category accuracies: &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">out_acc1</span><span class="p">,</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Auxiliary variable avg. decoding through time: &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dec_acc1</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="mi">3</span><span class="p">),</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Auxiliary variable avg. decoding through layer depth: &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dec_acc1</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="mi">3</span><span class="p">),</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output category accuracies:  0.81226
+Auxiliary variable avg. decoding through time:  [0.65223333 0.730225   0.82524583 0.84927083]
+Auxiliary variable avg. decoding through layer depth:  [0.70119167 0.7465125  0.81060833 0.7986625 ]
+</pre></div>
+</div>
+<img alt="_images/fefa5cb661c4550fc912ce3f93801f056901d92efbbed01077b3f3e4d9567189.png" src="_images/fefa5cb661c4550fc912ce3f93801f056901d92efbbed01077b3f3e4d9567189.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;red&#39;&gt;&lt;b&gt;ToSubmit 5&lt;/b&gt;&lt;/font&gt;</span>
 
-<span class="c1">#@markdown Please plot the decoding accuracy for the auxiliary variables (i.e., location, scale, orientation) as well, similar to the plot above. </span>
+<span class="c1">#@markdown Please plot the decoding accuracy for the auxiliary variables (i.e., location, scale, orientation) as well, similar to the plot above.</span>
 </pre></div>
 </div>
 </div>
@@ -1284,7 +1351,7 @@ True label: Ankle boot ; Predicted label: Ankle boot
 <span class="c1"># ...</span>
 
 
-<span class="c1">############################   </span>
+<span class="c1">############################</span>
 </pre></div>
 </div>
 </div>
@@ -1313,7 +1380,7 @@ True label: Ankle boot ; Predicted label: Ankle boot
 </div>
 </div>
 </div>
-<p><img alt="Figure 4" src="_images/04_lab_paper_figure4.png" /></p>
+<p><img alt="Figure 4" src="https://github.com/clclab/ANCM/blob/main/book/img/04_lab_paper_figure4.png?raw=1" /></p>
 <p>Below is some plotting code that may be useful to reproduce the graphs from the original paper.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1364,7 +1431,7 @@ True label: Ankle boot ; Predicted label: Ankle boot
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/90e5098ba0599c87cd77b446370e7256e167e2b27587dc870080005197c37de8.png" src="_images/90e5098ba0599c87cd77b446370e7256e167e2b27587dc870080005197c37de8.png" />
+<img alt="_images/9b05cbc237a2a099c1c9f08977188870d9583987e9a32e5c02a443f63635ebf7.png" src="_images/9b05cbc237a2a099c1c9f08977188870d9583987e9a32e5c02a443f63635ebf7.png" />
 </div>
 </div>
 <p><strong>Paper Figure 4 (D)</strong></p>
