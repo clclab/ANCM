@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -63,11 +64,9 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '05_extra_lab_ICCN-EyeTracking';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05_extra_lab_ICCN_EyeTracking';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Resources for mini-projects" href="10_mini-projects_resources.html" />
-    <link rel="prev" title="Extra" href="05_extra.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -78,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -159,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab assignments</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="01_intro.html">Week 1 - Introduction &amp; Logistic regression</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="01_lab_Logistic-regression-for-musical-tags.html">Logistic regression for musical tags</a></li>
 
@@ -190,15 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="05_extra.html">Extra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Modeling Language Processing: Large Language Models &amp; their use in Predicting eye tracking features</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="05_extra.html">Extra</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -259,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/clclab/ANCM/blob/main/book/05_extra_lab_ICCN-EyeTracking.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/clclab/ANCM/blob/main/book/05_extra_lab_ICCN_EyeTracking.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F05_extra_lab_ICCN-EyeTracking.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/clclab/ANCM/issues/new?title=Issue%20on%20page%20%2F05_extra_lab_ICCN_EyeTracking.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -337,7 +337,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/05_extra_lab_ICCN-EyeTracking.ipynb" target="_blank"
+      <li><a href="_sources/05_extra_lab_ICCN_EyeTracking.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,10 +391,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -402,7 +402,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -502,7 +502,7 @@ document.write(`
 <li><p>Finetuning the language model on eye-tracking data</p></li>
 <li><p>Evaluating model predictions</p></li>
 </ol>
-<p><img alt="ICCN-CCN-figure" src="_images/ICCN-CCN-figure.png" /></p>
+<p><img alt="ICCN-CCN-figure" src="https://github.com/clclab/ANCM/blob/main/book/img/ICCN-CCN-figure.png?raw=1" /></p>
 <p>In this tutorial we will look at Large Language Models from Artificial Intelligence, and eye-tracking data from cognitive science, and consider how well the models help understand the data. We will not look at neuroscience data today, but the same models and some logic is used as in the work we discussed in the lecture and journal club where fMRI, ECoG, EEG and MEG data were considered.</p>
 </section>
 </section>
@@ -533,6 +533,7 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">torch</span>
+
 <span class="kn">import</span> <span class="nn">transformers</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -607,7 +608,7 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 <section id="b-b">
 <h2><b> </b><a class="headerlink" href="#b-b" title="Permalink to this heading">#</a></h2>
 <p>If you now go to the File tab (red arrow in the image below) you should see a folder named <em>week4</em>, which contains a folder named <em>data</em> with the downloaded files (and also a folder named <em>models</em>, and some other files).</p>
-<p><img alt="ICCN-file-folders" src="_images/ICCN-file-folders.png" /></p>
+<p><img alt="ICCN-file-folders" src="https://github.com/clclab/ANCM/blob/main/book/img/ICCN-file-folders.png?raw=1" /></p>
 </section>
 <section id="preparation-ii-downloading-the-large-language-models">
 <h2>Preparation II: downloading the large language models<a class="headerlink" href="#preparation-ii-downloading-the-large-language-models" title="Permalink to this heading">#</a></h2>
@@ -620,14 +621,9 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mounted at /content/drive
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>2. Add the model files to Google Drive</strong> Below you see how to add the files to My Drive. Please read the instructions carefully and follow the steps.</p>
-<p><img alt="ICCN-drive-steps" src="_images/ICCN-drive-steps.png" /></p>
+<p><img alt="ICCN-drive-steps" src="https://github.com/clclab/ANCM/blob/main/book/img/ICCN-drive-steps.png?raw=1" /></p>
 <ol class="arabic simple">
 <li><p>The links below will give you access to the models. DON’T click on the blue button, but instead, click on the icon on top for adding a shortcut to your drive (see above). Alternatively, you may need to click the triple points (<span class="math notranslate nohighlight">\(\vdots\)</span>) in the top right, and click on the option ‘Organize’.</p></li>
 </ol>
@@ -663,12 +659,6 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>800 training sentences including 15736 words.
-191 test sentences including 3554 words.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -699,204 +689,6 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>sentence_id</th>
-      <th>word_id</th>
-      <th>word</th>
-      <th>nFix</th>
-      <th>FFD</th>
-      <th>GPT</th>
-      <th>TRT</th>
-      <th>fixProp</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>8670</th>
-      <td>444</td>
-      <td>0</td>
-      <td>The</td>
-      <td>6.896552</td>
-      <td>1.890099</td>
-      <td>2.323104</td>
-      <td>2.323104</td>
-      <td>41.666667</td>
-    </tr>
-    <tr>
-      <th>8671</th>
-      <td>444</td>
-      <td>1</td>
-      <td>original</td>
-      <td>29.885057</td>
-      <td>4.323173</td>
-      <td>5.701227</td>
-      <td>12.316574</td>
-      <td>91.666667</td>
-    </tr>
-    <tr>
-      <th>8672</th>
-      <td>444</td>
-      <td>2</td>
-      <td>wasn't</td>
-      <td>28.735632</td>
-      <td>4.017320</td>
-      <td>7.096464</td>
-      <td>10.443658</td>
-      <td>83.333333</td>
-    </tr>
-    <tr>
-      <th>8673</th>
-      <td>444</td>
-      <td>3</td>
-      <td>a</td>
-      <td>10.344828</td>
-      <td>2.333414</td>
-      <td>5.092959</td>
-      <td>3.484656</td>
-      <td>50.000000</td>
-    </tr>
-    <tr>
-      <th>8674</th>
-      <td>444</td>
-      <td>4</td>
-      <td>good</td>
-      <td>18.390805</td>
-      <td>3.690848</td>
-      <td>4.587787</td>
-      <td>6.065501</td>
-      <td>83.333333</td>
-    </tr>
-    <tr>
-      <th>8675</th>
-      <td>444</td>
-      <td>5</td>
-      <td>movie</td>
-      <td>14.942529</td>
-      <td>3.494965</td>
-      <td>4.928004</td>
-      <td>4.842091</td>
-      <td>83.333333</td>
-    </tr>
-    <tr>
-      <th>8676</th>
-      <td>444</td>
-      <td>6</td>
-      <td>but</td>
-      <td>9.195402</td>
-      <td>2.343723</td>
-      <td>3.563696</td>
-      <td>2.838586</td>
-      <td>50.000000</td>
-    </tr>
-    <tr>
-      <th>8677</th>
-      <td>444</td>
-      <td>7</td>
-      <td>this</td>
-      <td>9.195402</td>
-      <td>2.852332</td>
-      <td>2.852332</td>
-      <td>3.116946</td>
-      <td>58.333333</td>
-    </tr>
-    <tr>
-      <th>8678</th>
-      <td>444</td>
-      <td>8</td>
-      <td>remake</td>
-      <td>24.137931</td>
-      <td>5.900546</td>
-      <td>6.996804</td>
-      <td>8.450462</td>
-      <td>100.000000</td>
-    </tr>
-    <tr>
-      <th>8679</th>
-      <td>444</td>
-      <td>9</td>
-      <td>makes</td>
-      <td>13.793103</td>
-      <td>3.206296</td>
-      <td>3.206296</td>
-      <td>3.793945</td>
-      <td>83.333333</td>
-    </tr>
-    <tr>
-      <th>8680</th>
-      <td>444</td>
-      <td>10</td>
-      <td>it</td>
-      <td>2.298851</td>
-      <td>0.539537</td>
-      <td>0.539537</td>
-      <td>0.539537</td>
-      <td>16.666667</td>
-    </tr>
-    <tr>
-      <th>8681</th>
-      <td>444</td>
-      <td>11</td>
-      <td>look</td>
-      <td>10.344828</td>
-      <td>2.563662</td>
-      <td>2.563662</td>
-      <td>3.701158</td>
-      <td>50.000000</td>
-    </tr>
-    <tr>
-      <th>8682</th>
-      <td>444</td>
-      <td>12</td>
-      <td>like</td>
-      <td>14.942529</td>
-      <td>3.780199</td>
-      <td>10.780439</td>
-      <td>4.570604</td>
-      <td>83.333333</td>
-    </tr>
-    <tr>
-      <th>8683</th>
-      <td>444</td>
-      <td>13</td>
-      <td>a</td>
-      <td>4.597701</td>
-      <td>1.639232</td>
-      <td>2.271556</td>
-      <td>1.639232</td>
-      <td>33.333333</td>
-    </tr>
-    <tr>
-      <th>8684</th>
-      <td>444</td>
-      <td>14</td>
-      <td>masterpiece!&lt;EOS&gt;</td>
-      <td>37.931034</td>
-      <td>4.965806</td>
-      <td>48.142548</td>
-      <td>15.354480</td>
-      <td>100.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -905,15 +697,6 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 
 <span class="c1">#As described above, some preprocessing was performed to get to the numbers in the table above. Make sure you understand the part about feature scaling. What does it mean for interpreting, for example, the values of the variables originally measured in milliseconds?</span>
 <span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">cells</span> <span class="k">with</span> <span class="s1">&#39;Python 3.7.6 64-bit (&#39;</span><span class="mf">3.7.6</span><span class="s1">&#39;)&#39;</span> <span class="n">requires</span> <span class="n">ipykernel</span> <span class="n">package</span><span class="o">.</span>
-
-<span class="n">Run</span> <span class="n">the</span> <span class="n">following</span> <span class="n">command</span> <span class="n">to</span> <span class="n">install</span> <span class="s1">&#39;ipykernel&#39;</span> <span class="n">into</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">environment</span><span class="o">.</span> 
-
-<span class="ne">Command</span>: &#39;/home/mdhk/.pyenv/versions/3.7.6/bin/python -m pip install ipykernel -U --force-reinstall&#39;
 </pre></div>
 </div>
 </div>
@@ -946,7 +729,7 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example_sentence</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;EOS&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">example_sentence</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">]]</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">example_sentence</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;word_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">feature_to_draw</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">feature_to_draw</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;flare&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">5000</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  
+<span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">example_sentence</span><span class="p">[</span><span class="s2">&quot;word_id&quot;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">words</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">feature_to_draw</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
@@ -968,7 +751,7 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example_sentence</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;EOS&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">example_sentence</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">]]</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">example_sentence</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;word_id&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">feature_to_draw</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  
+<span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">example_sentence</span><span class="p">[</span><span class="s2">&quot;word_id&quot;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">words</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -1052,38 +835,12 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some weights of the model checkpoint at distilbert-base-uncased were not used when initializing DistilBertModel: [&#39;vocab_projector.bias&#39;, &#39;vocab_layer_norm.bias&#39;, &#39;vocab_layer_norm.weight&#39;, &#39;vocab_transform.weight&#39;, &#39;vocab_projector.weight&#39;, &#39;vocab_transform.bias&#39;]
-- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.autograd.grad_mode.set_grad_enabled at 0x7f2a580eac10&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>scprep<span class="w"> </span>#phate<span class="w"> </span>umap-learn
 <span class="kn">import</span> <span class="nn">scprep</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scprep in /usr/local/lib/python3.7/dist-packages (1.1.0)
-Requirement already satisfied: pandas&gt;=0.25 in /usr/local/lib/python3.7/dist-packages (from scprep) (1.1.5)
-Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from scprep) (21.0)
-Requirement already satisfied: decorator&gt;=4.3.0 in /usr/local/lib/python3.7/dist-packages (from scprep) (4.4.2)
-Requirement already satisfied: scipy&gt;=0.18.1 in /usr/local/lib/python3.7/dist-packages (from scprep) (1.4.1)
-Requirement already satisfied: numpy&gt;=1.12.0 in /usr/local/lib/python3.7/dist-packages (from scprep) (1.19.5)
-Requirement already satisfied: scikit-learn&gt;=0.19.1 in /usr/local/lib/python3.7/dist-packages (from scprep) (0.22.2.post1)
-Requirement already satisfied: pytz&gt;=2017.2 in /usr/local/lib/python3.7/dist-packages (from pandas&gt;=0.25-&gt;scprep) (2018.9)
-Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas&gt;=0.25-&gt;scprep) (2.8.2)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil&gt;=2.7.3-&gt;pandas&gt;=0.25-&gt;scprep) (1.15.0)
-Requirement already satisfied: joblib&gt;=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn&gt;=0.19.1-&gt;scprep) (1.0.1)
-Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;scprep) (2.4.7)
 </pre></div>
 </div>
 </div>
@@ -1141,7 +898,10 @@ Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/d
 <p>We can try to visualize the high-dimensional static embeddings by running a standard dimensionality reduction technique, PCA, on them and plotting the position of each word in space consisting of the first three principal components.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_pca</span> <span class="o">=</span> <span class="n">scprep</span><span class="o">.</span><span class="n">reduce</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">staticembeddings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">)</span>
+<span class="n">data_pca</span> <span class="o">=</span> <span class="n">scprep</span><span class="o">.</span><span class="n">reduce</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
 <span class="n">scprep</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter3d</span><span class="p">(</span><span class="n">data_pca</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1149,18 +909,16 @@ Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/d
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dataframe with the words as index </span>
-<span class="n">staticembeddings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">sentences</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dataframe with the words as index</span>
+<span class="n">staticembeddings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">sentences</span><span class="p">)</span>
 
-<span class="c1">#compute pca </span>
-<span class="n">data_pca</span> <span class="o">=</span> <span class="n">scprep</span><span class="o">.</span><span class="n">reduce</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span> 
+<span class="c1">#compute pca</span>
+<span class="n">data_pca</span> <span class="o">=</span> <span class="n">scprep</span><span class="o">.</span><span class="n">reduce</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
 
-<span class="c1"># plot using plotly an interactive plotting library  </span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span> 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">data_pca</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s1">&#39;PC3&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">data_pca</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> 
+<span class="c1"># plot using plotly an interactive plotting library</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">data_pca</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s1">&#39;PC3&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">data_pca</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
- 
 </pre></div>
 </div>
 </div>
@@ -1168,24 +926,10 @@ Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/d
 <div class="output text_html"><html>
 <head><meta charset="utf-8" /></head>
 <body>
-    <div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>
-                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
-            <div id="906c72cb-0b4e-4059-83e6-3badae5d32d6" class="plotly-graph-div" style="height:525px; width:100%;"></div>
-            <script type="text/javascript">
-                
-                    window.PLOTLYENV=window.PLOTLYENV || {};
-                    
-                if (document.getElementById("906c72cb-0b4e-4059-83e6-3badae5d32d6")) {
-                    Plotly.newPlot(
-                        '906c72cb-0b4e-4059-83e6-3badae5d32d6',
-                        [{"hoverlabel": {"namelength": 0}, "hovertemplate": "color=boy<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=boy", "marker": {"color": "#636efa", "symbol": "circle"}, "mode": "markers", "name": "color=boy", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [0.46390196681022644], "y": [-0.28861182928085327], "z": [-0.38963186740875244]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=girl<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=girl", "marker": {"color": "#EF553B", "symbol": "circle"}, "mode": "markers", "name": "color=girl", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [0.43047672510147095], "y": [-0.2736879289150238], "z": [0.15085099637508392]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=man<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=man", "marker": {"color": "#00cc96", "symbol": "circle"}, "mode": "markers", "name": "color=man", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [0.5254777073860168], "y": [0.35772469639778137], "z": [-0.15198242664337158]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=woman<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=woman", "marker": {"color": "#ab63fa", "symbol": "circle"}, "mode": "markers", "name": "color=woman", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [0.4545423686504364], "y": [0.12494857609272003], "z": [0.43304136395454407]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=king<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=king", "marker": {"color": "#FFA15A", "symbol": "circle"}, "mode": "markers", "name": "color=king", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [-0.3892240524291992], "y": [0.5471475720405579], "z": [-0.2485448718070984]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=queen<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=queen", "marker": {"color": "#19d3f3", "symbol": "circle"}, "mode": "markers", "name": "color=queen", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [-0.5079618692398071], "y": [0.23836450278759003], "z": [0.3733005225658417]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=prince<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=prince", "marker": {"color": "#FF6692", "symbol": "circle"}, "mode": "markers", "name": "color=prince", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [-0.5040796399116516], "y": [-0.22613438963890076], "z": [-0.41019392013549805]}, {"hoverlabel": {"namelength": 0}, "hovertemplate": "color=princess<br>PC1=%{x}<br>PC2=%{y}<br>PC3=%{z}", "legendgroup": "color=princess", "marker": {"color": "#B6E880", "symbol": "circle"}, "mode": "markers", "name": "color=princess", "scene": "scene", "showlegend": true, "type": "scatter3d", "x": [-0.4731329679489136], "y": [-0.4797513782978058], "z": [0.2431599199771881]}],
-                        {"legend": {"tracegroupgap": 0}, "margin": {"t": 60}, "scene": {"domain": {"x": [0.0, 1.0], "y": [0.0, 1.0]}, "xaxis": {"title": {"text": "PC1"}}, "yaxis": {"title": {"text": "PC2"}}, "zaxis": {"title": {"text": "PC3"}}}, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}},
-                        {"responsive": true}
-                    ).then(function(){
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>                <div id="f7da795b-7169-4f19-a57b-5e3698b23cff" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("f7da795b-7169-4f19-a57b-5e3698b23cff")) {                    Plotly.newPlot(                        "f7da795b-7169-4f19-a57b-5e3698b23cff",                        [{"hovertemplate":"index=boy\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"boy","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"boy","scene":"scene","showlegend":true,"x":[0.4639016091823578],"y":[-0.28861114382743835],"z":[-0.3896322548389435],"type":"scatter3d"},{"hovertemplate":"index=girl\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"girl","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"girl","scene":"scene","showlegend":true,"x":[0.43047624826431274],"y":[-0.27368810772895813],"z":[0.15085038542747498],"type":"scatter3d"},{"hovertemplate":"index=man\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"man","marker":{"color":"#00cc96","symbol":"circle"},"mode":"markers","name":"man","scene":"scene","showlegend":true,"x":[0.525477945804596],"y":[0.35772451758384705],"z":[-0.15198160707950592],"type":"scatter3d"},{"hovertemplate":"index=woman\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"woman","marker":{"color":"#ab63fa","symbol":"circle"},"mode":"markers","name":"woman","scene":"scene","showlegend":true,"x":[0.45454251766204834],"y":[0.12494822591543198],"z":[0.4330417811870575],"type":"scatter3d"},{"hovertemplate":"index=king\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"king","marker":{"color":"#FFA15A","symbol":"circle"},"mode":"markers","name":"king","scene":"scene","showlegend":true,"x":[-0.38922396302223206],"y":[0.5471477508544922],"z":[-0.2485445886850357],"type":"scatter3d"},{"hovertemplate":"index=queen\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"queen","marker":{"color":"#19d3f3","symbol":"circle"},"mode":"markers","name":"queen","scene":"scene","showlegend":true,"x":[-0.5079616904258728],"y":[0.23836471140384674],"z":[0.3733002245426178],"type":"scatter3d"},{"hovertemplate":"index=prince\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"prince","marker":{"color":"#FF6692","symbol":"circle"},"mode":"markers","name":"prince","scene":"scene","showlegend":true,"x":[-0.5040795803070068],"y":[-0.2261345386505127],"z":[-0.4101938009262085],"type":"scatter3d"},{"hovertemplate":"index=princess\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"princess","marker":{"color":"#B6E880","symbol":"circle"},"mode":"markers","name":"princess","scene":"scene","showlegend":true,"x":[-0.4731331765651703],"y":[-0.4797516465187073],"z":[0.24315984547138214],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"scene":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"xaxis":{"title":{"text":"PC1"}},"yaxis":{"title":{"text":"PC2"}},"zaxis":{"title":{"text":"PC3"}}},"legend":{"title":{"text":"index"},"tracegroupgap":0},"margin":{"t":60}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('906c72cb-0b4e-4059-83e6-3badae5d32d6');
+var gd = document.getElementById('f7da795b-7169-4f19-a57b-5e3698b23cff');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -1207,16 +951,72 @@ if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
 
-                        })
-                };
-                
-            </script>
-        </div>
+                        })                };                            </script>        </div>
 </body>
 </html></div></div>
 </div>
 <p><font color='darkorange'><b>ToDo</b></font> Inspect the PCA vectors and check where the words are positioned in this 3-dimensional space. Compare the space with the space you drew in the pen &amp; paper exercise above.</p>
 <p><font color='darkorange'><b>ToDo</b></font> Think of another collection of words that might be interesting to inspect in this way and see if you can plot an interpretable 3-dimensional word space.</p>
+<p><font color='red'><b>Extra</b></font> When you compare the word vector positions in the PCA to your pen&amp;paper drawing, you probably identified a good match between both. However, be careful in generalizing this observation as the way the DistilBert embeddings were plotted might have simply been coincidence!</p>
+<p>Run the following code block with PCA based on the static word embeddings generated with another popular model, namely RoBERTa. What do you notice when comparing both PCAs (DistilBert &amp; RoBERTa vectors) to your pen&amp;paper results? What can you infer from this? (This is not a graded exercise.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Download RoBERTa model and tokenizer from HuggingFace &amp; plot new PCA</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;roberta-base&#39;</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span>
+            <span class="n">output_hidden_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">output_attentions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># @title Retrieve activation vectors from all layers (stored in *vecs*)</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="n">vecs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">layer_result</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="n">sent_words</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="n">encoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">sent</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">encoded</span><span class="o">.</span><span class="n">input_ids</span>
+    <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">encoded</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">]</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">attention_mask</span><span class="o">=</span><span class="n">attention_mask</span><span class="p">)</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">hidden_states</span>  <span class="c1"># All 12 layers</span>
+    <span class="n">token_len</span> <span class="o">=</span> <span class="n">attention_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">decoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">convert_ids_to_tokens</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">word_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">e</span><span class="p">,</span> <span class="n">encoded</span><span class="o">.</span><span class="n">word_ids</span><span class="p">())))[</span><span class="mi">1</span><span class="p">:</span><span class="n">token_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">word_groups</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">word_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">word_indices</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">sent_words</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="k">if</span> <span class="n">t</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;##&quot;</span> <span class="k">else</span> <span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">decoded</span><span class="p">)[</span><span class="n">g</span><span class="p">])))</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">word_groups</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">layer_group</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">)):</span>  <span class="c1"># all 12 layers</span>
+        <span class="n">sent_vec</span> <span class="o">=</span> <span class="n">combine_output_for_layers</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">word_groups</span><span class="p">,</span> <span class="p">[</span><span class="n">layer_group</span><span class="p">])</span>
+        <span class="n">layer_result</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sent_vec</span><span class="p">)</span>
+
+<span class="n">vecs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">layer_result</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="n">staticembeddings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">)</span>
+
+<span class="n">data_pca</span> <span class="o">=</span> <span class="n">scprep</span><span class="o">.</span><span class="n">reduce</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+<span class="n">scprep</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter3d</span><span class="p">(</span><span class="n">data_pca</span><span class="p">)</span>
+
+<span class="c1"># Create a dataframe with the words as index</span>
+<span class="n">staticembeddings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">sentences</span><span class="p">)</span>
+
+<span class="c1"># Compute PCA</span>
+<span class="n">data_pca</span> <span class="o">=</span> <span class="n">scprep</span><span class="o">.</span><span class="n">reduce</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">staticembeddings</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot using plotly, an interactive plotting library</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">data_pca</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s1">&#39;PC3&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">data_pca</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="static-versus-contextualized-word-embeddings">
 <h3>Static versus contextualized word embeddings<a class="headerlink" href="#static-versus-contextualized-word-embeddings" title="Permalink to this heading">#</a></h3>
 <p>In Large Language Models, the input embeddings are static (unique for each word/token). But the activation vectors of higher layers in the model are often more useful (e.g., for predicting brain activation). These vectors, however, are not static; if we use them to build up a representation for words, we call these representations “contextualized embeddings”.</p>
@@ -1257,7 +1057,7 @@ if (outputEl) {{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Plot distance matrices between word embeddings for different layers</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Plot similarity matrices between word embeddings for different layers</span>
 <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert-base-uncased&#39;</span> <span class="c1">#model_name = &#39;DistilBERT&#39;</span>
 
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span> <span class="s2">&quot;needs&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;mouse&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span><span class="s2">&quot;eats&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;mouse&quot;</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">]</span>
@@ -1274,13 +1074,13 @@ if (outputEl) {{
 
 <span class="k">for</span> <span class="n">subplot</span><span class="p">,</span> <span class="p">(</span><span class="n">label_axes</span><span class="p">,</span> <span class="n">matrix_index</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">axes</span><span class="p">),</span> <span class="n">plot_data</span><span class="p">):</span>
     <span class="n">heatmap_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
-        <span class="n">annot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span> 
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">annot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
         <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">r</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">distance_matrices</span><span class="p">[</span><span class="n">matrix_index</span><span class="p">]]),</span>
-        <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="mf">6.5</span><span class="p">},</span> 
+        <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="mf">6.5</span><span class="p">},</span>
         <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;magma_r&#39;</span><span class="p">,</span> 
-        <span class="n">xticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> 
+        <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;magma_r&#39;</span><span class="p">,</span>
+        <span class="n">xticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
         <span class="n">yticklabels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
     <span class="p">)</span>
 
@@ -1292,8 +1092,16 @@ if (outputEl) {{
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/1f9aaf53a3b68a891a855a7d7bac539526d410cdc5d7eca50ad754156f84434b.png" src="_images/1f9aaf53a3b68a891a855a7d7bac539526d410cdc5d7eca50ad754156f84434b.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Run this code in case the resulting RDMs are displayed incorrectly</span>
+<span class="n">image_file</span> <span class="o">=</span> <span class="s2">&quot;RDMPlots.png&quot;</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">image_file</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1321,20 +1129,21 @@ if (outputEl) {{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_matrices_cosine</span> <span class="o">=</span> <span class="n">compute_distance_matrices</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert-base-uncased&#39;</span>
+
+<span class="n">distance_matrices_cosine</span> <span class="o">=</span> <span class="n">compute_distance_matrices</span><span class="p">(</span><span class="n">vecs</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
 <span class="n">rsa_mat_cosine</span> <span class="o">=</span> <span class="n">RSA_matrix</span><span class="p">(</span><span class="n">distance_matrices_cosine</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
 <span class="n">plot_RSA</span><span class="p">(</span><span class="n">rsa_mat_cosine</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dist_method</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/c472f4f1250b8f4c370fc3141cc27580c4f2a6522e92b2c99330aa4755682f42.png" src="_images/c472f4f1250b8f4c370fc3141cc27580c4f2a6522e92b2c99330aa4755682f42.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title &lt;font color=&#39;cornflowerblue&#39;&gt;&lt;b&gt;ToThink 7&lt;/b&gt;&lt;/font&gt; (1pt)</span>
 <span class="c1">#@markdown Briefly describe the pattern you observe in the representational similarity between layers, and relate it to the layer-wise predictivity plot we saw in the Schrimpf et al. paper.</span>
+
+<span class="c1">#@markdown (The intended graph is Figure 2C, and the &quot;relation&quot; you are asked to describe is not something very precise: just a rough relation of the patterns you observe in the two graphs. Note that your graph uses DistillBERT without brain data, while Schrimpf et al use GPT2 and brain data, so precise correspondence is not expected.)</span>
 <span class="n">Response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 </pre></div>
 </div>
@@ -1355,14 +1164,14 @@ if (outputEl) {{
 <p>(If you choose the latter, proceed to the <em>Evaluating model predictions</em> section below)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: </span>
-<span class="c1"># You could load any other BERT or DistilBERT model version available in the Huggingface library in the same manner. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note:</span>
+<span class="c1"># You could load any other BERT or DistilBERT model version available in the Huggingface library in the same manner.</span>
 <span class="c1"># DistilBERT was chosen for this tutorial since it has less parameters.</span>
 
 <span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
-    
+
 <span class="c1"># define model</span>
 <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert-base-uncased&#39;</span>
 <span class="n">regr_model</span> <span class="o">=</span> <span class="n">TransformerRegressionModel</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
@@ -1373,7 +1182,7 @@ if (outputEl) {{
 
 <span class="c1"># train model</span>
 <span class="c1"># set num_epochs to 0 for no fine-tuning</span>
-<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting training...&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="n">train</span><span class="p">(</span><span class="n">regr_model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
@@ -1387,23 +1196,6 @@ if (outputEl) {{
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some weights of the model checkpoint at distilbert-base-uncased were not used when initializing DistilBertModel: [&#39;vocab_projector.weight&#39;, &#39;vocab_transform.weight&#39;, &#39;vocab_layer_norm.weight&#39;, &#39;vocab_layer_norm.bias&#39;, &#39;vocab_transform.bias&#39;, &#39;vocab_projector.bias&#39;]
-- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting training...
-Epoch: 0
-Epoch: 1
-Epoch: 2
-Epoch: 3
-Epoch: 4
-Training done.
-Model saved to ./models/distilbert-base-uncased_5
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="evaluating-model-predictions">
@@ -1412,14 +1204,14 @@ Model saved to ./models/distilbert-base-uncased_5
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load pretrained model</span>
-<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert_0&#39;</span>
-<span class="n">pretrained_model_to_evaluate</span> <span class="o">=</span> <span class="n">distilbert_0_file</span>
+<span class="c1">#model_name = &#39;distilbert_0&#39;</span>
+<span class="c1">#pretrained_model_to_evaluate = distilbert_0_file</span>
 
 <span class="c1"># if you want to load your own pretrained model (downloaded in the cell above), uncomment the lines below,</span>
 <span class="c1"># change the filepath to the location of your model, and define your model&#39;s name (for saving the predictions file)</span>
 <span class="c1"># note that this should be a model that is *not* finetuned (i.e. 0 epochs)</span>
-<span class="c1"># pretrained_model_to_evaluate = &#39;models/distilbert-base-uncased_0&#39;</span>
-<span class="c1"># model_name = &#39;distilbert_0&#39;</span>
+<span class="n">pretrained_model_to_evaluate</span> <span class="o">=</span> <span class="s1">&#39;./models/distilbert-base-uncased_1&#39;</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert_0&#39;</span>
 
 <span class="n">pretrained_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pretrained_model_to_evaluate</span><span class="p">)</span>
 <span class="n">predictions_pretrained</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">pretrained_model</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
@@ -1464,16 +1256,6 @@ Model saved to ./models/distilbert-base-uncased_5
 <span class="n">mean_data</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
     <span class="n">mean_data</span><span class="p">[</span><span class="n">feat</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_feat_values</span><span class="p">[</span><span class="n">feat</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean feature values in training data:
-nFix 15.10177827483709
-FFD 3.1910228250548047
-GPT 6.345511205701235
-TRT 5.309609916601226
-fixProp 67.05723394392217
 </pre></div>
 </div>
 </div>
@@ -1531,7 +1313,7 @@ fixProp 67.05723394392217
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot a sentence with real eye tracking data and the corresponding model predictions</span>
 <span class="n">sentence_to_plot</span> <span class="o">=</span> <span class="mi">953</span> <span class="c1"># 801, 901, 950, 953</span>
-<span class="n">feature_to_plot</span> <span class="o">=</span> <span class="s2">&quot;FFD&quot;</span> <span class="c1"># TRT, GPT, nFix, fixProp </span>
+<span class="n">feature_to_plot</span> <span class="o">=</span> <span class="s2">&quot;FFD&quot;</span> <span class="c1"># TRT, GPT, nFix, fixProp</span>
 
 <span class="n">true_sentence</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sentence_to_plot</span><span class="p">]</span>
 <span class="n">predicted_sentence_finetuned</span> <span class="o">=</span> <span class="n">predictions_finetuned</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">predictions_finetuned</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sentence_to_plot</span><span class="p">]</span>
@@ -1565,7 +1347,7 @@ fixProp 67.05723394392217
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tag the data and add the tags to the dataframe</span>
 <span class="k">def</span> <span class="nf">pos_tag</span><span class="p">(</span><span class="n">data_to_tag</span><span class="p">):</span>
     <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;EOS&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">data_to_tag</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]]</span>
-    <span class="n">tagged_sents</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+    <span class="n">tagged_sents</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">custom_tokenizer</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
     <span class="n">data_to_tag</span><span class="p">[</span><span class="s1">&#39;pos_tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">pos_</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tagged_sents</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">data_to_tag</span>
 
@@ -1640,34 +1422,12 @@ fixProp 67.05723394392217
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="05_extra.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Extra</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="10_mini-projects_resources.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Resources for mini-projects</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1763,8 +1523,8 @@ fixProp 67.05723394392217
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
