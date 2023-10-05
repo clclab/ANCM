@@ -1,0 +1,5 @@
+```
+# Ignore builds
+book/_build/
+book/_build/html/
+``
