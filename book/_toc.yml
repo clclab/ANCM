@@ -23,7 +23,7 @@ parts:
           - file: 04_lab_visionConvolutionsRecurrence
       - file: 05_extra
         sections:
-          - file: 05_extra_lab_ICCN-EyeTracking
+          - file: 05_extra_lab_ICCN_EyeTracking
 
   - caption: Mini-projects
     chapters:
