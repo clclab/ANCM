@@ -631,6 +631,11 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mounted at /content/drive
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>2. Add the model files to Google Drive</strong> Below you see how to add the files to My Drive. Please read the instructions carefully and follow the steps.</p>
 <p><img alt="ICCN-drive-steps" src="https://github.com/clclab/ANCM/blob/main/book/img/ICCN-drive-steps.png?raw=1" /></p>
@@ -666,6 +671,12 @@ For the <font color="cornflowerblue"><b>ToThinks</b></font>, you’ll receive po
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">training_data</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="s2">&quot;training sentences including&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">training_data</span><span class="p">),</span> <span class="s2">&quot;words.&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;sentence_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="s2">&quot;test sentences including&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">),</span> <span class="s2">&quot;words.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>800 training sentences including 15736 words.
+191 test sentences including 3554 words.
 </pre></div>
 </div>
 </div>
@@ -932,38 +943,6 @@ Sentence endings are marked with an <code class="docutils literal notranslate"><
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><html>
-<head><meta charset="utf-8" /></head>
-<body>
-    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>                <div id="f7da795b-7169-4f19-a57b-5e3698b23cff" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("f7da795b-7169-4f19-a57b-5e3698b23cff")) {                    Plotly.newPlot(                        "f7da795b-7169-4f19-a57b-5e3698b23cff",                        [{"hovertemplate":"index=boy\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"boy","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"boy","scene":"scene","showlegend":true,"x":[0.4639016091823578],"y":[-0.28861114382743835],"z":[-0.3896322548389435],"type":"scatter3d"},{"hovertemplate":"index=girl\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"girl","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"girl","scene":"scene","showlegend":true,"x":[0.43047624826431274],"y":[-0.27368810772895813],"z":[0.15085038542747498],"type":"scatter3d"},{"hovertemplate":"index=man\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"man","marker":{"color":"#00cc96","symbol":"circle"},"mode":"markers","name":"man","scene":"scene","showlegend":true,"x":[0.525477945804596],"y":[0.35772451758384705],"z":[-0.15198160707950592],"type":"scatter3d"},{"hovertemplate":"index=woman\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"woman","marker":{"color":"#ab63fa","symbol":"circle"},"mode":"markers","name":"woman","scene":"scene","showlegend":true,"x":[0.45454251766204834],"y":[0.12494822591543198],"z":[0.4330417811870575],"type":"scatter3d"},{"hovertemplate":"index=king\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"king","marker":{"color":"#FFA15A","symbol":"circle"},"mode":"markers","name":"king","scene":"scene","showlegend":true,"x":[-0.38922396302223206],"y":[0.5471477508544922],"z":[-0.2485445886850357],"type":"scatter3d"},{"hovertemplate":"index=queen\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"queen","marker":{"color":"#19d3f3","symbol":"circle"},"mode":"markers","name":"queen","scene":"scene","showlegend":true,"x":[-0.5079616904258728],"y":[0.23836471140384674],"z":[0.3733002245426178],"type":"scatter3d"},{"hovertemplate":"index=prince\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"prince","marker":{"color":"#FF6692","symbol":"circle"},"mode":"markers","name":"prince","scene":"scene","showlegend":true,"x":[-0.5040795803070068],"y":[-0.2261345386505127],"z":[-0.4101938009262085],"type":"scatter3d"},{"hovertemplate":"index=princess\u003cbr\u003ePC1=%{x}\u003cbr\u003ePC2=%{y}\u003cbr\u003ePC3=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"princess","marker":{"color":"#B6E880","symbol":"circle"},"mode":"markers","name":"princess","scene":"scene","showlegend":true,"x":[-0.4731331765651703],"y":[-0.4797516465187073],"z":[0.24315984547138214],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"scene":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"xaxis":{"title":{"text":"PC1"}},"yaxis":{"title":{"text":"PC2"}},"zaxis":{"title":{"text":"PC3"}}},"legend":{"title":{"text":"index"},"tracegroupgap":0},"margin":{"t":60}},                        {"responsive": true}                    ).then(function(){
-                            
-var gd = document.getElementById('f7da795b-7169-4f19-a57b-5e3698b23cff');
-var x = new MutationObserver(function (mutations, observer) {{
-        var display = window.getComputedStyle(gd).display;
-        if (!display || display === 'none') {{
-            console.log([gd, 'removed!']);
-            Plotly.purge(gd);
-            observer.disconnect();
-        }}
-}});
-
-// Listen for the removal of the full notebook cells
-var notebookContainer = gd.closest('#notebook-container');
-if (notebookContainer) {{
-    x.observe(notebookContainer, {childList: true});
-}}
-
-// Listen for the clearing of the current output cell
-var outputEl = gd.closest('.output');
-if (outputEl) {{
-    x.observe(outputEl, {childList: true});
-}}
-
-                        })                };                            </script>        </div>
-</body>
-</html></div></div>
 </div>
 <p><font color='darkorange'><b>ToDo</b></font> Inspect the PCA vectors and check where the words are positioned in this 3-dimensional space. Compare the space with the space you drew in the pen &amp; paper exercise above.</p>
 <p><font color='darkorange'><b>ToDo</b></font> Think of another collection of words that might be interesting to inspect in this way and see if you can plot an interpretable 3-dimensional word space.</p>
@@ -1106,10 +1085,14 @@ if (outputEl) {{
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Run this code in case the resulting RDMs are displayed incorrectly</span>
-<span class="n">image_file</span> <span class="o">=</span> <span class="s2">&quot;RDMPlots.png&quot;</span>
 
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">image_file</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># Provide the URL of the image</span>
+<span class="n">image_url</span> <span class="o">=</span> <span class="s1">&#39;https://i.imgur.com/WgMvOlI.png &#39;</span>
+
+<span class="c1"># Display the image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">image_url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1174,15 +1157,14 @@ if (outputEl) {{
 <p>(If you choose the latter, proceed to the <em>Evaluating model predictions</em> section below)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note:</span>
-<span class="c1"># You could load any other BERT or DistilBERT model version available in the Huggingface library in the same manner.</span>
-<span class="c1"># DistilBERT was chosen for this tutorial since it has less parameters.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">TransformerRegressionModel</span>  <span class="c1"># Import your model class</span>
 
 <span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
 
-<span class="c1"># define model</span>
+<span class="c1"># Define model</span>
 <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert-base-uncased&#39;</span>
 <span class="n">regr_model</span> <span class="o">=</span> <span class="n">TransformerRegressionModel</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 <span class="n">train_data</span> <span class="o">=</span> <span class="n">EyeTrackingCSV</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span>
@@ -1190,18 +1172,17 @@ if (outputEl) {{
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">regr_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">5e-5</span><span class="p">)</span>
 <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
 
-<span class="c1"># train model</span>
-<span class="c1"># set num_epochs to 0 for no fine-tuning</span>
-<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># Train model</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting training...&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="n">train</span><span class="p">(</span><span class="n">regr_model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Epoch:&quot;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training done.&quot;</span><span class="p">)</span>
 
-<span class="c1"># save model</span>
+<span class="c1"># Save model</span>
 <span class="n">output_model</span> <span class="o">=</span> <span class="s1">&#39;./models/&#39;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
-<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">regr_model</span><span class="p">,</span> <span class="n">output_model</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">regr_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">output_model</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model saved to&quot;</span><span class="p">,</span> <span class="n">output_model</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1213,17 +1194,24 @@ if (outputEl) {{
 <p>We will now load a pre-trained model without fine-tuning, and a pre-trained model that is fine-tuned on eye tracking data, and see how well they do at predicting eye tracking features from text. When you run the cells below, you will see tables with the predictions for the different eye tracking features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load pretrained model</span>
-<span class="c1">#model_name = &#39;distilbert_0&#39;</span>
-<span class="c1">#pretrained_model_to_evaluate = distilbert_0_file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load your non-finetuned model</span>
 
-<span class="c1"># if you want to load your own pretrained model (downloaded in the cell above), uncomment the lines below,</span>
 <span class="c1"># change the filepath to the location of your model, and define your model&#39;s name (for saving the predictions file)</span>
 <span class="c1"># note that this should be a model that is *not* finetuned (i.e. 0 epochs)</span>
-<span class="n">pretrained_model_to_evaluate</span> <span class="o">=</span> <span class="s1">&#39;./models/distilbert-base-uncased_1&#39;</span>
+
+<span class="n">pretrained_model_to_evaluate</span> <span class="o">=</span> <span class="s1">&#39;./models/distilbert-base-uncased_0&#39;</span>
 <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert_0&#39;</span>
 
-<span class="n">pretrained_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pretrained_model_to_evaluate</span><span class="p">)</span>
+<span class="c1"># Create an instance of your model with the same architecture/configuration</span>
+<span class="n">pretrained_model</span> <span class="o">=</span> <span class="n">TransformerRegressionModel</span><span class="p">()</span>
+
+<span class="c1"># Load the state_dict into the new instance</span>
+<span class="n">pretrained_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pretrained_model_to_evaluate</span><span class="p">))</span>
+
+<span class="c1"># Set the pretrained model to evaluation mode</span>
+<span class="n">pretrained_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="c1"># Now you can use the pretrained_model for inference</span>
 <span class="n">predictions_pretrained</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">pretrained_model</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
 <span class="n">predictions_pretrained</span>
 </pre></div>
@@ -1232,16 +1220,23 @@ if (outputEl) {{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load model fine-tuned on eye-tracking data</span>
-<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert_150&#39;</span>
-<span class="n">finetuned_model_to_evaluate</span> <span class="o">=</span> <span class="n">distilbert_150_file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load your model finetuned on eye tracking data</span>
 
-<span class="c1"># if you want to load a model that you fine-tuned yourself, uncomment the lines below,</span>
 <span class="c1"># change the filepath to the location of your model, and define your model&#39;s name (for saving the predictions file)</span>
-<span class="c1"># finetuned_model_to_evaluate = &#39;models/distilbert-base-uncased_5&#39;</span>
-<span class="c1"># model_name = &#39;distilbert_5&#39;</span>
+<span class="c1"># note that this should be a model that is finetuned (i.e. 0 epochs)</span>
 
-<span class="n">finetuned_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">finetuned_model_to_evaluate</span><span class="p">)</span>
+<span class="n">finetuned_model_to_evaluate</span> <span class="o">=</span> <span class="s1">&#39;./models/distilbert-base-uncased_0&#39;</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilbert_5&#39;</span>
+
+<span class="n">finetuned_model</span> <span class="o">=</span> <span class="n">TransformerRegressionModel</span><span class="p">()</span>
+
+<span class="c1"># Load the state_dict into the new instance</span>
+<span class="n">finetuned_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">finetuned_model_to_evaluate</span><span class="p">))</span>
+
+<span class="c1"># Set the finetuned model to evaluation mode</span>
+<span class="n">finetuned_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="c1"># Now you can use the finetuned_model for inference</span>
 <span class="n">predictions_finetuned</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">finetuned_model</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
 <span class="n">predictions_finetuned</span>
 </pre></div>
